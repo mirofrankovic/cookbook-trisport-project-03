@@ -4,11 +4,15 @@ h1 {
     color: green;
 }
 
+h2 {
+    color: blue;
+}
 
 
 
 
 
-/*.art-font { (this font is for index.html)
+
+.art-font {                                          /*(this font is for index.html)*/
     font-family: 'Yanone Kaffeesatz', sans-serif;
-}*/
+}
