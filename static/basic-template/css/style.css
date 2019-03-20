@@ -1,4 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    font-size: 50px;
+}
 
 h1 {
     color: green;
@@ -8,11 +15,48 @@ h2 {
     color: blue;
 }
 
-
-
-
-
+h3 {
+    color: orange;
+}
 
 .art-font {                                          /*(this font is for index.html)*/
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
+.parallax-container {
+    min-height: 380px;
+    width: 100%;
+    line-height: 0;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
