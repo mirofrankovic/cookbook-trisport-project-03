@@ -24,6 +24,25 @@ def get_race():
 def get_recipes():
     return render_template('recipes.html',
                           recipes = mongo.db.recipes.find())
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+@app.route('/contact_us')
+def contact_us():
+    return render_template("contactus.html")
+                          
+                          
                            
                            
     
