@@ -20,10 +20,10 @@ def get_race():
     return render_template('getrace.html',
                           recipes = mongo.db.recipes.find())
                           
-#@app.route('/get_recipes') # images for my recepies
-#def get_recipes():
-    #return render_template('recipes.html',
-     #                      recipes = mongo.db.recipes.find())
+@app.route('/get_recipes') # images for my recepies
+def get_recipes():
+    return render_template('recipes.html',
+                          recipes = mongo.db.recipes.find())
                            
                            
     
