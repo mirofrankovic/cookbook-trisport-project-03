@@ -46,6 +46,7 @@
             </a>
             <ul class="right hide-on-med-and-down"> 
               <li><a href="">All Recipes</a></li>
+              <li><a href="{{url_for('add_recipe')}}">Your Suggestion</a></li>
               <li><a href="{{url_for('contact_us')}}">Contact Us</a></li>
               <li><a href="">Login</a></li>
             </ul>
@@ -54,6 +55,8 @@
               
                <li><a href=""><form action=""><input type="text" name="search" placeholder="Type and press enter to search"></form></a></li>
                <li><a href="">All Recipes</a></li>
+               <li><a href="{{url_for('add_recipe')}}">Your Suggestion</a></li>
+               <li><a href="{{url_for('contact_us')}}">Contact Us</a></li>
                <li><a href="">Login</a></li> 
                 
             </ul>
@@ -113,8 +116,13 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>    
     <script type="text/javascript" src="{{url_for('static', filename='work-template/js/init.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='work-template/js/materialize.min.js')}}"></script>
+    <script>
+    $(document).ready(function(){
+              $('.collapsible').collapsible();
+              $('select').material_select();
+           });
     
-    
+    </script>
     <!-- Custom JS recipe form JS-->
     
     

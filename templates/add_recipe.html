@@ -5,29 +5,58 @@
 <h2 class="">Add Recipe</h2>
 <div class="row">
     <form action="" method="POST" class="col s12">
+        
         <div class="row">
         <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="author_name" name="author_name" type="text" class="validate">
+          <label for="icon_prefix">Your Name</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
+          <input id="recipe_name" name="recipe_name" type="tel" class="validate">
+          <label for="icon_telephone">Recipe Name</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefic">poll</i>
+        <select class="form-select" id="meal_type" name="meal_type" required>
+               <option value="" disabled selected>Choose Your Meal Type (*)</option>
+               {% for meal in meal_type %}
+               <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
+               {% endfor %}
+        </select>
+        <label>Choose Your Meal Type</label>
+        </div>
+        </div>
+        
+        <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefic">poll</i>
         <select>
                <option value="" disabled selected>Choose your option</option>
                <option value="1">Option 1</option>
                <option value="2">Option 2</option>
                <option value="3">Option 3</option>
         </select>
-        <label>Materialize Select</label>
+        <label>Choose Your Sport Type</label>
         </div>
         </div>
         <div class="row">
         <div class="input-field col s12">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">First Name</label>
+            <i class="material-icons prefic">poll</i>
+        <select>
+               <option value="" disabled selected>Choose your option</option>
+               <option value="1">Option 1</option>
+               <option value="2">Option 2</option>
+               <option value="3">Option 3</option>
+        </select>
+        <label>Pick Your Prefered Race Meal</label>
         </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix">phone</i>
-          <input id="icon_telephone" type="tel" class="validate">
-          <label for="icon_telephone">Telephone</label>
         </div>
-      </div>
+        
     </form>
   </div>
 
