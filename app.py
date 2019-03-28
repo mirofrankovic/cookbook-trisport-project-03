@@ -32,16 +32,11 @@ def add_recipe():
     
     
     return render_template('add_recipe.html',
+                           author_name=mongo.db.author_name.find(),
+                           meal_type=mongo.db.meal_type.find(),
+                           sport_type=mongo.db.sport_type.find(),
+                           race_day=mongo.db.race_day.find()
                           )
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
                           
                           
                           

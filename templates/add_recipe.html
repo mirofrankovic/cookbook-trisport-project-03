@@ -9,7 +9,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">accessibility</i>
-          <input id="author_name" name="author_name" type="text" class="validate">
+          <input disabled value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">
           <label for="icon_prefix">Your Name</label>
         </div>
         </div>
@@ -37,23 +37,24 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
             <i class="material-icons prefic">expand_more</i>
-        <select>
-               <option value="" disabled selected>Choose your option</option>
-               <option value="1">Option 1</option>
-               <option value="2">Option 2</option>
-               <option value="3">Option 3</option>
+        <select class="form-select" id="sport_type" name="sport_type" required>
+               <option value="" disabled selected>Choose Your Sport Discipline (*)</option>
+               {% for sport in sport_type %}
+               <option value="{{sport.sport_type}}">{{sport.sport_type}}</option>
+               {% endfor %}
         </select>
-        <label>Choose Your Sport Type</label>
+        <label>Choose Your Sport Discipline</label>
         </div>
         </div>
+        
         <div class="row white form-padding">
         <div class="input-field col s12">
             <i class="material-icons prefic">expand_more</i>
-        <select>
-               <option value="" disabled selected>Choose your option</option>
-               <option value="1">Option 1</option>
-               <option value="2">Option 2</option>
-               <option value="3">Option 3</option>
+        <select class="form-select" id="race_day" name="race_day" required>
+               <option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
+               {% for race in race_type %}
+               <option value="{{race.race_day}}">{{race.race_day}}</option>
+               {% endfor %}
         </select>
         <label>Pick Your Prefered Race Meal</label>
         </div>
