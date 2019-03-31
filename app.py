@@ -1,5 +1,6 @@
+import pymongo 
 import os
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, session, request
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -18,7 +19,7 @@ mongo = PyMongo(app)
 @app.route('/get_race')
 def get_race():
     return render_template('getrace.html',
-                          recipes = mongo.db.recipes.find())
+                          recipes = mongo.db.recipes.find()) #supply recipes collection
                           
 @app.route('/get_recipes') # images for my recepies
 def get_recipes():
@@ -30,7 +31,20 @@ def get_recipes():
 @app.route('/add_recipe')
 def add_recipe():
     
-    
+# {
+#    "_id": {
+#       "$oid": "5c9bbf7ee7179a0e408e3177"
+#    },
+#    "author_name": "",
+#    "recipe_name": "",
+#    "meal_type_name": "",
+#    "sport_type_name": "",
+#    "race_day_name": "",
+#    "description": "",
+#    "image_recipe": "",
+#    "vegan_type_meal": "",
+#    "due_date": ""
+#}   
     return render_template('add_recipe.html',
                            author_name=mongo.db.author_name.find(),
                            meal_type=mongo.db.meal_type.find(),
@@ -39,9 +53,22 @@ def add_recipe():
                           )
                           
                           
+@app.route('/log_in', methods=['GET', 'POST'])
+def log_in():
+    
+    if request.method == 'POST':
+         session['username'] = request.form["username"]
+         
+         
+    
+    
+    return render_template('login.html',
+                           username=session['username']
+                           )
                           
                           
-                          
+
+
 @app.route('/contact_us')
 def contact_us():
     return render_template("contactus.html")
