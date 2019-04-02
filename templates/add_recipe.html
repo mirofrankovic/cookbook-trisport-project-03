@@ -9,25 +9,25 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">accessibility</i>
-          <input disabled value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">
-          <label for="icon_prefix">Your Name</label>
+          <input disabled value="" id="author_name" name="author_name" type="text" class="validate">
+          <label for="author_name">Your Name</label>
         </div>
         </div>
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">cake</i>
           <input id="recipe_name" name="recipe_name" type="text" class="validate">
-          <label for="icon_cake">Recipe Name</label>
+          <label for="recipe_name">Recipe Name</label>
         </div>
       </div>
       
       <div class="row white form-padding">
         <div class="input-field col s12">
-            <i class="material-icons prefic">expand_more</i>
-        <select class="form-select" id="meal_type" name="meal_type" required>
+            
+        <select id="meal_type" name="meal_type_name" required>
                <option value="" disabled selected>Choose Your Meal Type (*)</option>
                {% for meal in meal_type %}
-               <option value="{{meal.meal_type}}">{{meal.meal_type}}</option>
+               <option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
                {% endfor %}
         </select>
         <label>Choose Your Meal Type</label>
@@ -36,11 +36,11 @@
         
         <div class="row white form-padding">
         <div class="input-field col s12">
-            <i class="material-icons prefic">expand_more</i>
-        <select class="form-select" id="sport_type" name="sport_type" required>
+            
+        <select id="sport_type" name="sport_type_name" required>
                <option value="" disabled selected>Choose Your Sport Discipline (*)</option>
                {% for sport in sport_type %}
-               <option value="{{sport.sport_type}}">{{sport.sport_type}}</option>
+               <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
                {% endfor %}
         </select>
         <label>Choose Your Sport Discipline</label>
@@ -49,16 +49,31 @@
         
         <div class="row white form-padding">
         <div class="input-field col s12">
-            <i class="material-icons prefic">expand_more</i>
-        <select class="form-select" id="race_day" name="race_day" required>
+            
+        <select id="race_day" name="race_day_name" required>
                <option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
-               {% for race in race_type %}
-               <option value="{{race.race_day}}">{{race.race_day}}</option>
+               {% for race in race_day %}
+               <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
                {% endfor %}
         </select>
         <label>Pick Your Prefered Race Meal</label>
         </div>
         </div>
+        <div class="row white form-padding">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">brush</i>
+          <input id="description" name="description" type="text" class="validate">
+          <label for="description">Description</label>
+        </div>
+      </div>
+      <div class="row white form-padding">
+        <div class="input-field col s12">
+        <input placeholder="Please Enter Recipe Image URL eg: 'Http://www.images.com/sample.jpg" id="image_recipe" name="image_recipe" type="text"  class="validate"  required>
+        <label for="image_recipe">Recipe Image</label>
+        </div>
+      </div>
+        
+        
         
     </form>
   </div>
