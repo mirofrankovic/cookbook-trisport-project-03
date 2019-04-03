@@ -1,6 +1,7 @@
 import pymongo 
 import os
 from flask import Flask, render_template, url_for, redirect, session, request
+import json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -53,8 +54,25 @@ def add_recipe():
                           )
                           
                           
+                          
+@app.route('/insert_my_recipe/<recipe_id>')    #edit_recipe
+
+
+
+@app.route('/submit_to_database', methods=['POST'])
+def submit_to_database():
+    recipes=mongo.db.recipes
+    
+    recipes.insert_one(request.json)
+    
+    return('', 204) # what is 204
+    
+                          
+                          
 @app.route('/log_in', methods=['GET', 'POST'])
 def log_in():
+    
+    
     
     if request.method == 'POST':
          session['username'] = request.form["username"]
