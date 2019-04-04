@@ -73,18 +73,51 @@ def submit_to_database():
 def log_in():
     
     
-    
-    if request.method == 'POST':
-         session['username'] = request.form["username"]
-         
-         
-    
-    
-    return render_template('login.html',
-                           username=session['username']
-                           )
+    loggedin = False
+    if request.method == 'GET' and not 'username' in session:
+        return render_template('login.html',
+                               loggedin=loggedin)
+    elif request.method == 'GET' and 'username' in session:
+        loggedin = True
+        recipes = mongo.db.recipes.find()
+        recipes_dics = {}
+        
+        for i, recipe in enumerate(recipes):
+            recipe.pop('_id', None)
+            recipes_dics[i] = recipe
+            
+            recipes_dics = json.dumps(recipes_dics)
+            
+            
+            return render_template('login.html',
+                                    username=session['username'],
+                                    loggedin=loggedin,
+                                    recipes=recipes_dics)
+                                    
+        if request.method == 'POST':
+            session['username'] = request.form["username"]
+            loggedin = True
+            recipes=mongo.db.recipes.find()
+            recipes_dics = {}
+            
+            for i, recipe in enumerate(recipes):
+                recipe.pop('_id', None)
+                recipes_dics[i] = recipe
+                
+            recipes_dics = json.dumps(recipes_dics)  
+            
+            return render_template('login.html',
+                                   username=session['username'],
+                                   loggedin=loggedin,
+                                   recipes=recipes_dics)
+        
+        
+        
+        
+      
                           
-                          
+
+
 
 
 @app.route('/contact_us')
