@@ -4,12 +4,12 @@
 
 <h2 class="">Add Recipe</h2>
 <div class="row">
-    <form action="" method="POST" class="col s12">
+    <div class="col s12">
         
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">accessibility</i>
-          <input disabled value="" id="author_name" name="author_name" type="text" class="validate">
+          <input value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">
           <label for="author_name">Your Name</label>
         </div>
         </div>
@@ -101,7 +101,7 @@
         </div>
         
         
-    </form>
+    </div>
   </div>
 
 
