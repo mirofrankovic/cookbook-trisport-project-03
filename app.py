@@ -17,10 +17,12 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/get_race')
-def get_race():
-    return render_template('getrace.html',
+@app.route('/get_ready')
+def get_ready():
+    return render_template('getready.html',
                           recipes = mongo.db.recipes.find()) #supply recipes collection
+                          
+                          
                           
 @app.route('/get_recipes') # images for my recepies
 def get_recipes():
@@ -46,7 +48,7 @@ def add_recipe():
 #    "vegan_type_meal": "",
 #    "due_date": ""
 #}   
-    return render_template('add_recipe.html',
+    return render_template('login.html',
                            author_name=mongo.db.author_name.find(),
                            meal_type=mongo.db.meal_type.find(),
                            sport_type=mongo.db.sport_type.find(),
