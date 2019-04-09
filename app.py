@@ -126,7 +126,15 @@ def log_in():
         
         
       
-                          
+@app.route('/my_recipes', methods=['GET', 'POST'])
+def show_my_recipes():
+    if not 'username' in session:
+        return redirect('/log_in')
+    else:
+        recipes = mongo.db.recipes.find()
+        return render_template('my_recipes.html',
+                           username=session['username'],
+                           recipes=recipes)                         
 
 
 
