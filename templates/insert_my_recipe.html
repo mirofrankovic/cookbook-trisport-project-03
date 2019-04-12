@@ -4,7 +4,7 @@
 
 <h2 class="">Insert Your Recipe</h2>
 <div class="row">
-    <form action="{{ url_for('submit_to_database') }}" method="POST" class="col s12">
+    <form action="" method="POST" class="col s12">
         
         <div class="row white form-padding">
         <div class="input-field col s12">
@@ -17,24 +17,24 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">cake</i>
-          <input value="{{recipe.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
+          <input value="{{recipes.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
           <label for="recipe_name">Recipe Name</label>
         </div>
       </div>
       
       <div class="row white form-padding">
         <div class="input-field col s12">
-        <input value="{{recipe.meal_type}}" id="meal_type" name="meal_type" type="text" class="validate">
-        <label for="meal_type">Meal Type</label>    
+        <input value="{{recipes.meal_type_name}}" id="meal_type_name" name="meal_type_name" type="text" class="validate">
+        <label for="meal_type_name">Meal Type</label>    
         <label>Choose Your Meal Type</label>
         </div>
-        </div>
+      </div>
         
         <div class="row white form-padding">
         <div class="input-field col s12">
             
-          <input value="{{recipe.sport_type}}" id="sport_type" name="sport_type" type="text" class="validate">
-          <label for="sport_type">Sport Type</label>
+          <input value="{{recipes.sport_type_name}}" id="sport_type_name" name="sport_type-name" type="text" class="validate">
+          <label for="sport_type_name">Sport Type</label>
         <label>Choose Your Sport Discipline</label>
         </div>
         </div>
@@ -42,8 +42,8 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
             
-          <input value="{{recipe.race_day}}" id="race_day" name="race_day" type="text" class="validate">
-          <label for="race_day">Race Day</label>
+          <input value="{{recipes.race_day_name}}" id="race_day_name" name="race_day_name" type="text" class="validate">
+          <label for="race_day_name">Race Day</label>
         <label>Pick Your Prefered Race Meal</label>
         </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">brush</i>
-          <input value="{{recipe.description}}" id="description" name="description" type="text" class="validate">
+          <input value="{{recipes.description}}" id="description" name="description" type="text" class="validate">
           <label for="description">Description</label>
           
         </div>
@@ -59,7 +59,7 @@
       
       <div class="row white form-padding">
         <div class="input-field col s12">
-          <input value="{{recipe.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
+          <input value="{{recipes.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
           <label for="image_recipe">Recipe Image</label>
         
         </div>
@@ -84,7 +84,7 @@
         
         <div class="row white form-padding">
         <div class="input-field col s12">
-        <button id="submit-form-button" href="" class="#880e4f green darken-4 btn waves-effect waves-light" type="submit" name="action" data-url="{{ url_for('update_my_recipe', recipe_id=recipe._id) }}">
+        <button id="submit-form-button" href="" class="#880e4f green darken-4 btn waves-effect waves-light" type="submit" name="action" data-url="">
         Submit <i class="far fa-check-circle fa-xs"></i>
         </button>
         </div>

@@ -48,16 +48,19 @@ def add_recipe():
 #    "vegan_type_meal": "",
 #    "due_date": ""
 #}   
-    return render_template('login.html',
+    return render_template('add_recipe.html',
                            author_name=mongo.db.author_name.find(),
                            meal_type=mongo.db.meal_type.find(),
                            sport_type=mongo.db.sport_type.find(),
-                           race_day=mongo.db.race_day.find()
+                           race_day=mongo.db.race_day.find(),
+                           vegan_meal=mongo.db.vegan_meal.find()
                           )
                           
                           
+    
                           
-@app.route('/insert_my_recipe/<recipe_id>')    #edit_recipe
+                          
+@app.route('/insert_my_recipe/<recipe_id>', methods=['POST'])    #edit_recipe
 def insert_my_recipe(recipe_id):
     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('insert_my_recipe.html', recipe=this_recipe)
@@ -65,8 +68,6 @@ def insert_my_recipe(recipe_id):
 
 
 
-#@app.route('/update_my_recipe/<recipe_id>', methods=['POST'])
-#def update_my_recipe(recipe_id):
 
 
 
@@ -74,9 +75,9 @@ def insert_my_recipe(recipe_id):
 def submit_to_database():
     recipes=mongo.db.recipes
     
-    recipes.insert_one(request.json)
-    
-    return('', 204) # what is 204
+    recipes.insert_one(request.form.to_dict())     #or (request.json)
+    return redirect(url_for(add_recipe.html))
+                                                    #return('', 204) # what is 204
     
                           
                           
@@ -84,11 +85,11 @@ def submit_to_database():
 def log_in():
     
     
-    loggedin = False
-    if request.method == 'GET' and not 'username' in session:
+   loggedin = False
+   if request.method == 'GET' and not 'username' in session:
         return render_template('login.html',
-                               loggedin=loggedin)
-    elif request.method == 'GET' and 'username' in session:
+                              loggedin=loggedin)
+   elif request.method == 'GET' and 'username' in session:
         loggedin = True
         recipes = mongo.db.recipes.find()
         recipes_dics = {}
@@ -127,7 +128,7 @@ def log_in():
         
       
 @app.route('/my_recipes', methods=['GET', 'POST'])
-def show_my_recipes():
+def my_recipes():
     if not 'username' in session:
         return redirect('/log_in')
     else:

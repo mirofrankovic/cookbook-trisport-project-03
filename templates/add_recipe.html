@@ -13,10 +13,11 @@
           <label for="author_name">Your Name</label>
         </div>
         </div>
+        
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">cake</i>
-          <input id="recipe_name" name="recipe_name" type="text" class="validate">
+          <input placeholder="Name" id="recipe_name" name="recipe_name" type="text" class="validate" required>
           <label for="recipe_name">Recipe Name</label>
         </div>
       </div>
@@ -24,7 +25,7 @@
       <div class="row white form-padding">
         <div class="input-field col s12">
             
-        <select id="meal_type" name="meal_type_name" required>
+        <select class="form-select" id="meal_type" name="meal_type_name" required>
                <option value="" disabled selected>Choose Your Meal Type (*)</option>
                {% for meal in meal_type %}
                <option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
@@ -37,7 +38,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
             
-        <select id="sport_type" name="sport_type_name" required>
+        <select class="form-select" id="sport_type" name="sport_type_name" required>
                <option value="" disabled selected>Choose Your Sport Discipline (*)</option>
                {% for sport in sport_type %}
                <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
@@ -50,7 +51,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
             
-        <select id="race_day" name="race_day_name" required>
+        <select class="form-select" id="race_day" name="race_day_name" required>
                <option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
                {% for race in race_day %}
                <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
@@ -76,7 +77,7 @@
       <div class="row white form-padding">
         <div class="input-field col s12">
             
-        <select class="form-select" id="vegan_meal" name="vegan_type_name" required>
+        <select class="form-select" id="vegan_meal" name="vegan_type_meal" required>
                <option value="" disabled selected>Is this Recipe Vegan? (*)</option>
                <option value="true">Yes</option>
                <option value="false">No</option>
@@ -94,7 +95,7 @@
         </div>
         <div class="row white form-padding">
         <div class="input-field col s12">
-        <a id="submit-form-button" href="" class="#880e4f green darken-4 btn waves-effect waves-light" name="action" data-url="{{ url_for('submit_to_database') }}">
+        <a id="submit-form-button" href="/my_recipes" class="#880e4f green darken-4 btn waves-effect waves-light" name="action" data-url={{ url_for(submit_to_database) }}>
         Submit <i class="far fa-check-circle fa-xs"></i>
         </a>
         </div>
