@@ -4,7 +4,7 @@
 
 <h2 class="">Insert Your Recipe</h2>
 <div class="row">
-    <form action="" method="POST" class="col s12">
+    <form action="{{ url_for('submit_to_database') }}" method="POST" class="col s12">
         
         <div class="row white form-padding">
         <div class="input-field col s12">
@@ -93,37 +93,4 @@
         
     </form>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
-

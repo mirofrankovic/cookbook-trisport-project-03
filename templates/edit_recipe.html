@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h2 class="">Add Recipe</h2>
+<h2 class="">Insert Your Recipe</h2>
 <div class="row">
-    <div class="col s12">
-        <form action="{{ url_for('submit_to_database') }}" method="post">
+    <form action="{{ url_for('submit_to_database') }}" method="POST" class="col s12">
+        
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">accessibility</i>
@@ -17,104 +17,90 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">cake</i>
-          <input placeholder="Name" id="recipe_name" name="recipe_name" type="text" class="validate" required>
+          <input value="{{recipes.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
           <label for="recipe_name">Recipe Name</label>
         </div>
       </div>
       
       <div class="row white form-padding">
         <div class="input-field col s12">
-            
-        <select class="form-select" id="meal_type" name="meal_type_name" required>
+            <select class="form-select" id="meal_type" name="meal_type_name" required>
                <option value="" disabled selected>Choose Your Meal Type (*)</option>
                {% for meal in meal_type %}
                <option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
                {% endfor %}
-        </select>
+            </select>
         <label>Choose Your Meal Type</label>
         </div>
-        </div>
+      </div>
         
         <div class="row white form-padding">
         <div class="input-field col s12">
-            
-        <select class="form-select" id="sport_type" name="sport_type_name" required>
+            <select class="form-select" id="sport_type" name="sport_type_name" required>
                <option value="" disabled selected>Choose Your Sport Discipline (*)</option>
                {% for sport in sport_type %}
                <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
                {% endfor %}
-        </select>
+            </select>
         <label>Choose Your Sport Discipline</label>
         </div>
         </div>
         
         <div class="row white form-padding">
         <div class="input-field col s12">
-            
-        <select class="form-select" id="race_day" name="race_day_name" required>
+            <select class="form-select" id="race_day" name="race_day_name" required>
                <option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
                {% for race in race_day %}
                <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
                {% endfor %}
-        </select>
+            </select>
         <label>Pick Your Prefered Race Meal</label>
         </div>
         </div>
+        
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">brush</i>
-          <input id="description" name="description" type="text" class="validate">
+          <input value="{{recipes.description}}" id="description" name="description" type="text" class="validate">
           <label for="description">Description</label>
-        </div>
-      </div>
-      <div class="row white form-padding">
-        <div class="input-field col s12">
-        <input placeholder="Please Enter Recipe Image URL eg: 'Http://www.images.com/sample.jpg" id="image_recipe" name="image_recipe" type="text"  class="validate"  required>
-        <label for="image_recipe">Recipe Image</label>
+          
         </div>
       </div>
       
       <div class="row white form-padding">
         <div class="input-field col s12">
-            
-        <select class="form-select" id="vegan_meal" name="vegan_type_meal" required>
-               <option value="" disabled selected>Is this Recipe Vegan? (*)</option>
-               <option value="true">Yes</option>
-               <option value="false">No</option>
-        </select>
+          <input value="{{recipes.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
+          <label for="image_recipe">Recipe Image</label>
+        
+        </div>
+      </div>
+      
+      <div class="row white form-padding">
+        
         <label>Choose Your Vegan Meal</label>
+            <select class="form-select" id="vegan_meal" name="vegan_meal">
+                <option value="" disabled selected>Is vegan? (*)</option>
+                {% if recipe['vegan_meal'] == 'true' %}
+                <option value="true" selected >Yes</option>
+                <option value="false">No</option>
+                {% else %}
+                <option value="true">Yes</option>
+                <option value="false" selected >No</option>
+                {% endif %}
+            </select>
+            <label>Is this Recipe Vegan?</label>
         </div>
-        </div>
+        
         
         <div class="row white form-padding">
         <div class="input-field col s12">
-        <input placeholder="Day/Month/Year, i.e., 03/04/2019" id="due_date" name="due_date" type="text" class="validate" required>   
-        
-        <label for="due_date">Date Your Recipe</label>
-        </div>
-        </div>
-        <div class="row white form-padding">
-        <div class="input-field col s12">
-        <!--<a id="submit-form-button" href="/my_recipes" class="#880e4f green darken-4 btn waves-effect waves-light" name="action" data-url={{ url_for('submit_to_database') }}>-->
-        <!--Submit <i class="far fa-check-circle fa-xs"></i>-->
-        <!--</a>-->
-        <input type="submit" value="Submit"></div>
+        <button id="submit-form-button" href="" class="#880e4f green darken-4 btn waves-effect waves-light" type="submit" name="action" data-url="">
+        Submit <i class="far fa-check-circle fa-xs"></i>
+        </button>
         </div>
         </div>
         
-        </form>
-    </div>
+        
+    </form>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
