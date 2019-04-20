@@ -59,10 +59,11 @@ def add_recipe():
     
                           
                           
-@app.route('/insert_my_recipe/<recipe_id>', methods=['POST'])    #edit_recipe to my database
+@app.route('/edit_recipe/<recipe_id>')    #edit_recipe to my database
 def insert_my_recipe(recipe_id):
     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('insert_my_recipe.html', recipe=this_recipe)
+    return render_template('edit_recipe.html', recipe=this_recipe)
+    
 
 
 
