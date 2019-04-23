@@ -25,6 +25,12 @@ def get_ready():
 @app.route('/get_recipes') # images for my recepies and see all my recipes after adding them
 def get_recipes():
     return render_template('recipes.html', recipes=mongo.db.recipes.find())
+    
+    
+@app.route('/recipedescription/<recipe_id>')
+def recipedescription(recipe_id):
+    this_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    return render_template('recipedescription.html', recipe=this_recipe)
                           
 
 @app.route('/add_recipe')  #only for display my recipes in my form

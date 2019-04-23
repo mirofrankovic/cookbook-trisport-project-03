@@ -4,8 +4,8 @@
 
 <div id="sorting-bar" class="row #00695c teal lighten-3">
     <h4 class="art-deco-font col s3 m3">Our Cookbook</h4>
-    <a id="sort-by-meal-type-button" class="waves-effect waves-light btn white col s4 m2"><i class="fas fa-align-justify"></i> Recipes</a>
-    <a id="sort-by-rating-button" class="waves-effect waves-light btn white col s4 m2"><i class="far fa-grin-stars"></i> Stories</a>
+    <a id="sort-by-meal-type-button" class="waves-effect waves-light btn white col s4 m2"><i class="fas fa-align-justify"></i>Recipes</a>
+    <a id="sort-by-rating-button" class="waves-effect waves-light btn white col s4 m2"><i class="far fa-grin-stars"></i>Stories</a>
     <div class="search-container col s4 m2">
         <form action="#" method='POST' class="col s12">                                         <!-- general_search -->
         <input type="text" placeholder="Search.." name="search">
@@ -14,10 +14,35 @@
     </div>
 </div>
 <div>
-    <ul id="navigation">
+    <ul id="navigation-pictures" class="row">
         {% for recipe in recipes %}
-            <li>{{ recipe.recipe_name }}</li>
+        <div class="col s12 m4 13 navigation-picture" data-date="{{ recipe.due_date }}">
+        <div class="picture">
+            <div class="recipe-picture">
+                <img src="{{recipe.image_recipe}}" width="400" height="200">
+                <div class="picture-name picture-name-meal">
+                   <span id="recipe_name" name="recipe_name" class="picture-name art-deco-font">{{ recipe.recipe_name }}</span>
+                </div> 
+            </div>
+            <div class="picture-content class-size">
+                <p id="description">{{recipe.description</p>
+            </div>
+            <div class="picture-action">
+                <a href="/recipedescription/{{recipe._id}}">See Recipe Description</a>
+            </div>
+        </div>    
+        </div>    
         {% endfor %}
     </ul>
 </div>
+<div id="see-more-meal">
+    
+</div>
+
+
+
+
+
+
+
 {% endblock %}
