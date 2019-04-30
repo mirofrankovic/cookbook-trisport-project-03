@@ -1,12 +1,19 @@
 import pymongo 
 import os
-from flask import Flask, render_template, url_for, redirect, session, request
+from flask import Flask, render_template, url_for, redirect, session, request, flash
 import json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+#from forms import LoginForm
+#local import models...
+#from models import User
+#from flask_login import current_username, login_username, logout_username, login_required
 
 
 app = Flask(__name__)
+app.secret_key = "mir_tri"
+
+
 app.config["MONGO_DBNAME"] = 'cookbook_trisport'
 app.config["MONGO_URI"] = 'mongodb://mirof:Vanilia123@ds159185.mlab.com:59185/cookbook_trisport'
 
@@ -50,6 +57,9 @@ def add_recipe():
 #    "vegan_type_meal": "",
 #    "due_date": ""
 #}   
+    if request.url.startswith('http://'):
+        request.url = request.url.replace('http://', 'https://', 1)
+    print('url when add_recipe: ', request.url)
 
     return render_template('add_recipe.html',
                           recipe={},
@@ -83,48 +93,49 @@ def submit_to_database():
     
                           
                           
-@app.route('/log_in', methods=['GET', 'POST'])
-def log_in():
+@app.route('/login', methods=['GET', 'POST'])
+def login():
     
-    
-   loggedin = False
-   if request.method == 'GET' and not 'username' in session:
-        return render_template('login.html',
-                              loggedin=loggedin)
-   elif request.method == 'GET' and 'username' in session:
-        loggedin = True
+    logged_in = False
+    if request.method == 'GET' and not 'username' in session:
+        return render_template('login.html', logged_in=logged_in)
+    elif request.method == 'GET' and 'username' in session:
+        logged_in = True
         recipes = mongo.db.recipes.find()
+        
         recipes_dics = {}
         
         for i, recipe in enumerate(recipes):
             recipe.pop('_id', None)
             recipes_dics[i] = recipe
             
-            recipes_dics = json.dumps(recipes_dics)
-            
-            
-            return render_template('login.html',
-                                    username=session['username'],
-                                    loggedin=loggedin,
-                                    recipes=recipes_dics)
-                                    
-        if request.method == 'POST':
-            session['username'] = request.form["username"]
-            loggedin = True
-            recipes=mongo.db.recipes.find()
-            recipes_dics = {}
-            
-            for i, recipe in enumerate(recipes):
-                recipe.pop('_id', None)
-                recipes_dics[i] = recipe
-                
-            recipes_dics = json.dumps(recipes_dics)  
-            
-            return render_template('login.html',
-                                   username=session['username'],
-                                   loggedin=loggedin,
-                                   recipes=recipes_dics)
+        recipes_dics = json.dumps(recipes_dics)
         
+        return render_template('login.html', 
+                               username=session['username'],
+                               logged_in=logged_in,
+                               recipes=recipes_dics)
+    if request.method == 'POST':
+        session['username'] = request.form["username"]
+        logged_in = True
+        recipes=mongo.db.recipes.find()
+        recipes_dics = {}
+        
+        for i, recipe in enumerate(recipes):
+            recipe.pop('_id', None)
+            recipes_dics[i] = recipe
+            
+        recipes_dics = json.dumps(recipes_dics)
+            
+        return render_template('login.html',
+                              username=session['username'],
+                              logged_in=logged_in,
+                              recipes=recipes_dics)    
+        
+        
+    
+    
+   
         
 @app.route('/my_recipes', methods=['GET', 'POST'])
 def my_recipes():
