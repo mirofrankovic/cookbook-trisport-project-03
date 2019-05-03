@@ -145,7 +145,12 @@ def my_recipes():
         recipes = mongo.db.recipes.find()
         return render_template('my_recipes.html',
                            username=session['username'],
-                           recipes=recipes)                         
+                           recipes=recipes)  
+                           
+@app.route('/dashboard')
+def dashboard():
+    
+    return render_template('dashboard.html')
 
 
 @app.route('/contact_us')
