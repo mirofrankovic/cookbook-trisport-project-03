@@ -17,3 +17,6 @@ Allow for editing and deleting of the recipe records, either on separate pages, 
 This application is for use by all as a stay at home athleetes who are busy with study, work, school runs,
 extra curricular activities, coming up with quick meals before and after workout.
 I designed the site so that users can share recipes and rate them accordingly.
+
+
+
