@@ -130,7 +130,13 @@ def login():
         return render_template('login.html',
                               username=session['username'],
                               logged_in=logged_in,
-                              recipes=recipes_dics)    
+                              recipes=recipes_dics)   
+                              
+@app.route('/log_out')
+def log_out():
+    print('logged out')
+    session.clear()
+    return redirect(url_for('get_ready'))
         
         
     
