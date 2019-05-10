@@ -6,7 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 #from forms import LoginForm
 #local import models...
-#from models import User
+#from models import User, Recipe
 #from flask_login import current_username, login_username, logout_username, login_required
 
 
@@ -19,6 +19,13 @@ app.config["MONGO_URI"] = 'mongodb://mirof:Vanilia123@ds159185.mlab.com:59185/co
 
 
 mongo = PyMongo(app)             #constructor method
+
+# Collections
+
+users_collections = mongo.db.users
+recipes_collection = mongo.db.recipes
+
+
  
 
 
@@ -157,6 +164,8 @@ def my_recipes():
 def dashboard():
     
     return render_template('dashboard.html')
+    
+
 
 
 @app.route('/contact_us')

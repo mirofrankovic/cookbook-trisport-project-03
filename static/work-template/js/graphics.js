@@ -1,35 +1,35 @@
-$(document).ready(function() {
-    var username = '{{username}}';
+d3.queue()
+    .defer(d3.json, "/get_recipes")
+    .await(makeGraphs);
     
-    var recipesText = $('#hidden-recipes').text();
-    var recipesJson = JSON.parse(recipesText);
-    var recipesList = [];
+function makeGraphs(error, recipeData){
+    var ndx = crossfilter(recipeData);
+    console.log(recipeData);
+    show_meal_type_graph(ndx);
     
+    show_sport_type_graph(ndx);
+    show_race_day_graph(ndx);
+    show_vegan_meal_graph(ndx);
     
-    for (i in recipesJson){
-        recipesList.push(recipesJson[i]);
-    }
+    dc.renderAll();
+}   
+
+function show_meal_type_graph(ndx){
+    var mealtypeDim = ndx.dimension(dc.pluck("meal_type"));
+    var mealtypeMix = mealtypeDim.group();
     
-    myDashboard(recipesList);
+    dc.barChart("meal_type-graph")
+        .width(350)
+        .height(250)
+        .margins({top: 20, right: 20, bottom: 30, left: 10})
+        .dimension(mealtypeDim)
+        .group(mealtypeMix)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Meal-Type")
+        .yAxis().tickFormat(d3.format("d"));
+
     
-    
-    function myDashboard(recipesList){
-        
-        
-        // recipes by current user
-        myRecipesList =[];
-        
-         for ( var i = 0; i < recipesList.length; i++ ) {
-             let authorName = recipesList[i]['author_name'];
-             
-             if ( username == authorName ) {
-                 myRecipesList.push(recipesList[i]);
-             }
-         }
-         
-         var ndx = crossfilter(myRecipesList);
-         console.log(myRecipeList);
-    }
-    
-    
-});
+}
