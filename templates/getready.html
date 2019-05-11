@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
 
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='work-template/css/getready.css')}}" type="text/css" />
+{% endblock css %}
+
 {% block content %}
 
 
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br></br>
-        <h1 class="header center teal-text text-lighten-2" class="">Eat slow and race faster!</h1>
+<section id="index-banner" class="vh100 container-fluid">
+    <div id="trivia" class="row justify-content-center">
+      <div class="col-12 col-md-6 text-center center-align">
+        <!--<img class="parallax"><img src="static/images/triathlonpic.jpg" alt="nutrition on the table"> -->
         
-        <div class="row center">
-          <h2 class="header col s12 light">Our goal is to prepare you for next competition with fully recovery</h2>
-        </div>
-        <div class="row center">
-          <a href="{{url_for('get_recipes')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-        </div>
-        <br></br>
-
+        <h1 class="header center teal-text text-lighten-2">Eat slow and race faster!</h1>
+        
+        <h2 class="header col s12 light">Our goal is to prepare you for next competition with fully recovery</h2>
+        
+        <a href="{{url_for('get_recipes')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+        
       </div>
     </div>
-    <img class="parallax"><img src="static/images/race_art.jpg" alt="nutrition on the table">
-  </div>
+</section>  
 
   <h3 class="header text-center">Our Recipes</h3>
   

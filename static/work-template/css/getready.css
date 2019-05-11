@@ -1,0 +1,31 @@
+/*
+
+First Page Geneneral
+
+*/
+
+#index-banner {
+    position:relative;
+}
+
+#index-banner {
+    background: url("/static/images/triathlonpicc.jpg") no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#trivia {
+	position: absolute;
+	padding-top: 130px;
+	width: 100%;
+	bottom: 10%;
+}
+
+#download-button {
+    
+    
+}
+    
+

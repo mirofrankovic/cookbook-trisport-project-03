@@ -5,6 +5,9 @@
  *
  * Made By MaterializeCSS.com
  */
+ .vh100 {
+    min-height: 100vh;
+}
 
 nav ul a,
 nav .brand-logo {
