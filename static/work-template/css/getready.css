@@ -9,7 +9,7 @@ First Page Geneneral
 }
 
 #index-banner {
-    background: url("/static/images/triathlonpicc.jpg") no-repeat center;
+    background: url("/static/images/triathlonpic.jpg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -27,5 +27,25 @@ First Page Geneneral
     
     
 }
+
+ .container {
+     position:relative;
+     text-align:center;
+     color:white;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
