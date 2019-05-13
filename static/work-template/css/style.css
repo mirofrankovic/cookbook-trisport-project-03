@@ -5,9 +5,15 @@
  *
  * Made By MaterializeCSS.com
  */
- .vh100 {
+ 
+.vh100 {
     min-height: 100vh;
 }
+
+section {
+    padding: 100px 0px;
+}
+
 
 nav ul a,
 nav .brand-logo {
@@ -22,6 +28,10 @@ p {
   color: orange;
 }
 
+.my-container {
+    min-height: 35em;
+}
+
 .sidenav-trigger {
   color: #26a69a;
 }
@@ -31,7 +41,7 @@ p {
   width: 100%;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: #251c1c;
 }
   .parallax-container .section {
     width: 100%;
