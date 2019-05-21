@@ -7,8 +7,8 @@
 
 {% block content %}
 
-
-<section id="index-banner" class="parallax-container">
+<div class="container my-container" id="index-banner">
+<section class="parallax-container">
   
       <div class="col-12 col-md-6 text-center">
         <!--<img class="parallax"><img src="static/images/triathlonpic.jpg" alt="nutrition on the table"> -->
@@ -19,9 +19,10 @@
         
         <h2 class="header col s12 light">Our goal is to prepare you for next competition with fully recovery</h2>
         
-        <a href="{{url_for('get_recipes')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+        <div class="row center">
+        <a href="{{url_for('get_recipes')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1 text-center">Get Started</a>
+        </div>
         
-        <hr>
         
     
 
@@ -35,6 +36,7 @@
   
 
 </section>
+</div>
 
 <section>
   <div class="row center">

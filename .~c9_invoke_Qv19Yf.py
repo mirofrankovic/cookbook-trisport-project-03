@@ -2,25 +2,20 @@ import pymongo
 import os
 from flask import Flask, render_template, url_for, redirect, session, request, flash, jsonify
 import json
-import pymongo
-from pymongo import MongoClient
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from bson import json_util
-from bson.json_util import dumps
+#from forms import LoginForm
+#local import models...
+#from models import User, Recipe
+#from flask_login import current_username, login_username, logout_username, login_required
 
 
 app = Flask(__name__)
 app.secret_key = "mir_tri"
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = os.getenv('MONGO_DB_NAME','cookbook_trisport')
-MONGO_URI = os.getenv('MONGODB_URI')
+
 app.config["MONGO_DBNAME"] = 'cookbook_trisport'
 app.config["MONGO_URI"] = 'mongodb://mirof:Vanilia123@ds159185.mlab.com:59185/cookbook_trisport'
-COLLECTION_NAME = 'recipes'
-FIELDS = {'meal_type': True, 'sport_type': True, 'race_day': True, 'vegan_meal': True, '_id': False}
 
 
 mongo = PyMongo(app)             #constructor method
@@ -44,19 +39,6 @@ def get_ready():
 @app.route('/get_recipes') # images for my recepies and see all my recipes after adding them
 def get_recipes():
     return render_template('recipes.html', recipes=mongo.db.recipes.find())
-    
-@app.route('/find_recipes')
-def find_recipes_json():
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DBS_NAME][COLLECTION_NAME]
-    recipes = collection.find(projection=FIELDS, limit=55000)
-    json_recipes = []
-    for recipe in recipes:
-        json_recipes.append(recipe)
-    json_recipes = json.dumps(json_recipes, default=json_util.default)
-    connection.close()
-    return json_recipes
-    
     
     
 @app.route('/recipedescription/<recipe_id>')

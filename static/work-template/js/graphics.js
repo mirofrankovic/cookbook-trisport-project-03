@@ -1,5 +1,5 @@
 d3.queue()
-    .defer(d3.json, "/get_recipes")
+    .defer(d3.json, "/find_recipes")
     .await(makeGraphs);
     
 function makeGraphs(error, recipeData){
