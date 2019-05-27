@@ -62,6 +62,22 @@ p {
     top: 0;
   }
 }
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-topic .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-topic .section {
+    top: 0;
+  }
+}
+
 
 .icon-block {
   padding: 0 15px;
@@ -97,4 +113,39 @@ footer.page-footer {
 .header p {
   font-size:14px;
 }
+
+#sorting-bar {
+    margin: 0.8em;
+    height: 5em;
+}
+
+#sorting-bar > h5 {
+    color: white;
+}
+
+#sorting-bar > a {
+    color: #00695c;
+    margin-top: 1.5em;
+    /*width: 25%*/
+    margin-right: 0.5em;
+}
+
+/* NAV BAR */
+
+a {
+  color: #c2185b;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+  
+
+
+
+
+
+
+
+
+
+
 

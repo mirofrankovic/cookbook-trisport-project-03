@@ -3,9 +3,15 @@
 First Page Geneneral
 
 */
+body, form, h1, h2, h3, h4, h5, hr {
+    margin:0;
+    padding:0;
+}
 
 #index-banner {
     position:relative;
+    
+    
 }
 
 #index-banner {
@@ -14,6 +20,7 @@ First Page Geneneral
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    
 }
 
 #trivia {
@@ -33,11 +40,93 @@ First Page Geneneral
      /*text-align: center;*/
      color:black;
  }
+ 
+ 
+#index-topic {
+    position: relative;
+    width:100%;
+} 
+ 
+#index-topic {
+    background: url("/static/images/blueberries.jpeg") no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+} 
 
+@media screen and (min-width: 63em){
+.searchbar {
+    margin-left: 16px;
+}
+}
 
+.searchbar {
+    border-bottom: 1px solid #dcdcdc;
+    width: 100%;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+div {
+    display: block;
+}
 
+@media screen and (min-width: 56.25em){
+    .searchbar__search-form {
+margin-top: 24px;
+}
+.searchbar__search-form {
+    margin-bottom: 32px;
+    margin-top: 32px;
+    position: relative;
+}
 
+form {
+    display: block;
+    margin-top: 0em;
+}
 
+.gel-layout {
+    list-style: none;
+    direction: ltr;
+    text-align: left;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
+    margin-right: 0;
+    margin-left: -8px;
+    padding-right: 0;
+    padding-left: 0;
+    letter-spacing: -.31em;
+    text-rendering: optimizespeed;
+}
+
+.food-content-wrapper {
+    background-color: #fff;
+    color: #3a3a3a;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+}
+
+@media screen and (min-width: 25em){
+.gel-wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.gel-wrap {
+    max-width: 1008px;
+    margin: 0 auto;
+    padding-right: 8px;
+    padding-left: 8px;
+}
 
 
 
