@@ -3,18 +3,24 @@
 
 {% block css %}
 <link rel="stylesheet" href="{{url_for('static', filename='work-template/css/getready.css')}}" type="text/css" />
+<link rel="stylesheet" href="{{url_for('static', filename='work-template/css/style.css')}}" type="text/css" />
 {% endblock css %}
 
 {% block content %}
 
 
-<div id="container">
-<div id="index-banner" class="container my-container parallax-container">
-<div class="section">
+
+<section id="container parallax-container">
+<div id="index-banner">
+  
+<div class="content-wrapper pt-5 mb-5 row vh100">
+<!--<h1 class="header center teal-text text-lighten-2">Eat slow and race faster!</h1>-->
+
+<div class="section my-container parallax-container"> 
   
   
-      <div class="col-12 col-md-6 text-center">
-        <!--<img class="parallax"><img src="static/images/triathlonpic.jpg" alt="nutrition on the table"> -->
+     <div class="col-12 col-md-6 text-center">
+        <!--<img class="parallax"><img src="static/images/triathlonpic.jpg" alt="nutrition on the table">-->
         
         <h1 class="header center teal-text text-lighten-2">Eat slow and race faster!</h1>
         
@@ -23,7 +29,7 @@
         <h2 class="header col s12 light center">Our goal is to prepare you for next competition with fully recovery</h2>
         
         <div class="row center">
-        <a href="{{url_for('get_recipes')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1 text-center">Get Started</a>
+        <a href="{{url_for('add_recipe')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1 text-center">Get Started</a>
         </div>
         
         
@@ -31,30 +37,43 @@
 
         <h2 class="center col s12 lighten">Start with good nutrition</h2>
         
-        <div class="row center">
+        <!--<div class="form-button col-12 col-md-2">
           <a href="{{url_for('contact_us')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Contact Us</a>
         </div>
         <br><br>
-      </div>
+      </div> -->
 </div>
 </div>
+</section>
 
 <div class="container">
-  <div class="section">
+<!--  <div class="section"> -->
     <div class="row">
       <div class="col s12 center">
         <h3><i class="mdi-content-send brown-text"></i></h3>
         <h4>About Us</h4>
-        <p class="left-align light">Our priority is to prepare you for race with our experience and give you an advice to race in confortable zone.</p>
+        <p class="left-align light">Our priority is to prepare you for a race with our experience and give you an advice to race in confortable zone.</p>
         <br>
         <p class="left-align light">If you have any suggesstions, you would like to added or share your recipe, please feel free to contact us.</p>
+        <br>
+        <p class="left-align light">For easy navigation please click the buton below and find your recipe to prepare you for a race.</p>
       </div>
+      {% block search_form_btn %}
+						<li id="search-form-toggle" class="nav-item center">
+							<a href="/get_recipes" id="search-btn" class="btn btn-outline-info">
+								<i class="fas fa-search"></i>
+							</a>
+						</li>
+			{% endblock search_form_btn %}	
+     
     </div>
     
-  </div>
-  
 </div>
-<div id="index-topic" class="container my-container parralax-container">
+<!--</section>-->
+
+
+<!--<section id="container">
+<div id="index-topic">
 <div class="content-wrapper pt-5 mb-5 row vh100">		
 		<form id="search-form" class="container-fluid px-5" method="POST" action="/input_form_search">
 			<h2 class="py-5 text-center text-light"> Search by ...</h2>
@@ -73,11 +92,7 @@
 		</form>
 </div>
 </div>
-
-
-
-</div>
-
+</section>-->
 
 
 

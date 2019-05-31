@@ -8,13 +8,11 @@ body, form, h1, h2, h3, h4, h5, hr {
     padding:0;
 }
 
-#index-banner {
-    position:relative;
-    
-    
-}
+
 
 #index-banner {
+    position:absolute;
+    width:100%;
     background: url("/static/images/triathlonpic.jpg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -23,19 +21,7 @@ body, form, h1, h2, h3, h4, h5, hr {
     
 }
 
-#trivia {
-	position: absolute;
-	padding-top: 130px;
-	width: 100%;
-	bottom: 10%;
-}
-
-#download-button {
-    
-    
-}
-
- .container {
+#container {
      position:relative;
      /*text-align: center;*/
      color:black;
@@ -44,8 +30,7 @@ body, form, h1, h2, h3, h4, h5, hr {
  
 
  
-.index-topic {
-    display:none;
+#index-topic {
     position: absolute;
     width:100%;
     height: min-content;
