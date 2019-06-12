@@ -1,0 +1,15 @@
+{
+    "_id": {
+        "$oid": "5c9bbf7ee7179a0e408e3177"
+    },
+    "author_name": "",
+    "recipe_name": "",
+    "meal_type_name": [],
+    "sport_type_name": [],
+    "race_day_name": [],
+    "description": "",
+    "image_recipe": "",
+    "vegan_type_meal": [],
+    "due_date": ""
+
+}

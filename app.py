@@ -11,6 +11,11 @@ from bson.json_util import dumps
 
 
 app = Flask(__name__)
+
+recipe_schema_id = "5c9bbf7ee7179a0e408e3177"
+form_schema_id = ""
+
+
 app.secret_key = "mir_tri"
 
 MONGODB_HOST = 'localhost'
@@ -29,6 +34,7 @@ mongo = PyMongo(app)             #constructor method
 
 users_collections = mongo.db.users
 recipes_collection = mongo.db.recipes
+forms_collection = mongo.db.forms
 
 
  
@@ -166,8 +172,19 @@ def log_out():
         
     
     
-   
+@app.route('/search_form', methods=['GET', 'POST'])      #render template
+def search_form():
+    forms = forms_collection.find()
+    
+    return render_template('search_form.html')
+    
         
+
+
+
+
+
+
 @app.route('/my_recipes', methods=['GET', 'POST'])
 def my_recipes():
     if not 'username' in session:
@@ -181,6 +198,7 @@ def my_recipes():
                            
 @app.route('/dashboard')
 def dashboard():
+    forms = forms_collection.find()
     
     return render_template('dashboard.html')
     

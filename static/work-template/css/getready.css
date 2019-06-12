@@ -30,7 +30,7 @@ body, form, h1, h2, h3, h4, h5, hr {
  
 
  
-#index-topic {
+.index-topic {
     position: absolute;
     width:100%;
     height: min-content;

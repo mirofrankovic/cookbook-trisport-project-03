@@ -1,0 +1,29 @@
+{
+    "_id": {
+        "$oid": ""
+    },
+    "mealTypes": [
+        "breakfast"
+        "lunch"
+        "dinner"
+        "snack smart"
+        ],
+    "sportTypes": [
+        "swim"
+        "run"
+        "bike"
+        "duathlon"
+        "triathlon"
+        ],
+    "veganMeal": [
+        "yes"
+        "no"
+        ],
+    "raceDay": [
+        "pre race"
+        "race"
+        "post race"
+        ]    
+    
+    
+}

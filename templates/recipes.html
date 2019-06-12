@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!--<div id="container parallax-container">
 
-<div id="sorting-bar" class="row #00695c teal lighten-3">
     
-    <form id="search-form" class="container-fluid px-5" method="POST" action="/input_form_search">
-			<h2 class="py-5 text-center text-light"> Search by ...</h2>
+   <!-- <form id="search-form" class="container px-5" method="POST" action="/input_form_search">
+        
+			<p class="py-5 text-center text-light"> Search by ...</p>
 			<div class="row">				
 				<div class="form-group col-12 col-md-6 offset-md-1">		
 					<input name="search_input" type="text" class="form-control text-center font-weight-bold" minlength="3" maxlength="30" placeholder="Between 3-30 characters">
@@ -29,9 +30,11 @@
     <!--    <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
         </form> 
-    </div>-->
+    </div>
 </div>
+</div>-->
 <div class="container">
+    
     <ul id="navigation-pictures" class="row">
         {% for recipe in recipes %}
         <div class="col s12 m4 13 navigation-picture" data-date="{{ recipe.due_date }}">
@@ -58,6 +61,7 @@
 </div>
 
 </div>
+
 
 
 
