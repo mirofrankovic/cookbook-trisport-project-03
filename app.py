@@ -47,20 +47,19 @@ def get_ready():
     return render_template('getready.html', recipes=mongo.db.recipes.find()) #supply recipes collection
                           
                           
-@app.route('/get_recipes') # images for my recepies and see all my recipes after adding them
+@app.route('/get_recipes', methods=['GET']) # images for my recepies and see all my recipes after adding them
 def get_recipes():
     return render_template('recipes.html', recipes=mongo.db.recipes.find())
     
+
+    
 @app.route('/find_recipes')
 def find_recipes_json():
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DBS_NAME][COLLECTION_NAME]
-    recipes = collection.find(projection=FIELDS, limit=55000)
+    recipes = mongo.db.recipes.find()
     json_recipes = []
     for recipe in recipes:
         json_recipes.append(recipe)
     json_recipes = json.dumps(json_recipes, default=json_util.default)
-    connection.close()
     return json_recipes
     
     

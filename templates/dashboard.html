@@ -27,37 +27,16 @@
 <p id="hidden-recipes" hidden>{{recipes|safe}}</p>    
     
 </div>
+{% endblock %}
+
+{% block script %}
 <script>
-
-    
-        
-    
-    
-    
-    
+$(document).ready(function(){
+    console.log('Loading data...');
+    $.getJSON("/find_recipes", function(data) {
+        console.log(data);
+        makeGraphs(data);
+    });
+});
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
