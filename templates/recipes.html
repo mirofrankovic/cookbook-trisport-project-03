@@ -1,46 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--<div id="container parallax-container">
 
-    
-   <!-- <form id="search-form" class="container px-5" method="POST" action="/input_form_search">
-        
-			<p class="py-5 text-center text-light"> Search by ...</p>
-			<div class="row">				
-				<div class="form-group col-12 col-md-6 offset-md-1">		
-					<input name="search_input" type="text" class="form-control text-center font-weight-bold" minlength="3" maxlength="30" placeholder="Between 3-30 characters">
-					<p id="input-search-messages" class="text-center  text-light mt-2"></p>
-				</div>
-				<div class="form-group col-12 col-md-2" >
-					<input name="limit" type="number" class="form-control text-center font-weight-bold" placeholder="Limit results" min="0">
-				</div>
-				<div class="form-group col-12 col-md-2">
-					<button id="input_search_btn" onclick="input_search()" class="btn btn-block btn-outline-warning" disabled> By? </button>
-				</div>
-		</div>
-	</form>
-    <!--<h5 class="art-deco-font col s3 m3">Our Cookbook</h5>-->
-    
-    
-    <!--<a id="sort-by-meal-type-button" class="waves-effect waves-light btn white col s4 m2"><i class=""></i>Recipes</a>-->
-    <!--<a id="sort-by-rating-button" class="waves-effect waves-light btn white col s4 m2"><i class=""></i>Stories</a>-->
-    <!--<div class="search-container col s4 m2">
-        <form action="#" method='POST' class="col s12">                                         <!-- general_search -->
-    <!--    <input type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-        </form> 
-    </div>
-</div>
-</div>-->
-<div class="container">
+
+<div class="vh100 container pb-5">
     
     <ul id="navigation-pictures" class="row">
         {% for recipe in recipes %}
-        <div class="col s12 m4 13 navigation-picture" data-date="{{ recipe.due_date }}">
+        <div class="col m4" data-date="{{ recipe.due_date }}">
         <div class="picture">
             <div class="recipe-picture">
-                <img src="{{recipe.image_recipe}}" width="400" height="200">
+                <img src="{{recipe.image_recipe}}" width="250" height="200">
                 <div class="picture-name picture-name-meal">
                    <span id="recipe_name" name="recipe_name" class="picture-name art-deco-font">{{ recipe.recipe_name }}</span>
                 </div> 
@@ -61,6 +31,7 @@
 </div>
 
 </div>
+<!--</section>-->
 
 
 
