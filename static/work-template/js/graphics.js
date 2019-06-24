@@ -7,9 +7,9 @@ function makeGraphs(recipeData){
     console.log(recipeData);
     show_meal_type_graph(ndx);
     
-    // show_sport_type_graph(ndx);
-    // show_race_day_graph(ndx);
-    // show_vegan_meal_graph(ndx);
+    show_sport_type_graph(ndx);
+    show_race_day_graph(ndx);
+    show_vegan_meal_graph(ndx);
     
     dc.renderAll();
 }   
@@ -51,3 +51,101 @@ function show_meal_type_graph(ndx){
         .outerPadding(0.05)
         .group(mealtypeMix);
 }
+
+function show_sport_type_graph(ndx){
+    var sporttypeDim = ndx.dimension(dc.pluck("sport_type_name"));
+    var sporttypeMix = sporttypeDim.group();
+    
+    dc.barChart("#sport_type-graph")
+        .width(768)
+        .height(480)
+        .x(d3.scaleBand())
+        .xUnits(dc.units.ordinal)
+        .brushOn(false)
+        .xAxisLabel("use label here")
+        .yAxisLabel("Total Commitmemt")
+        .dimension(sporttypeDim)
+        .barPadding(0.1)
+        .outerPadding(0.05)
+        .group(sporttypeMix);
+}
+
+function show_race_day_graph(ndx){
+    var racedayDim = ndx.dimension(dc.pluck("race_day_name"));
+    var racedayMix = racedayDim.group();
+    
+    dc.barChart("#race_day-graph")
+        .width(768)
+        .height(480)
+        .x(d3.scaleBand())
+        .xUnits(dc.units.ordinal)
+        .brushOn(false)
+        .xAxisLabel("use label here")
+        .yAxisLabel("Total Commitmemt")
+        .dimension(racedayDim)
+        .barPadding(0.1)
+        .outerPadding(0.05)
+        .group(racedayMix);
+}
+
+function show_vegan_meal_graph(ndx){
+    var veganmealDim = ndx.dimension(dc.pluck("vegan_type_meal"));
+    var veganmealMix = veganmealDim.group();
+    
+    dc.barChart("#vegan_meal-graph")
+        .width(768)
+        .height(480)
+        .x(d3.scaleBand())
+        .xUnits(dc.units.ordinal)
+        .brushOn(false)
+        .xAxisLabel("use label here")
+        .yAxisLabel("Total Commitmemt")
+        .dimension(veganmealDim)
+        .barPadding(0.1)
+        .outerPadding(0.05)
+        .group(veganmealMix);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
