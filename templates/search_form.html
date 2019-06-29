@@ -5,7 +5,7 @@
 <!--<div class="container">-->
 <div class="index-topic container-fluid">
 <div class="content-wrapper pt-5 mb-5 row vh100">		
-		<form id="search-form" class="container-fluid px-5" method="POST" action="x">
+		<form id="search-form" class="container-fluid px-5" method="POST" action="/search_form">
 			<h2 class="py-5 text-center text-light"> Search by ...</h2>
 			<div class="row">				
 				<div class="form-group col-12 col-md-6 offset-md-1">		
@@ -30,7 +30,7 @@
 		               <div class="col-6">
 		                   {%for x in forms[0].mealTypes[:4] %}
 		                   <div class="form-check">
-		                       <input class="form-check-input" name="mealTypes-0{{}}" type="checkbox" value="{{x}}" id="mealTypes-0{{}}">
+		                       <input class="form-check-input" name="mealTypes-0{{ loop.index }}" type="checkbox" value="{{x}}" id="mealTypes-0{{ loop.index }}">
 		                       <label class="">
 		                           
 		                       </label>
@@ -47,7 +47,7 @@
 		               <div class="col-6">
 		                  {%for x in forms[0].sportTypes[:5] %}
 		                   <div class="form-check">
-		                       <input class="form-check-input" name="sportTypes-0{{}}" type="checkbox" value="{{x}}" id="sportTypes-0{{}}">
+		                       <input class="form-check-input" name="sportTypes-0{{ loop.index }}" type="checkbox" value="{{x}}" id="sportTypes-0{{ loop.index }}">
 		                       <label class="">
 		                           
 		                       </label>
@@ -64,7 +64,7 @@
 		               <div class="col-6">
 		                  {%for x in forms[0].diets[:2] %}
 		                   <div class="form-check">
-		                       <input class="form-check-input" name="diets-0{{}}" type="checkbox" value="{{x}}" id="diets-0{{}}">
+		                       <input class="form-check-input" name="diets-0{{ loop.index }}" type="checkbox" value="{{x}}" id="diets-0{{ loop.index }}">
 		                       <label class="">
 		                           
 		                       </label>
@@ -81,7 +81,7 @@
 		               <div class="col-6">
 		                   {%for x in forms[0].raceDay[:3] %}
 		                   <div class="form-check">
-		                       <input class="form-check-input" name="raceDay-0{{}}" type="checkbox" value="{{x}}" id="raceDay-0{{}}">
+		                       <input class="form-check-input" name="raceDay-0{{ loop.index }}" type="checkbox" value="{{x}}" id="raceDay-0{{ loop.index }}">
 		                       <label class="">
 		                           
 		                       </label>

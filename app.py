@@ -13,7 +13,7 @@ from bson.json_util import dumps
 app = Flask(__name__)
 
 recipe_schema_id = "5c9bbf7ee7179a0e408e3177"
-form_schema_id = ""
+form_schema_id = "5d178ce1fb6fc00e79b26efc"
 
 
 app.secret_key = "mir_tri"
