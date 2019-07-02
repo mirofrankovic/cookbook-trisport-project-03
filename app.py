@@ -44,7 +44,7 @@ forms_collection = mongo.db.forms
 @app.route('/')
 @app.route('/get_ready')
 def get_ready():
-    return render_template('getready.html', recipes=mongo.db.recipes.find()) #supply recipes collection
+    return render_template('getready.html', recipes=mongo.db.recipes.find(), forms=mongo.db.forms.find()) #supply recipes collection
                           
                           
 @app.route('/get_recipes', methods=['GET']) # images for my recepies and see all my recipes after adding them
@@ -175,7 +175,7 @@ def log_out():
 def search_form():
     forms = forms_collection.find()
     
-    return render_template('search_form.html')
+    return render_template('search_form.html', forms=mongo.db.forms.find() )
     
         
 
