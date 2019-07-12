@@ -2,12 +2,13 @@ import pymongo
 import os
 from flask import Flask, render_template, url_for, redirect, session, request, flash, jsonify
 import json
-import pymongo
 from pymongo import MongoClient
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
 from bson.json_util import dumps
+
+#from helper.classes import Search, SearchForm, Database, Recipe, Charts
 
 
 app = Flask(__name__)
@@ -105,10 +106,18 @@ def add_recipe():
     
                           
                           
-@app.route('/edit_recipe/<recipe_id>')    #edit_recipe to my database
+@app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])    #edit_recipe to my database
 def insert_my_recipe(recipe_id):
-    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('edit_recipe.html', recipe=this_recipe)
+#     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+#     return render_template('edit_recipe.html', recipe=this_recipe)
+     recipes=recipes_collection.find()
+     if request.method == "POST":
+         recipe_data = request.form.to_dict()
+         data = Recipe(recipe_data)           #helper.classes
+         data = data._dict_
+         data['visibility'] = False
+         recipes_collection.update({'_id': ObjectId(recipe_id)}, data["recipe"])
+         recipe = data["recipe"]
     
 
 

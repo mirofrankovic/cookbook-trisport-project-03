@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='work-template/css/edit.css')}}" type="text/css" />
+{% endblock css %}
+
 {% block content %}
 
 <h2 class="">Insert Your Recipe</h2>
@@ -104,3 +108,7 @@
     </form>
   </div>
 {% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='work-template/js/edit_add.js') }}"></script>
+{% endblock scripts %}
