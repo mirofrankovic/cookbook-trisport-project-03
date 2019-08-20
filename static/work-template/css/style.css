@@ -5,7 +5,7 @@
  *
  * Made By MaterializeCSS.com
  */
- 
+/* 
 .vh100 {
     min-height: 100vh;
 }
@@ -24,7 +24,7 @@ p {
   line-height: 2rem;
 }
 
-.h1 {
+h1 {
   color: orange;
 }
 
@@ -36,19 +36,19 @@ p {
   color: #26a69a;
 }
 
-.parallax-container {
+.parallax {
   min-height: 380px;
   width: 100%;
   line-height: 0;
   height: auto;
-  color: #251c1c;
+  color: #db3030;
 }
-  .parallax-container .section {
+  .parallax .section {
     width: 100%;
   }
 
 @media only screen and (max-width : 992px) {
-  .parallax-container .section {
+  .parallax .section {
     position: absolute;
     top: 40%;
   }
@@ -63,7 +63,7 @@ p {
   }
 }
 @media only screen and (max-width : 992px) {
-  .parallax-container .section {
+  .parallax .section {
     position: absolute;
     top: 40%;
   }
@@ -141,16 +141,17 @@ footer.page-footer {
     color: #00695c;
     margin-top: 1.5em;
     /*width: 25%*/
-    margin-right: 0.5em;
+/*    margin-right: 0.5em;
 }
 
 /* NAV BAR */
 
-a {
+/*a {
   color: #c2185b;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
+
 
 
   

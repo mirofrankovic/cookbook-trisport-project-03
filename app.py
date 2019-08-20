@@ -46,6 +46,12 @@ forms_collection = mongo.db.forms
 @app.route('/get_ready')
 def get_ready():
     return render_template('getready.html', recipes=mongo.db.recipes.find(), forms=mongo.db.forms.find()) #supply recipes collection
+    
+    
+@app.route('/preparation')
+def get_prepared():
+    return render_template('preparation.html', recipes=mongo.db.recipes.find())# will be the second page with pre-race-post race meal to choose with static images
+    
                           
                           
 @app.route('/get_recipes', methods=['GET']) # images for my recepies and see all my recipes after adding them
@@ -97,6 +103,7 @@ def add_recipe():
                           author_name=mongo.db.author_name.find(),
                           meal_type=mongo.db.meal_type.find(),
                           sport_type=mongo.db.sport_type.find(),
+                          image_recipe=mongo.db.image_recipe.find(),
                           race_day=mongo.db.race_day.find(),
                           vegan_meal=mongo.db.vegan_meal.find(),
                           recipes=mongo.db.recipes.find()
@@ -108,16 +115,16 @@ def add_recipe():
                           
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])    #edit_recipe to my database
 def insert_my_recipe(recipe_id):
-#     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-#     return render_template('edit_recipe.html', recipe=this_recipe)
-     recipes=recipes_collection.find()
-     if request.method == "POST":
-         recipe_data = request.form.to_dict()
-         data = Recipe(recipe_data)           #helper.classes
-         data = data._dict_
-         data['visibility'] = False
-         recipes_collection.update({'_id': ObjectId(recipe_id)}, data["recipe"])
-         recipe = data["recipe"]
+     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+     return render_template('edit_recipe.html', recipe=this_recipe)
+#     recipes=recipes_collection.find()
+#     if request.method == "POST":
+#         recipe_data = request.form.to_dict()
+#         data = Recipe(recipe_data)           #helper.classes
+#         data = data._dict_
+#         data['visibility'] = False
+#         recipes_collection.update({'_id': ObjectId(recipe_id)}, data["recipe"])
+#         recipe = data["recipe"]
     
 
 
