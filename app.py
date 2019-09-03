@@ -125,6 +125,23 @@ def insert_my_recipe(recipe_id):
 #         data['visibility'] = False
 #         recipes_collection.update({'_id': ObjectId(recipe_id)}, data["recipe"])
 #         recipe = data["recipe"]
+
+
+
+@app.route('/get_my_form')
+def get_my_form():
+    if request.url.startswith('http://'):
+        request.url = request.url.replace('http://', 'https://', 1)
+    print('url when add_recipe: ', request.url)
+
+    return render_template('add_recipe.html',
+                          recipe={},
+                          author_name=mongo.db.author_name.find(),
+                          meal_type=mongo.db.meal_type.find(),
+                          sport_type=mongo.db.sport_type.find(),
+                          race_day=mongo.db.race_day.find(),
+                          vegan_meal=mongo.db.vegan_meal.find())
+                         
     
 
 

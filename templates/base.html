@@ -12,8 +12,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='work-template/css/materialize.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='work-template/css/materialize.min.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='work-template/css/style.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='work-template/css/getready.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='work-template/css/style.css') }}" type="text/css"/>
     {% block css %}{% endblock css %}
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -38,7 +38,7 @@
     
     </head>
     
-  <body class="grey lighten-5">
+  <body class="#fafafa grey lighten-5">
     <nav class="white" role="navigation">
       <div class="nav-wrapper container">
             <a id="logo-container" href="{{url_for('get_ready')}}"  class="brand-logo" >
@@ -73,11 +73,11 @@
       {% block content %} {% endblock %}
     </div>
     
-    <footer class="page-footer #eceff1 teal" id="footer">
+    <footer class="page-footer #eceff1 teal" id="footer-custom">
     <div class="container">
-      <div class="row">
+      <div class="row no-margin">
         <div class="col l6 m3 s12 mobile-hide">
-          <h5 class="white-text">Connect your training with our nutrition typs...</h5>
+          <h5 class="black-text footer-heading">Connect your training with our nutrition typs...</h5>
           <p class="grey-text text-lighten-4 footer-text">If you have any suggestions, please contact us or add some your recipes!</p>
 
 
@@ -94,7 +94,7 @@
           </ul>
         </div>
         <div class="col l2 s12">
-          <h5 class="white-text">Connect Us</h5>
+          <h5 class="black-text">Connect Us</h5>
           <ul>
             <li><a class="white-text" href="#!">Link 1</a></li>
             <li><a class="white-text" href="#!">Link 2</a></li>

@@ -3,18 +3,16 @@
 First Page Geneneral
 
 */
-body, form, h1, h2, h3, h4, h5, hr {
+/*body, form, h1, h2, h3, h4, h5, hr {
     margin:0;
     padding:0;
 }
 
-h1 {
-    color: orange;
-}
 
 
 
-/*#index-banner {
+
+index-banner {
     position:absolute;
     width:100%;
     background: url("/static/images/triathlonpic.jpg") no-repeat center;
@@ -24,17 +22,17 @@ h1 {
     background-size: cover;
     
 }
-*/
-#container {
+
+#parallax-container {
      position:relative;
-     /*text-align: center;*/
+     /*text-align: center;
      color:black;
  }
  
  
 
  
-/*.index-topic {
+.index-topic {
     position: absolute;
     width:100%;
     height: min-content;
@@ -47,20 +45,11 @@ h1 {
     
 } 
 
-*/
 
-.sport {
- -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-   position: absolute;
-    width:100%;
-    height: min-content;
-    padding-top: 3%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
+
+
+
 
 
 
