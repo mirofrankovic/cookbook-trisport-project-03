@@ -8,13 +8,32 @@
             <h2 class="center brown-text art-deco-font">Add a Recipe</h2>
             <p class="light center">Click to open a form that will let you write your recipe and add it to your favourite recipe menu.</p>
         </div>
-        <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn #880e4f pink darken-4">Add a Recipe</a>
+        <a href="/get_my_form" class="waves-effect waves-light btn #880e4f pink darken-4">Add a Recipe</a>
     </div>
-</div
+</div>
+<div id="sorting-bar-my-recipes" class="row #00695c teal darken-3">
+    <h4 class="art-deco-font col s12 m5">My Recipes</h4>
+    
+</div>
 
-
-
-
+<div class="row collection-container">
+    {% for recipe in recipes %} {% if recipe.author_name == username %}
+    
+     <div class="my-recipe-colelction-item">
+         <li class="collection-item avatar" id="top-collection-item">
+             
+             
+         </li>    
+     </div>
+    
+    
+    
+    
+    
+    
+    
+    {% endif %} {% endfor %}
+</div>    
 
 
 
