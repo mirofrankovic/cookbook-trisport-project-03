@@ -13,6 +13,7 @@
 </div>
 <div id="sorting-bar-my-recipes" class="row #00695c teal darken-3">
     <h4 class="art-deco-font col s12 m5">My Recipes</h4>
+    <a id="sort-by-date-button" class="waves-effect waves-light btn white col s6 m3"><i class="far fa-calendar"></i></i> First in First Out</a>
     
 </div>
 
@@ -20,10 +21,29 @@
     {% for recipe in recipes %} {% if recipe.author_name == username %}
     
      <div class="my-recipe-colelction-item">
-         <li class="collection-item avatar" id="top-collection-item">
+         <ul class="collection">
+            <li class="collection-item avatar" id="top-collection-item">
+                <img src="{{recipe.image_recipe}}" alt="" class="circle">
+                <span id="my-recipe-name" class="title art-deco-font"><strong>{{recipe.recipe_name}}</strong></span>
+                <p class="date-added">{{recipe.due_date}}</p>
+                <p id="my-recipe-description">{{recipe.description}}</p>
+                <span><strong>Meal Type:</strong> {{recipe.meal_type_name}} |</span>
+                <span><strong>Sport Type:</strong> {{recipe.sport_type_name}} |</span>
+                <span><strong>Race Profile:</strong> {{recipe.race_day_name}}</span>
+               
              
              
-         </li>    
+            </li>
+            <li class="collection-item" id="bottom-collection-item">
+                <div class="row">
+                    <div class="col s3 art-deco-font"><a href="/recipedescription/{{ recipe._id }}" class="secondary-content"><i class="fas fa-utensils"></i> Go to Recipe</a></div>
+                    <div class="col s3 art-deco-font"><a href="/edit_recipe/{{ recipe._id }}" class="secondary-content"><i class="far fa-edit"></i> Edit</a></div>
+                    <div class="col s3 art-deco-font"><a href="#!" class="secondary-content modal-trigger" data-target="modal-confirm-delete-{{ recipe._id }}"><i class="far fa-trash-alt"></i> Delete</a></div>
+                </div>
+                
+            </li>
+            
+        </ul>    
      </div>
     
     

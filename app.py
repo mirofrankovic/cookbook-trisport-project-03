@@ -200,6 +200,12 @@ def log_out():
     print('logged out')
     session.clear()
     return redirect(url_for('get_ready'))
+    
+    
+@app.route('/delete_my_recipe/<recipe_id>')
+def delete_my_recipe(recipe_id):
+     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+     return redirect(url_for('my_recipes'))
         
         
     
