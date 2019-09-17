@@ -127,6 +127,22 @@ def insert_my_recipe(recipe_id):
 #         recipe = data["recipe"]
 
 
+@app.route('/updated_edit_recipe/<recipe_id>', methods=['POST'])
+def updated_edit_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.insert_one(request.json),
+    {
+        'author_name': request.form.get['author_name'],
+        'recipe_name': request.form.get['recipe_name'],
+        'meal_type_name': request.form.get['meal_type_name'],
+        'sport_type_name': request.form.get['sport_type_name'],
+        'race_day_name': request.form.get['race_day_name'],
+        'description': request.form.get['description'],
+        'image_recipe': request.form.get['image_recipe'],
+        'vegan_type_meal': request.form.get['vegan_type_meal']
+    }
+    return redirect(url_for('my_recipes'))
+
 
 @app.route('/get_my_form')
 def get_my_form():

@@ -68,7 +68,7 @@ p {
   font-size: inherit;
 }
 
-#footer {
+#footer-custom {
   
   bottom: 0px;
   width: 100%;
@@ -78,6 +78,8 @@ p {
 }
 
 */
+
+
 
 .icon-block {
   padding: 0 15px;

@@ -21,7 +21,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">cake</i>
-          <input value="{{recipes.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
+          <input value="{{recipe.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
           <label for="recipe_name">Recipe Name</label>
         </div>
       </div>
@@ -65,7 +65,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">brush</i>
-          <input value="{{recipes.description}}" id="description" name="description" type="text" class="validate">
+          <input value="{{recipe.description}}" id="description" name="description" type="text" class="validate">
           <label for="description">Description</label>
           
         </div>
@@ -73,7 +73,7 @@
       
       <div class="row white form-padding">
         <div class="input-field col s12">
-          <input value="{{recipes.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
+          <input value="{{recipe.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
           <label for="image_recipe">Recipe Image</label>
         
         </div>
@@ -98,8 +98,11 @@
         
         <div class="row white form-padding">
         <div class="input-field col s12">
-        <button id="submit-form-button" href="" class="#880e4f green darken-4 btn waves-effect waves-light" type="submit" name="action" data-url="">
-        Submit <i class="far fa-check-circle fa-xs"></i>
+        <a class="btn waves-effect waves-light margin-right-xs" name="action" href="/my_recipes">
+         Jump back with no changes <i class="fas fa-arrow-circle-left fa-xs"></i>
+        </a>    
+        <button id="submit-form-button" href="" class="#880e4f green darken-4 btn waves-effect waves-light" type="submit" name="action" data-url={{ url_for('updated_edit_recipe', recipe_id=recipe._id) }}">
+        Submit Changes <i class="far fa-check-circle fa-xs"></i>
         </button>
         </div>
         </div>
