@@ -43,7 +43,22 @@
                 
             </li>
             
-        </ul>    
+        </ul> 
+        
+        <!--Modals -->
+        
+        <div id="modal-confirm-delete-{{ recipe._id }}" class="modal">
+            <div class="modal-content">
+                <h4>Please Confirm That You Wish To Delete The Recipe</h4>
+                <p>This will permanently delete the recipe from the cookbook.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel and Go Back</a>
+                <a href="/delete_my_recipe/{{ recipe._id }}" class="modal-close waves-effect waves-green btn-flat">Confirm Delete</a>
+            </div>
+        </div>
+        
+        
      </div>
     
     
@@ -53,7 +68,11 @@
     
     
     {% endif %} {% endfor %}
-</div>    
+</div>   
+<script>
+    
+    
+</script>
 
 
 
