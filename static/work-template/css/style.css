@@ -80,7 +80,6 @@ p {
 */
 
 
-
 .icon-block {
   padding: 0 15px;
 }
@@ -366,7 +365,7 @@ a {
 
 #footer-custom {
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0px;
     padding: 0px;
     
@@ -379,6 +378,11 @@ a {
 .footer-text {
     font-size: 0.8em;
 }
+
+
+
+/* Background Images*/
+
 
 
 
