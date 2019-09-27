@@ -18,5 +18,18 @@ This application is for use by all as a stay at home athleetes who are busy with
 extra curricular activities, coming up with quick meals before and after workout.
 I designed the site so that users can share recipes and rate them accordingly.
 
+* Layout
+
+The layout used the Materialize CSS Parallax template which I modified to suit my own requirements.
+
+* Features 
+
+In this section I will describe the front-end features of my project:
+    1. * Navbar: consists of the PREPARE FOR YOUR RACE logo which also returns the user to the "Home" page of the application.
+         My navbar also has links to "All Recipes", "Your Suggestion", "Contact Us", "Dashboard", "Login". The navbar will appear in all pages
+         with the same functions for all links.
+    2. * Home: consists of one background image along with some information on contacting the webmaster and a link to the contact us page of the site.  
+    3. * All Recipes: 
+
 
 
