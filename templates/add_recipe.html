@@ -87,6 +87,30 @@
         </div>
         
         <div class="row white form-padding">
+            <h5>Serving per portion:</h5>
+            <div id="serving-adder">
+                <div class="serving-field">
+                    <div class="input-field col s12 m3">
+                        <input value="" id="proteins_unit-0" name="proteins_unit-0" type="text" class="validate" required>
+                        <label for="proteins-0">Proteins (*)</label>
+                    </div>
+                    <div class="input-field col s12 m2">
+                        <input value="" id="carbohydrates_unit-0" name="carbohydrates_unit-0" type="text" class="validate" required>
+                        <label for="carbohydrates_unit">Carbohydrates (*)</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input value="" id="calories_name-0" name="calories_name-0" type="text" class="validate" required>
+                        <label for="calories_name">Calories (*)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="float-right">
+                <a id="remove-numbers-btn" class="#b71c1c red darken-4 btn-small margin-right-xs">Remove Numbers <i class="fas fa-minus-circle fa-xs"></i></a>
+                <a id="add-numbers-btn" class="#1b5e20 green darken-4 btn-small">Add Numbers <i class="fas fa-plus fa-xs"></i></a>
+            </div>
+        </div>
+        
+        <div class="row white form-padding">
         <div class="input-field col s12">
         <input placeholder="Day/Month/Year, i.e., 03/04/2019" id="due_date" name="due_date" type="text" class="validate" required>   
         
@@ -98,7 +122,7 @@
         <!--<a id="submit-form-button" href="/my_recipes" class="#880e4f green darken-4 btn waves-effect waves-light" name="action" data-url={{ url_for('submit_to_database') }}>-->
         <!--Submit <i class="far fa-check-circle fa-xs"></i>-->
         <!--</a>-->
-        <input type="submit" value="Submit"></div>
+        <input type="submit" class="#1b5e20 green darken-4 btn-small" value="Submit"></div>
         </div>
         </div>
         
