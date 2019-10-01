@@ -95,6 +95,30 @@
             <label>Is this Recipe Vegan?</label>
         </div>
         
+        <div class="row white form-padding">
+            <h5>Serving per portion:</h5>
+            <div id="serving-adder">
+                <div class="serving-field">
+                    <div class="input-field col s12 m3">
+                        <input value="" id="proteins_unit-0" name="proteins_unit-0" type="text" class="validate" required>
+                        <label for="proteins-0">Grams Of Protein (*)</label>
+                    </div>
+                    <div class="input-field col s12 m3">
+                        <input value="" id="carbohydrates_unit-0" name="carbohydrates_unit-0" type="text" class="validate" required>
+                        <label for="carbohydrates_unit">Grams Of Carbohydrates (*)</label>
+                    </div>
+                    <div class="input-field col s12 m5">
+                        <input value="" id="calories_name-0" name="calories_name-0" type="text" class="validate" required>
+                        <label for="calories_name">Calories (*)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="float-right">
+                <a id="remove-numbers-btn" class="#b71c1c red darken-4 btn-small margin-right-xs">Remove Numbers <i class="fas fa-minus-circle fa-xs"></i></a>
+                <a id="add-numbers-btn" class="#1b5e20 green darken-4 btn-small">Add Numbers <i class="fas fa-plus fa-xs"></i></a>
+            </div>
+        </div>
+        
         
         <div class="row white form-padding">
         <div class="input-field col s12">
