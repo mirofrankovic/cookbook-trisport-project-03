@@ -106,7 +106,7 @@ def add_recipe():
                           image_recipe=mongo.db.image_recipe.find(),
                           race_day=mongo.db.race_day.find(),
                           vegan_meal=mongo.db.vegan_meal.find(),
-                          serving=mongo.db.serving.find(),
+                          servings=mongo.db.servings.find(),
                           recipes=mongo.db.recipes.find(),
                           proteins_unit=mongo.db.proteins_unit.find(),
                           carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
@@ -144,7 +144,7 @@ def updated_edit_recipe(recipe_id):
         'description': request.form.get['description'],
         'image_recipe': request.form.get['image_recipe'],
         'vegan_type_meal': request.form.get['vegan_type_meal'],
-        'serving': request.form.get['serving']
+        'servings': request.form.get['servings']
     }
     return redirect(url_for('my_recipes'))
 
@@ -162,7 +162,7 @@ def get_my_form():
                           sport_type=mongo.db.sport_type.find(),
                           race_day=mongo.db.race_day.find(),
                           vegan_meal=mongo.db.vegan_meal.find(),
-                          serving=mongo.db.serving.find())
+                          servings=mongo.db.servings.find())
                          
     
 

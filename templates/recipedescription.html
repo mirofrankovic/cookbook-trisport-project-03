@@ -27,11 +27,11 @@
 <div class="row">
     <h5 class="art-deco-font">Amount of Nutritions per Serving:</h5>
       <ul>
-            {% for serving in recipe.servings %}
+            {% for serving in recipe.servings %} 
                 <li>
-                    <span><strong>- </strong> {{serving.proteins_unit-0}}</span>
-                    <span>{{serving.carbohydrates_unit-0}}</span>
-                    <span>{{serving.calories_name-0}}</span>
+                    <span><strong>- </strong>{{serving.proteins_unit}}</span>
+                    <span>{{serving.carbohydrates_unit}}</span>
+                    <span>{{serving.calories_name}}</span>
                 </li>
             {% endfor %}
         </ul> 
