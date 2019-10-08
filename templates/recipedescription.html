@@ -27,20 +27,15 @@
 <div class="row">
     <h5 class="art-deco-font">Amount of Nutritions per Serving:</h5>
       <ul>
-            {% for serving in recipe.servings %} 
+            
                 <li>
-                    <span><strong>- </strong>{{serving.proteins_unit}}</span>
-                    <span>{{serving.carbohydrates_unit}}</span>
-                    <span>{{serving.calories_name}}</span>
+                    <p><strong>Proteins: </strong>{{recipe.proteins_unit}}</p>
+                    <p><strong>Carbohydrates: </strong>{{recipe.carbohydrates_unit}}</p>
+                    <p><strong>Calories: </strong>{{recipe.calories_name}}</p>
                 </li>
-            {% endfor %}
+        
         </ul> 
         
-<!--    <div class="col s12 m6">
-        <p><strong>Proteins: </strong>{{recipe.proteins_unit-0}}</p>
-        <p><strong>Carbohydrates: </strong>{{recipe.carbohydrates_unit-0}}</p>
-        <p><strong>Calories: </strong>{{recipe.calories_name-0}}</p>
-    </div>  -->  
     
     <p>Recipe added on: <em>{{recipe.due_date}}</em></p>
     <p>Recipe by <em>{{recipe.author_name}}</em></p>
