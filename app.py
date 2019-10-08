@@ -144,7 +144,10 @@ def updated_edit_recipe(recipe_id):
         'description': request.form.get['description'],
         'image_recipe': request.form.get['image_recipe'],
         'vegan_type_meal': request.form.get['vegan_type_meal'],
-        'servings': request.form.get['servings']
+        'servings': request.form.get['servings'],
+        'proteins_unit': request.form.get['proteins_unit'],
+        'carbohydrates_unit': request.form.get['carbohydrates_unit'],
+        'calories_name': request.form.get['calories_name']
     }
     return redirect(url_for('my_recipes'))
 
