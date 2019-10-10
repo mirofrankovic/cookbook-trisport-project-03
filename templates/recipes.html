@@ -3,16 +3,16 @@
 {% block content %}
 
 
-<div class="vh100 container pb-5">
+<!--<div class="vh100 container pb-5">-->
     
-    <ul id="navigation-pictures" class="row">
+    <div id="navigation-pictures" class="row">
         {% for recipe in recipes %}
-        <div class="col m4" data-date="{{ recipe.due_date }}">
-        <div class="picture">
-            <div class="recipe-picture">
+        <div class="col s12 m4 l3 navigation-piecture" data-date="{{recipe.due_date}}">
+        <div class="card">
+            <div class="card-image">
                 <img src="{{recipe.image_recipe}}" width="250" height="200">
                 <div class="picture-name picture-name-meal">
-                   <span id="recipe_name" name="recipe_name" class="picture-name art-deco-font">{{ recipe.recipe_name }}</span>
+                   <span id="recipe_name" name="recipe_name" class="picture-name art-deco-font">{{recipe.recipe_name}}</span>
                 </div> 
             </div>
             <div class="picture-content class-size">
@@ -22,9 +22,10 @@
                 <a href="/recipedescription/{{recipe._id}}">See Recipe Description</a>
             </div>
         </div>    
-        </div>    
+        </div> 
+        
         {% endfor %}
-    </ul>
+    </div>
 </div>
 <div id="see-more-meal">
     
