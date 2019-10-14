@@ -5,20 +5,20 @@
 
 <!--<div class="vh100 container pb-5">-->
     
-    <div id="navigation-pictures" class="row">
+    <div id="navigation-cards" class="row">
         {% for recipe in recipes %}
-        <div class="col s12 m4 l3 navigation-piecture" data-date="{{recipe.due_date}}">
+        <div class="col s12 m4 l3 navigation-cards" data-date="{{recipe.due_date}}">
         <div class="card">
             <div class="card-image">
                 <img src="{{recipe.image_recipe}}" width="250" height="200">
-                <div class="picture-name picture-name-meal">
-                   <span id="recipe_name" name="recipe_name" class="picture-name art-deco-font">{{recipe.recipe_name}}</span>
+                <div class="card-title card-title-spice">
+                   <span id="recipe_name" name="recipe_name" class="card-title art-deco-font">{{recipe.recipe_name}}</span>
                 </div> 
             </div>
-            <div class="picture-content class-size">
+            <div class="card-content class-size">
                 <p id="description">{{recipe.description}}</p>
             </div>
-            <div class="picture-action">
+            <div class="card-action">
                 <a href="/recipedescription/{{recipe._id}}">See Recipe Description</a>
             </div>
         </div>    
