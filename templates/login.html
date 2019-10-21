@@ -18,10 +18,8 @@
     
 {% endif %}
 {% if logged_in %}
- <h3 class="art-deco-font">Welcome {{username}} to this well organized Cookbook for athletes!</h3>
-    <h5>
-        You have created <span id="count-recipes-text"></span> recipes! 
-    </h5>
+ <h3 class="art-deco-font text-center">Welcome {{username}} to this well organized Cookbook for athletes!</h3>
+    <h5 class="art-deco-font text-center">You have created <span id="count-recipes-text"></span> recipes!</h5>
     <br>
     <div class="container">
                 <div id="username-with-recipes" class="row white form-padding">
@@ -49,12 +47,16 @@
 </div>
 </div>
 
+<p id="hidden-recipes" hidden>{{recipes|safe}}</p>
 
-<script>
+
+<script type="text/javascript">
 
 $(document).ready(function() {
     
     var username = '{{username}}';
+    
+    var recipesText = $('#hidden-recipes').text();
     var recipesJson = JSON.parse(recipesText);
     var recipesList = [];
     
@@ -63,6 +65,60 @@ $(document).ready(function() {
     }
     
     makeDashboard(recipesList);
+    
+    function makeDashboard(recipesList) {
+        
+        
+        myRecipesList = [];
+        
+        for ( var i = 0; i < recipesList.length; i++ ) {
+            let authorName = recipesList[i]['author_name'];
+                        
+            if ( username == authorName ) {
+                            myRecipesList.push(recipesList[i]);
+            }
+        }
+        
+        var ndx = crossfilter(myRecipesList);
+        //console.log(myRecipesList);
+        
+        counteMyRecipes(ndx, '#count-recipes-text');
+        counteMyRecipes(ndx, '#count-recipes-box');
+        resetButton(ndx);
+        
+        dc.renderAll();
+    }
+    
+        function resetButton(ndx) {
+            $("#reset-button").on("click", function() {
+                dc.filterAll();
+                dc.redrawAll();
+            });
+        }
+        
+        
+        function counteMyRecipes(ndx, element) {
+                    
+            var myRecipesTotal = ndx.groupAll();
+                    
+            dc.numberDisplay(element)
+                .formatNumber(d3.format("d"))
+                .valueAccessor(function (d) {
+                    d = myRecipesList.length
+                    return (+d);
+                })
+                .group(myRecipesTotal);
+        }
+        
+        
+        MyRecipeCount = myRecipesList.length
+                
+                if ( MyRecipeCount != 0 ) {
+                    $('#username-with-zero-recipes').css('display', 'none');
+               } else {
+                   $('#username-with-recipes').css('display', 'none');
+                   // $('.dashboard-graphs').css('display', 'none');
+                }
                 
     
     
@@ -74,6 +130,8 @@ $(document).ready(function() {
 
 
 </script>
+
+  
 
 
 
