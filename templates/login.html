@@ -3,7 +3,7 @@
 {% block content %}
 {% if not logged_in %}
 
-<p>Please enter Your Username</p>
+<p>Please Log In to your account</p>
     <div class="row white">
         <form class="col s12" method="POST">
             <div class="row">
@@ -11,10 +11,16 @@
                     <input id="username" name="username" type="text" class="validate" required> 
                     <label for="username"><i class="fas fa-user"></i>Username</label>
                 </div>
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="text" class="validate" required> 
+                    <label for="password"><i class="fa fa-university"></i>Password</label>
+                </div
             </div>
-            <button class="btn waves-effect waves-light" type="submit">Submit</button>
+            <button class="btn waves-effect waves-light" type="submit">Log In</button>
         </form>
     </div>
+    <p>If you do not have an account, please click on the button below</p>
+    <button class="btn waves-effect waves-light" type="submit">Register Here</button>
     
 {% endif %}
 {% if logged_in %}

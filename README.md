@@ -153,7 +153,7 @@ Please visit DEMO at.........
 
 **Acknowledgements**
 
-* I received inspiration for this project from *[BBC FOOF](https://www.bbc.co.uk/food/diets/healthy)* website with the combination of *[Nutritionist Resource](https://www.nutritionist-resource.org.uk/)* website.
+* I received inspiration for this project from *[BBC FOOD](https://www.bbc.co.uk/food/diets/healthy)* website with the combination of *[Nutritionist Resource](https://www.nutritionist-resource.org.uk/)* website.
 
 
 

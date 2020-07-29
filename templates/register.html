@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Please create your account</p>
+    <div class="row white">
+        <form class="col s12" method="POST">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" name="username" type="text" class="validate" required> 
+                    <label for="username"><i class="fas fa-user"></i>Username</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="text" class="validate" required> 
+                    <label for="password"><i class="fa fa-university"></i>Password</label>
+                </div
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Create Account</button>
+        </form>
+    </div>
+    <p>If you have already your account with us, please click on the button below</p>
+    <button class="btn waves-effect waves-light" type="submit">Register</button>
+    
+
+
+
+
+{% endblock %}

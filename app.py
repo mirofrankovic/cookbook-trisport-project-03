@@ -220,6 +220,13 @@ def login():
                               logged_in=logged_in,
                               recipes=recipes_dics)   
                               
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    
+    return render_template('register.html')
+
+
+                              
 @app.route('/log_out')
 def log_out():
     print('logged out')
