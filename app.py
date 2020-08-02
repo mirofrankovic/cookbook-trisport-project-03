@@ -8,6 +8,9 @@ from bson.objectid import ObjectId
 from bson import json_util
 from bson.json_util import dumps
 
+import logging
+#import bcrypt
+
 #from helper.classes import Search, SearchForm, Database, Recipe, Charts
 
 
@@ -37,6 +40,9 @@ users_collections = mongo.db.users
 recipes_collection = mongo.db.recipes
 forms_collection = mongo.db.forms
 
+
+# Logging Config
+logging.basicConfig(level=logging.INFO)
 
  
 
@@ -220,10 +226,38 @@ def login():
                               logged_in=logged_in,
                               recipes=recipes_dics)   
                               
+                              
+                              
+                              
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    logging.info('Registering User')
+    if request.method == 'POST':
+        session['username'] = request.form['username'].lower()
+        users = mongo.db.users
+        user_exists = users.find_one(
+            {'author_name': request.form['username'].lower()})
+            
+        if user_exists is None:
+            logging.info('User Does not exist. Creating new user')
+ #           hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'),
+ #                                    bcrypt.gensalt())
+ #           users.insert({'author_name': request.form['username'].lower(),
+ #                          'password': hashpass})
+ #           session['username'] = request.form['username'].lower()
+            return redirect(url_for('login'))
+            
+        flash('Username already exists, please choose a different one.')
+        logging.info('User already exist. Skipping new user')
+        session.pop('username', None)
+        return render_template('register.html', title="Register")
     
-    return render_template('register.html')
+
+    return render_template('register.html', title="Register")
+
+    
+    
+  #  return render_template('register.html')
 
 
                               
