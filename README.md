@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mirofrankovic/cookbook-trisport-project-03)
+
 # **Miro does Snack - Cookbook for triathlon athleetes today - Code Institute - Milestone project 03**
 
 The brief was to create a web application that allows users to store and easily access cooking recipes.
