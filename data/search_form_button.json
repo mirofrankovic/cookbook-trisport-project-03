@@ -1,27 +1,27 @@
 {
     "_id": {
-        "$oid": "5d178ce1fb6fc00e79b26efc"
+        "$oid": "5f355794edbb7cf36d95cefe"
     },
     "mealTypes": [
-        "breakfast"
-        "lunch"
-        "dinner"
+        "breakfast",
+        "lunch",
+        "dinner",
         "snack smart"
         ],
     "sportTypes": [
-        "swim"
-        "run"
-        "bike"
-        "duathlon"
+        "swim",
+        "run",
+        "bike",
+        "duathlon",
         "triathlon"
         ],
     "veganMeal": [
-        "yes"
+        "yes",
         "no"
         ],
     "raceDay": [
-        "pre race"
-        "race"
+        "pre race",
+        "race",
         "post race"
         ]    
     

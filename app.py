@@ -16,8 +16,8 @@ import logging
 
 app = Flask(__name__)
 
-recipe_schema_id = "5c9bbf7ee7179a0e408e3177"
-form_schema_id = "5d178ce1fb6fc00e79b26efc"
+recipe_schema_id = "5f35591eedbb7cf36d95ceff"
+form_schema_id = "5f355794edbb7cf36d95cefe"
 
 
 app.secret_key = "mir_tri"
@@ -27,7 +27,7 @@ MONGODB_PORT = 27017
 DBS_NAME = os.getenv('MONGO_DB_NAME','cookbook_trisport')
 MONGO_URI = os.getenv('MONGODB_URI')
 app.config["MONGO_DBNAME"] = 'cookbook_trisport'
-app.config["MONGO_URI"] = 'mongodb://mirof:Vanilia123@ds159185.mlab.com:59185/cookbook_trisport'
+app.config["MONGO_URI"] = 'mongodb+srv://miro:<Mirek1979!>@mirocluster.y2pt0.mongodb.net/<cookbook_trisport>?retryWrites=true&w=majority'
 COLLECTION_NAME = 'recipes'
 FIELDS = {'meal_type': True, 'sport_type': True, 'race_day': True, 'vegan_meal': True, '_id': False}
 
