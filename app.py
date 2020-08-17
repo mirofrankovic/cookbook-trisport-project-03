@@ -27,7 +27,10 @@ MONGODB_PORT = 27017
 DBS_NAME = os.getenv('MONGO_DB_NAME','cookbook_trisport')
 MONGO_URI = os.getenv('MONGODB_URI')
 app.config["MONGO_DBNAME"] = 'cookbook_trisport'
-app.config["MONGO_URI"] = 'mongodb+srv://miro:<Mirek1979!>@mirocluster.y2pt0.mongodb.net/<cookbook_trisport>?retryWrites=true&w=majority'
+
+app.config["MONGO_URI"] = 'mongodb+srv://miro:Qjkq0ov8uwnPONeV@mirocluster.y2pt0.mongodb.net/<dbname>?retryWrites=true&w=majority'
+
+#app.config["MONGO_URI"] = 'mongodb+srv://miro:<Mirek1979!>@mirocluster.y2pt0.mongodb.net/<cookbook_trisport>?retryWrites=true&w=majority'
 COLLECTION_NAME = 'recipes'
 FIELDS = {'meal_type': True, 'sport_type': True, 'race_day': True, 'vegan_meal': True, '_id': False}
 
@@ -315,6 +318,6 @@ def contact_us():
                           
     
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
+    app.run(host=os.environ.get('IP','0.0.0.0'),
+            port=int(os.environ.get('PORT', 5000)),
             debug=True)
