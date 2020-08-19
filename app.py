@@ -73,6 +73,8 @@ mongo = PyMongo(app)             #constructor method
 #forms_collection = mongo.db.forms
 
 
+
+
 # Logging Config
 #logging.basicConfig(level=logging.INFO)
 
@@ -267,7 +269,7 @@ def login():
                               
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    logging.info('Registering User')
+    #logging.info('Registering User')
     if request.method == 'POST':
         session['username'] = request.form['username'].lower()
         users = mongo.db.users
@@ -275,7 +277,7 @@ def register():
             {'author_name': request.form['username'].lower()})
             
         if user_exists is None:
-            logging.info('User Does not exist. Creating new user')
+            #logging.info('User Does not exist. Creating new user')
  #           hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'),
  #                                    bcrypt.gensalt())
  #           users.insert({'author_name': request.form['username'].lower(),
@@ -284,7 +286,7 @@ def register():
             return redirect(url_for('login'))
             
         flash('Username already exists, please choose a different one.')
-        logging.info('User already exist. Skipping new user')
+        #logging.info('User already exist. Skipping new user')
         session.pop('username', None)
         return render_template('register.html', title="Register")
     
