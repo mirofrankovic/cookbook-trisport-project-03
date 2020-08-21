@@ -4,7 +4,7 @@
 
 <p>Please create your account</p>
     <div class="row white">
-        <form class="col s12" method="POST">
+        <form class="col s12" method="POST" action="{{ url_for('register')}}">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="username" name="username" type="text" class="validate" required> 
@@ -13,7 +13,7 @@
                 <div class="input-field col s12">
                     <input id="password" name="password" type="text" class="validate" required> 
                     <label for="password"><i class="fa fa-university"></i>Password</label>
-                </div
+                </div>
             </div>
             <button class="btn waves-effect waves-light" type="submit">Create Account</button>
         </form>

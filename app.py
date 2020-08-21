@@ -7,29 +7,12 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
 from bson.json_util import dumps
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
+app=Flask(__name__)
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")    
-
-#os.environ.setdefault("MONGO_URI", "mongodb+srv://miro:Qjkq0ov8uwnPONeV@mirocluster.y2pt0.mongodb.net/cookbook_trisport?retryWrites=true&w=majority")
-
-#import logging
-#import bcrypt
-
-#from helper.classes import Search, SearchForm, Database, Recipe, Charts
-
-
-app = Flask(__name__)
-
-
-#recipe_schema_id = "5f35591eedbb7cf36d95ceff"
-#form_schema_id = "5f355794edbb7cf36d95cefe"
-
-#app.secret_key = "mir_tri"
-#MONGODB_HOST = 'localhost'
-#MONGODB_PORT = 27017
-#DBS_NAME = os.getenv('MONGO_DB_NAME','cookbook_trisport')
 
 
 MONGODB_URI = os.getenv('MONGO_URI')
@@ -37,49 +20,10 @@ DBS_NAME = "cookbook_trisport"
 COLLECTION_NAME = "recipes"
 
 
-def mongo_connect(url):
-    try:
-        conn = pymongo.MongoClient(url)
-        print("Mongo is connected!")
-        return conn
-    except pymongo.errors.ConnectionFailure as e:
-        print("Could not connect to MongoDB: %s") % e
-
-conn = mongo_connect(MONGODB_URI)
-
-coll = conn[DBS_NAME][COLLECTION_NAME]
-
-
-documents = coll.find()
-
-for doc in documents:
-    print(doc)
-
-
-
-#app.config["MONGO_DBNAME"] = 'cookbook_trisport'
-#app.config["MONGO_URI"] = 'mongodb+srv://miro:Qjkq0ov8uwnPONeV@mirocluster.y2pt0.mongodb.net/<dbname>?retryWrites=true&w=majority'
-#app.config["MONGO_URI"] = 'mongodb+srv://miro:<Mirek1979!>@mirocluster.y2pt0.mongodb.net/<cookbook_trisport>?retryWrites=true&w=majority'
-#COLLECTION_NAME = 'recipes'
-FIELDS = {'meal_type': True, 'sport_type': True, 'race_day': True, 'vegan_meal': True, '_id': False}
-
-
 mongo = PyMongo(app)             #constructor method
 
-# Collections
 
-#users_collections = mongo.db.users
-#recipes_collection = mongo.db.recipes
-#forms_collection = mongo.db.forms
-
-
-
-
-# Logging Config
-#logging.basicConfig(level=logging.INFO)
-
- 
-
+forms_collection = mongo.db.forms
 
 
 @app.route('/')
