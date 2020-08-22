@@ -7,11 +7,11 @@
         <form class="col s12" method="POST" action="{{ url_for('register')}}">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="username" name="username" type="text" class="validate" required> 
-                    <label for="username"><i class="fas fa-user"></i>Username</label>
+                    <input id="author_name" name="author_name" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required> 
+                    <label for="author_name"><i class="fas fa-user"></i>AuthorName</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="password" name="password" type="text" class="validate" required> 
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required> 
                     <label for="password"><i class="fa fa-university"></i>Password</label>
                 </div>
             </div>

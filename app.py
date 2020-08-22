@@ -173,9 +173,9 @@ def submit_to_database():
 def login():
     
     logged_in = False
-    if request.method == 'GET' and not 'username' in session:
+    if request.method == 'GET' and not 'username' in session:     #author_name
         return render_template('login.html', logged_in=logged_in)
-    elif request.method == 'GET' and 'username' in session:
+    elif request.method == 'GET' and 'username' in session:        #author_name
         logged_in = True
         recipes = mongo.db.recipes.find()
         
@@ -215,31 +215,30 @@ def login():
 def register():
     #logging.info('Registering User')
     if request.method == 'POST':
-        session['username'] = request.form['username'].lower()
-        users = mongo.db.users
-        user_exists = users.find_one(
-            {'author_name': request.form['username'].lower()})
+        #session['author_name'] = request.form['author_name'].lower()
+        #users = mongo.db.users
+        user_exists = mongo.db.users.find_one(
+            {'author_name': request.form.get('author_name').lower()})
             
-        if user_exists is None:
-            #logging.info('User Does not exist. Creating new user')
- #           hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'),
- #                                    bcrypt.gensalt())
- #           users.insert({'author_name': request.form['username'].lower(),
- #                          'password': hashpass})
- #           session['username'] = request.form['username'].lower()
-            return redirect(url_for('login'))
-            
-        flash('Username already exists, please choose a different one.')
+        if user_exists:
+            flash('Username already exists, please choose a different one.')
+            return render_template('register.html', title="Register")
+
+        register = {
+            "author_name": request.form.get("author_name").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }    
+        mongo.db.users.insert_one(register)
+           # return redirect(url_for('login'))
+
+
         #logging.info('User already exist. Skipping new user')
-        session.pop('username', None)
-        return render_template('register.html', title="Register")
+        session["author"] = request.form.get("author_name").lower()
+        flash("Registration Succesful!")
+        #return render_template('register.html', title="Register")
     
 
     return render_template('register.html', title="Register")
-
-    
-    
-  #  return render_template('register.html')
 
 
                               
