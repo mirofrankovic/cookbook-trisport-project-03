@@ -8,41 +8,26 @@ from bson.objectid import ObjectId
 from bson import json_util
 from bson.json_util import dumps
 
-import logging
-#import bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
+if os.path.exists("env.py"):
+    import env
 
-#from helper.classes import Search, SearchForm, Database, Recipe, Charts
-
-
-app = Flask(__name__)
-
-recipe_schema_id = "5f35591eedbb7cf36d95ceff"
-form_schema_id = "5f355794edbb7cf36d95cefe"
+app=Flask(__name__)
+app.config["MONGO_DBNAME"] = os.getenv("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.getenv("MONGO_URI") 
+app.secret_key = os.environ.get("SECRET_KEY")
 
 
-app.secret_key = "mir_tri"
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = os.getenv('MONGO_DB_NAME','cookbook_trisport')
-MONGO_URI = os.getenv('MONGODB_URI')
-app.config["MONGO_DBNAME"] = 'cookbook_trisport'
-app.config["MONGO_URI"] = 'mongodb+srv://miro:<Mirek1979!>@mirocluster.y2pt0.mongodb.net/<cookbook_trisport>?retryWrites=true&w=majority'
-COLLECTION_NAME = 'recipes'
-FIELDS = {'meal_type': True, 'sport_type': True, 'race_day': True, 'vegan_meal': True, '_id': False}
+MONGODB_URI = os.getenv('MONGO_URI')
+DBS_NAME = "cookbook_trisport"
+COLLECTION_NAME = "recipes"
 
 
 mongo = PyMongo(app)             #constructor method
 
-# Collections
 
-users_collections = mongo.db.users
-recipes_collection = mongo.db.recipes
 forms_collection = mongo.db.forms
-
-
-# Logging Config
-logging.basicConfig(level=logging.INFO)
 
  
 
@@ -189,76 +174,105 @@ def submit_to_database():
                           
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == "POST":
+        # check id author_name exists
+        user_exists = mongo.db.users.find_one(
+            {"author_name": request.form.get("author_name").lower()})
+
+        if user_exists:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                user_exists["password"], request.form.get("password")): 
+                    session["author"] = request.form.get("author_name").lower()
+                    flash("Welcome, {}".format(request.form.get("author_name"))) 
+            else:
+                # invalid password match
+                flash("Incorect Author Name or/and Pasword") 
+                return redirect(url_for("login"))   
+
+        else:
+            # author_name doesn't exist
+            flash("Incorect Author Name or/and Pasword") 
+            return redirect(url_for("login"))  
+                      
+        return render_template("login.html")
+
+
+
+
     
-    logged_in = False
-    if request.method == 'GET' and not 'username' in session:
-        return render_template('login.html', logged_in=logged_in)
-    elif request.method == 'GET' and 'username' in session:
-        logged_in = True
-        recipes = mongo.db.recipes.find()
-        
-        recipes_dics = {}
-        
-        for i, recipe in enumerate(recipes):
-            recipe.pop('_id', None)
-            recipes_dics[i] = recipe
-            
-        recipes_dics = json.dumps(recipes_dics)
-        
-        return render_template('login.html', 
-                               username=session['username'],
-                               logged_in=logged_in,
-                               recipes=recipes_dics)
-    if request.method == 'POST':
-        session['username'] = request.form["username"]
-        logged_in = True
-        recipes=mongo.db.recipes.find()
-        recipes_dics = {}
-        
-        for i, recipe in enumerate(recipes):
-            recipe.pop('_id', None)
-            recipes_dics[i] = recipe
-            
-        recipes_dics = json.dumps(recipes_dics)
-            
-        return render_template('login.html',
-                              username=session['username'],
-                              logged_in=logged_in,
-                              recipes=recipes_dics)   
+#    logged_in = False
+#    if request.method == 'GET' and not 'author_name' in session:     #username
+#        return render_template('login.html', logged_in=logged_in)
+#    elif request.method == 'GET' and 'author_name' in session:        #username
+#        logged_in = True
+#        recipes = mongo.db.recipes.find()
+#        
+#        recipes_dics = {}
+#        
+#        for i, recipe in enumerate(recipes):
+#            recipe.pop('_id', None)
+#            recipes_dics[i] = recipe
+#            
+#        recipes_dics = json.dumps(recipes_dics)
+#        
+#        return render_template('login.html', 
+#                               author_name=session['author_name'],
+#                               logged_in=logged_in,
+#                               recipes=recipes_dics)
+#    if request.method == 'POST':
+#        session['author_name'] = request.form["author_name"]
+#        logged_in = True
+#        recipes=mongo.db.recipes.find()
+#        recipes_dics = {}
+#        
+#        for i, recipe in enumerate(recipes):
+#            recipe.pop('_id', None)
+#            recipes_dics[i] = recipe
+#            
+#        recipes_dics = json.dumps(recipes_dics)
+#            
+#        return render_template('login.html',
+#                              author_name=session['author_name'],
+#                              logged_in=logged_in,
+#                              recipes=recipes_dics)   
                               
+    
+   
                               
                               
                               
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    logging.info('Registering User')
+     #logging.info('Registering User')
     if request.method == 'POST':
-        session['username'] = request.form['username'].lower()
-        users = mongo.db.users
-        user_exists = users.find_one(
-            {'author_name': request.form['username'].lower()})
+        #session['author_name'] = request.form['author_name'].lower()
+        #users = mongo.db.users
+        user_exists = mongo.db.users.find_one(
+            {'author_name': request.form.get('author_name').lower()})
             
-        if user_exists is None:
-            logging.info('User Does not exist. Creating new user')
- #           hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'),
- #                                    bcrypt.gensalt())
- #           users.insert({'author_name': request.form['username'].lower(),
- #                          'password': hashpass})
- #           session['username'] = request.form['username'].lower()
-            return redirect(url_for('login'))
-            
-        flash('Username already exists, please choose a different one.')
-        logging.info('User already exist. Skipping new user')
-        session.pop('username', None)
-        return render_template('register.html', title="Register")
+        if user_exists:
+            flash('Username already exists, please choose a different one.')
+            return render_template('register.html', title="Register")
+
+        register = {
+            "author_name": request.form.get("author_name").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }    
+        mongo.db.users.insert_one(register)
+           # return redirect(url_for('login'))
+
+
+        #logging.info('User already exist. Skipping new user')
+        session["author"] = request.form.get("author_name").lower()
+        flash("Athlete Has Registrated Succesfuly!")
+        #return render_template('register.html', title="Register")
     
 
     return render_template('register.html', title="Register")
 
-    
-    
-  #  return render_template('register.html')
 
+    
 
                               
 @app.route('/log_out')
