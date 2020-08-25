@@ -12,7 +12,10 @@ if os.path.exists("env.py"):
     import env
 
 app=Flask(__name__)
-app.config["MONGO_URI"] = os.getenv("MONGO_URI")    
+app.config["MONGO_DBNAME"] = os.getenv("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.getenv("MONGO_URI") 
+app.secret_key = os.environ.get("SECRET_KEY")
+
 
 
 MONGODB_URI = os.getenv('MONGO_URI')
@@ -171,42 +174,68 @@ def submit_to_database():
                           
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == "POST":
+        # check id author_name exists
+        user_exists = mongo.db.users.find_one(
+            {"author_name": request.form.get("author_name").lower()})
+
+        if user_exists:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                user_exists["password"], request.form.get("password")): 
+                    session["author"] = request.form.get("author_name").lower()
+                    flash("Welcome, {}".format(request.form.get("author_name"))) 
+            else:
+                # invalid password match
+                flash("Incorect Author Name or/and Pasword") 
+                return redirect(url_for("login"))   
+
+        else:
+            # author_name doesn't exist
+            flash("Incorect Author Name or/and Pasword") 
+            return redirect(url_for("login"))  
+                      
+    return render_template("login.html")
+
+
+
+
     
-    logged_in = False
-    if request.method == 'GET' and not 'username' in session:     #author_name
-        return render_template('login.html', logged_in=logged_in)
-    elif request.method == 'GET' and 'username' in session:        #author_name
-        logged_in = True
-        recipes = mongo.db.recipes.find()
-        
-        recipes_dics = {}
-        
-        for i, recipe in enumerate(recipes):
-            recipe.pop('_id', None)
-            recipes_dics[i] = recipe
-            
-        recipes_dics = json.dumps(recipes_dics)
-        
-        return render_template('login.html', 
-                               username=session['username'],
-                               logged_in=logged_in,
-                               recipes=recipes_dics)
-    if request.method == 'POST':
-        session['username'] = request.form["username"]
-        logged_in = True
-        recipes=mongo.db.recipes.find()
-        recipes_dics = {}
-        
-        for i, recipe in enumerate(recipes):
-            recipe.pop('_id', None)
-            recipes_dics[i] = recipe
-            
-        recipes_dics = json.dumps(recipes_dics)
-            
-        return render_template('login.html',
-                              username=session['username'],
-                              logged_in=logged_in,
-                              recipes=recipes_dics)   
+#    logged_in = False
+#    if request.method == 'GET' and not 'author_name' in session:     #username
+#        return render_template('login.html', logged_in=logged_in)
+#    elif request.method == 'GET' and 'author_name' in session:        #username
+#        logged_in = True
+#        recipes = mongo.db.recipes.find()
+#        
+#        recipes_dics = {}
+#        
+#        for i, recipe in enumerate(recipes):
+#            recipe.pop('_id', None)
+#            recipes_dics[i] = recipe
+#            
+#        recipes_dics = json.dumps(recipes_dics)
+#        
+#        return render_template('login.html', 
+#                               author_name=session['author_name'],
+#                               logged_in=logged_in,
+#                               recipes=recipes_dics)
+#    if request.method == 'POST':
+#        session['author_name'] = request.form["author_name"]
+#        logged_in = True
+#        recipes=mongo.db.recipes.find()
+#        recipes_dics = {}
+#        
+#        for i, recipe in enumerate(recipes):
+#            recipe.pop('_id', None)
+#            recipes_dics[i] = recipe
+#            
+#        recipes_dics = json.dumps(recipes_dics)
+#            
+#        return render_template('login.html',
+#                              author_name=session['author_name'],
+#                              logged_in=logged_in,
+#                              recipes=recipes_dics)   
                               
                               
                               
