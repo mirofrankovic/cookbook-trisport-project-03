@@ -174,6 +174,7 @@ def submit_to_database():
                           
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    #logged_in = False
     if request.method == "POST":
         # check id author_name exists
         user_exists = mongo.db.users.find_one(
@@ -217,11 +218,11 @@ def login():
 #        recipes_dics = json.dumps(recipes_dics)
 #        
 #        return render_template('login.html', 
-#                               author_name=session['author_name'],
+#                               author_name=session['author'],
 #                               logged_in=logged_in,
 #                               recipes=recipes_dics)
 #    if request.method == 'POST':
-#        session['author_name'] = request.form["author_name"]
+#        session['author'] = request.form["author_name"]
 #        logged_in = True
 #        recipes=mongo.db.recipes.find()
 #        recipes_dics = {}
