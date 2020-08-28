@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h3 class="art-deco-font text-center">Welcome {{author_name}} to this well organized Cookbook for athletes!</h3>
+    <h5 class="art-deco-font text-center">You have created <span id="count-recipes-text"></span> recipes!</h5>
+    <br>
+    <div class="container">
+                <div id="username-with-recipes" class="row white form-padding">
+                    <div id="count-recipes-box" class="art-deco-font center-align #147aad orange darken-3 col s3 m3">
+                        <p class="art-deco-font">Recipe Count</p>
+                    </div>
+                    <h5 class="margin-left mobile-hide col m7 offset-m1">Here, you'll find some insights about your recipes and preferences</h5>
+                    <h5 class="margin-left show-on-small hide-on-med-and-up col s8">This is how you mix it</h5>
+                    <input id="reset-button" class="#80cbc4 teal lighten-3 btn col s12" type="button" value="Reset All" />
+                </div>
+                <div id="username-with-zero-recipes" class="row white form-padding">
+                    <h5 class="margin-left mobile-hide col s12">If you have no recipes yet, click to create your first recipe!</h5>
+                    <h5 class="margin-left show-on-small hide-on-med-and-up col s12">Hallo athlete, add your first recipe!</h5>
+                    <a href="/add_recipe" class="waves-effect waves-light btn #00695c teal darken-3 btn col s12">Add a Recipe</a>
+                </div>
+    </div>
+
+
+<div class="row">
+
+<div id="login-buttons" class="center-align col m6 offset-m3">
+                <a href="{{url_for('my_recipes')}}" class="margin-right-xs waves-effect waves-light btn-small #ad1457 pink darken-3"><i class="fas fa-cookie-bite"></i> See your Recipes</a>
+                <a href="{{url_for('log_out')}}" class="margin-right-xs waves-effect waves-light btn-small #ad1457 pink darken-3"><i class="fas fa-cookie-bite"></i> Log out</a>
+                
+</div>
+</div>
+
+<p id="hidden-recipes" hidden>{{recipes|safe}}</p>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    
+    var username = '{{author_name}}';
+    
+    var recipesText = $('#hidden-recipes').text();
+    var recipesJson = JSON.parse(recipesText);
+    var recipesList = [];
+    
+    for (i in recipesJson) {
+                    recipesList.push(recipesJson[i]);
+    }
+    
+    makeDashboard(recipesList);
+    
+    function makeDashboard(recipesList) {
+        
+        
+        myRecipesList = [];
+        
+        for ( var i = 0; i < recipesList.length; i++ ) {
+            let authorName = recipesList[i]['author_name'];
+                        
+            if ( username == authorName ) {
+                            myRecipesList.push(recipesList[i]);
+            }
+        }
+        
+        var ndx = crossfilter(myRecipesList);
+        //console.log(myRecipesList);
+        
+        counteMyRecipes(ndx, '#count-recipes-text');
+        counteMyRecipes(ndx, '#count-recipes-box');
+        resetButton(ndx);
+        
+        dc.renderAll();
+    }
+    
+        function resetButton(ndx) {
+            $("#reset-button").on("click", function() {
+                dc.filterAll();
+                dc.redrawAll();
+            });
+        }
+        
+        
+        function counteMyRecipes(ndx, element) {
+                    
+            var myRecipesTotal = ndx.groupAll();
+                    
+            dc.numberDisplay(element)
+                .formatNumber(d3.format("d"))
+                .valueAccessor(function (d) {
+                    d = myRecipesList.length
+                    return (+d);
+                })
+                .group(myRecipesTotal);
+        }
+        
+        
+        MyRecipeCount = myRecipesList.length
+                
+                if ( MyRecipeCount != 0 ) {
+                    $('#username-with-zero-recipes').css('display', 'none');
+               } else {
+                   $('#username-with-recipes').css('display', 'none');
+                   // $('.dashboard-graphs').css('display', 'none');
+                }
+                
+    
+    
+    
+    
+});
+
+
+
+
+</script>
+
+
+
+{% endblock %}

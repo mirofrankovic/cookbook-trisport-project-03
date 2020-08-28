@@ -174,7 +174,6 @@ def submit_to_database():
                           
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    #logged_in = False
     if request.method == "POST":
         # check id author_name exists
         user_exists = mongo.db.users.find_one(
@@ -185,7 +184,10 @@ def login():
             if check_password_hash(
                 user_exists["password"], request.form.get("password")): 
                     session["author"] = request.form.get("author_name").lower()
-                    flash("Welcome, {}".format(request.form.get("author_name"))) 
+                    flash("Ahoj! {}".format(
+                        request.form.get("author_name"))) 
+                    return redirect(url_for(
+                        "authorprofile", author_name=session["author"]))    
             else:
                 # invalid password match
                 flash("Incorect Author Name or/and Pasword") 
@@ -196,51 +198,7 @@ def login():
             flash("Incorect Author Name or/and Pasword") 
             return redirect(url_for("login"))  
                       
-        return render_template("login.html")
-
-
-
-
-    
-#    logged_in = False
-#    if request.method == 'GET' and not 'author_name' in session:     #username
-#        return render_template('login.html', logged_in=logged_in)
-#    elif request.method == 'GET' and 'author_name' in session:        #username
-#        logged_in = True
-#        recipes = mongo.db.recipes.find()
-#        
-#        recipes_dics = {}
-#        
-#        for i, recipe in enumerate(recipes):
-#            recipe.pop('_id', None)
-#            recipes_dics[i] = recipe
-#            
-#        recipes_dics = json.dumps(recipes_dics)
-#        
-#        return render_template('login.html', 
-#                               author_name=session['author'],
-#                               logged_in=logged_in,
-#                               recipes=recipes_dics)
-#    if request.method == 'POST':
-#        session['author'] = request.form["author_name"]
-#        logged_in = True
-#        recipes=mongo.db.recipes.find()
-#        recipes_dics = {}
-#        
-#        for i, recipe in enumerate(recipes):
-#            recipe.pop('_id', None)
-#            recipes_dics[i] = recipe
-#            
-#        recipes_dics = json.dumps(recipes_dics)
-#            
-#        return render_template('login.html',
-#                              author_name=session['author_name'],
-#                              logged_in=logged_in,
-#                              recipes=recipes_dics)   
-                              
-    
-   
-                              
+    return render_template("login.html")
                               
                               
 @app.route('/register', methods=['GET', 'POST'])
@@ -267,13 +225,17 @@ def register():
         #logging.info('User already exist. Skipping new user')
         session["author"] = request.form.get("author_name").lower()
         flash("Athlete Has Registrated Succesfuly!")
-        #return render_template('register.html', title="Register")
+        return redirect(url_for("authorprofile", author_name=session["author"]))
+    
     
 
     return render_template('register.html', title="Register")
 
 
-    
+@app.route('/authorprofile/<author_name>', methods=['GET', 'POST'])
+def authorprofile(author_name):
+    author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
+    return render_template("authorprofile.html", author_name=author_name)
 
                               
 @app.route('/log_out')
