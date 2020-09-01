@@ -261,19 +261,14 @@ def search_form():
     
         
 
-
-
-
-
-
 @app.route('/my_recipes', methods=['GET', 'POST'])
 def my_recipes():
-    if not 'username' in session:
-        return redirect('/log_in')
+    if 'author_name' in session:                         # if Not 'author_name' in session: return redirect(url_for('login'))
+        return redirect(url_for('my_recipes'))
     else:
         recipes = mongo.db.recipes.find()
         return render_template('my_recipes.html',
-                           username=session['username'],
+                           author_name=session['author'],
                            recipes=recipes)  
                            
                            
