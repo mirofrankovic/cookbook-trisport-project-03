@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col s12 white center add-recipe-box">
         <div class="icon-block">
-            <h2 class="center brown-text art-deco-font">Add a Recipe</h2>
+            <h2 class="center brown-text art-deco-font">Welcome {{author_name}} to this well organized CookBook for athletes!</h2>
             <p class="light center">Click to open a form that will let you write your recipe and add it to your favourite recipe menu.</p>
         </div>
         <a href="/get_my_form" class="waves-effect waves-light btn #880e4f pink darken-4">Add a Recipe</a>
@@ -60,7 +60,8 @@
         
         
      </div>
-    
+
+ 
     
     
     
@@ -68,7 +69,17 @@
     
     
     {% endif %} {% endfor %}
-</div>   
+</div>  
+
+
+<div class="row">
+
+<div id="login-buttons" class="center-align col m6 offset-m3">
+              
+                <a href="{{url_for('log_out')}}" class="margin-right-xs waves-effect waves-light btn-small #ad1457 pink darken-3"><i class="fas fa-cookie-bite"></i> Log out</a>
+                
+</div>
+</div>
 <script>
 $(document).ready(function(){
     $('.modal').modal();

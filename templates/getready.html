@@ -21,7 +21,7 @@
         <img class="parallax" src="static/images/backwater.jpg" alt="nutrition" style="width:100%;height:100%;">
       
         <div class="center">
-        <a href="{{url_for('login')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1 text-center">Get Started</a>
+        <!--<a href="{{url_for('login')}}" id="download-button" class="btn-large waves-effect waves-light teal lighten-1 text-center">Get Started</a>-->
         </div>
         <br>
         <h2 class="center col s12 lighten">Start with good nutrition</h2>
@@ -33,39 +33,45 @@
       </div> 
         
     </div>
-<!--</section>-->
 
+     
+    <section class="section-container section-navbar no-pad-bot">
+    <nav>
+    <div class="nav-wrapper grey lighten-4 scroll-tab">
+    <ul class="menu-list center">
+                 <li>
+                    <a href="{{ url_for('get_pre_race_meal') }}">
+                    <img class="subnav-img" src="{{ url_for('static', filename='images/preRaceM.jpg') }}" alt="Pre Race Meal">Pre Race Meal</a>
+                    <!--<a href="{{ url_for('get_pre_race_meal') }}">Pre Race Meal</a>-->
+                </li>
+                <li>
+                    
+                    <a href="{{ url_for('get_race_meal') }}">
+                    <img class="subnav-img" src="{{ url_for('static', filename='images/rice-race.jpg') }}" alt="Race Meal">Race Meal</a>
+                    <!--<p class="txt">Race Meal</p>-->
+                    <!--<a href="{{ url_for('get_race_meal') }}">Race Meal</a>-->
+                </li>
+                <li>
+                    <a href="{{ url_for('get_post_race_meal') }}">
+                    <img class="subnav-img" src="{{ url_for('static', filename='images/salmon.jpg') }}" alt="Post Race Meal">Post Race Meal</a>
+                   <!--<a href="{{ url_for('get_post_race_meal') }}">Post Race Meal</a>-->
+                </li>
 
-<!--  <div class="section"> -->
-    <!--<div class="row"> -->
-      <!--<div class="col s12 center"> -->
-        <!--<h3><i class="mdi-content-send brown-text"></i></h3>-->
-        
+    </ul>
+
+      
+      
+    </div>  
+    </nav>  
+    </section>
+
         
         
         
         <h1 class="center-align col s12 purple-text light">If you have any suggesstions, you can add and share your recipe with us.</h1>
         
         
-     <!-- </div>
-      {% block search_form_btn %}
-						<li id="search-form-toggle" class="nav-item center">
-							<a href="/search_form" id="search-btn" class="btn btn-outline-info">
-								<i class="fas fa-search"></i>
-							</a>
-						</li>
-			{% endblock search_form_btn %}	
-     
-    </div>-->
-    <div class="section no-pad-bot">
-    <div class="parallax-container">
-      
-       <img class="parallax" src="static/images/blueberries.jpeg" alt="nutrition" style="width:100%;height:100%;">
-       <h1 class="center-align col s12 lighten">Find right meal with right nutritions.</p>
-      
-      
-    </div>  
-    </div>
+    
     
     
     

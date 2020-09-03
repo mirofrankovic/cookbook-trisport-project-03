@@ -187,7 +187,7 @@ def login():
                     flash("Ahoj! {}".format(
                         request.form.get("author_name"))) 
                     return redirect(url_for(
-                        "authorprofile", author_name=session["author"]))    
+                        "my_recipes", author_name=session["author"]))    
             else:
                 # invalid password match
                 flash("Incorect Author Name or/and Pasword") 
@@ -225,17 +225,17 @@ def register():
         #logging.info('User already exist. Skipping new user')
         session["author"] = request.form.get("author_name").lower()
         flash("Athlete Has Registrated Succesfuly!")
-        return redirect(url_for("authorprofile", author_name=session["author"]))
+        return redirect(url_for("my_recipes", author_name=session["author"]))
     
     
 
     return render_template('register.html', title="Register")
 
 
-@app.route('/authorprofile/<author_name>', methods=['GET', 'POST'])
-def authorprofile(author_name):
-    author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
-    return render_template("authorprofile.html", author_name=author_name)
+#@app.route('/authorprofile', methods=['GET', 'POST'])
+#def authorprofile(author_name):
+#    author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
+#    return render_template("authorprofile.html", author_name=author_name)
 
                               
 @app.route('/log_out')
@@ -261,15 +261,17 @@ def search_form():
     
         
 
-@app.route('/my_recipes', methods=['GET', 'POST'])
-def my_recipes():
-    if 'author_name' in session:                         # if Not 'author_name' in session: return redirect(url_for('login'))
-        return redirect(url_for('my_recipes'))
-    else:
-        recipes = mongo.db.recipes.find()
-        return render_template('my_recipes.html',
-                           author_name=session['author'],
-                           recipes=recipes)  
+@app.route('/my_recipes/<author_name>', methods=['GET', 'POST'])
+def my_recipes(author_name):
+    author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
+    return render_template("my_recipes.html", author_name=author_name)
+   # if 'author_name' in session:                         # if Not 'author_name' in session: return redirect(url_for('login'))
+   #     return redirect(url_for('my_recipes'))
+   # else:
+   #     recipes = mongo.db.recipes.find()
+   #     return render_template('my_recipes.html',
+   #                        author_name=session['author'],
+   #                        recipes=recipes)  
                            
                            
 @app.route('/dashboard')
@@ -277,7 +279,19 @@ def dashboard():
     forms = forms_collection.find()
     
     return render_template('dashboard.html')
-    
+
+@app.route('/get_pre_race_meal', methods=['GET']) 
+def get_pre_race_meal():
+    return render_template('my_recipes.html')   
+
+@app.route('/get_race_meal', methods=['GET']) 
+def get_race_meal():
+    return render_template('my_recipes.html')   
+
+@app.route('/get_post_race_meal', methods=['GET']) 
+def get_post_race_meal():
+    return render_template('my_recipes.html')   
+            
 
 
 
