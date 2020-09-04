@@ -263,15 +263,16 @@ def search_form():
 
 @app.route('/my_recipes/<author_name>', methods=['GET', 'POST'])
 def my_recipes(author_name):
-    author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
-    return render_template("my_recipes.html", author_name=author_name)
-   # if 'author_name' in session:                         # if Not 'author_name' in session: return redirect(url_for('login'))
-   #     return redirect(url_for('my_recipes'))
-   # else:
-   #     recipes = mongo.db.recipes.find()
-   #     return render_template('my_recipes.html',
-   #                        author_name=session['author'],
-   #                        recipes=recipes)  
+    user = mongo.db.users.find_one({"author_name": author_name})
+    if user:
+        author_name = user['author_name']
+        # TODO: Add the code to filter the recipes by author_name
+        recipes = mongo.db.recipes.find()
+        return render_template('my_recipes.html',
+                           author_name=session['author'],
+                           recipes=recipes)
+    else:
+        return redirect(url_for('login'))
                            
                            
 @app.route('/dashboard')
