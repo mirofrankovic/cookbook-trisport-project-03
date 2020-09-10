@@ -216,7 +216,8 @@ def register():
 
         register = {
             "author_name": request.form.get("author_name").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "likes":[]
         }    
         mongo.db.users.insert_one(register)
            # return redirect(url_for('login'))
@@ -267,29 +268,72 @@ def my_recipes(author_name):
     if user:
         author_name = user['author_name']
         # TODO: Add the code to filter the recipes by author_name
-        recipes = mongo.db.recipes.find()
+        recipes = list(mongo.db.recipes.find({"author_name":author_name}))
+       
         return render_template('my_recipes.html',
                            author_name=session['author'],
+                        
+                        
                            recipes=recipes)
     else:
         return redirect(url_for('login'))
                            
+@app.route('/popular_recipe/<recipe_id>', methods=['GET', 'POST']) 
+def popular_recipe(recipe_id):
+    if request.method == "POST":
+        #author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
+        current_user = mongo.db.users.find_one({"author_name":session["author"]})
+
+        user=mongo.db.users
+
+        my_popular=user.find({"$and": [{"author_name": session['author']},
+                         {'likes': recipe_id}]})
+
+        #if my_popular is None:
+        if recipe_id not in current_user["likes"]:
+            mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)},
+                                     {'$inc': {'likes': 1}}) 
+
+            user.update_one({"author_name": session['author']},                                                     
+                        {"$push": {"likes": recipe_id}})
+
+        else:
+
+            flash("You have already liked this recipe!")
+
+    return redirect(url_for('recipedescription', recipe_id=recipe_id))
+
+    
+
+    #return render_template('recipedescription.html',
+    #                         recipe=mongo.db.recipes.find
+    #                         ({"_id": ObjectId(recipe_id)}))  
+
+
                            
+@app.route('/unpopular_recipe/<recipe_id>') 
+def unpopular_recipe(recipe_id):
+
+
+
+    return render_template('recipedescription.html')  
+
+
 @app.route('/dashboard')
 def dashboard():
     forms = forms_collection.find()
     
     return render_template('dashboard.html')
 
-@app.route('/get_pre_race_meal', methods=['GET']) 
+@app.route('/get_pre_race_meal', methods=['GET']) #need pagination
 def get_pre_race_meal():
     return render_template('my_recipes.html')   
 
-@app.route('/get_race_meal', methods=['GET']) 
+@app.route('/get_race_meal', methods=['GET']) #need pagination
 def get_race_meal():
     return render_template('my_recipes.html')   
 
-@app.route('/get_post_race_meal', methods=['GET']) 
+@app.route('/get_post_race_meal', methods=['GET']) #need pagination
 def get_post_race_meal():
     return render_template('my_recipes.html')   
             

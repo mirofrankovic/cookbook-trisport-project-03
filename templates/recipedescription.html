@@ -19,6 +19,14 @@
         
     <header class="header text-left">
     <h5><strong>Make this recipe favourite</strong></h5>
+    
+    {% if session['author'] %}
+     
+     <form id="form" method="POST" action="{{ url_for('popular_recipe', recipe_id=recipe._id) }}">
+     <a href="#" id="thumb-up-btn"><i class="material-icons teal-text stat-icon">thumb_up</i></a>
+     {{recipe.likes}}
+     </form>
+     {% endif %}
     </header> 
 
     </div>
@@ -40,31 +48,10 @@
     <p>Recipe added on: <em>{{recipe.due_date}}</em></p>
     <p>Recipe by <em>{{recipe.author_name}}</em></p>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+document.getElementById("thumb-up-btn").onclick = function() {
+    document.getElementById("form").submit();
+}
+</script>
 
 {% endblock %}

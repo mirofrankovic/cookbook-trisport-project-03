@@ -11,7 +11,9 @@
         <a href="/get_my_form" class="waves-effect waves-light btn #880e4f pink darken-4">Add a Recipe</a>
     </div>
 </div>
- <h5 class="art-deco-font text-center">You have created <span id="count-recipes-text"></span> recipes!</h5>
+ <!--<h5 class="art-deco-font text-center">You have created <span id="count-recipes-text"></span> recipes!</h5>-->
+ <h5 class="art-deco-font text-center">You have created {{recipes|count}} recipes!</h5>
+ 
  
 <div id="sorting-bar-my-recipes" class="row #00695c teal darken-3">
     <h4 class="art-deco-font col s12 m5">My Recipes</h4>
@@ -87,6 +89,8 @@ $(document).ready(function(){
     $('.modal').modal();
   });
     
+    
+        
     
 </script>
 
