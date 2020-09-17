@@ -46,7 +46,7 @@
 
 </head>
 
-<body class="#fafafa grey lighten-5">
+<body id="cookbook-body" class="#fafafa grey lighten-5">
 	<nav class="white" role="navigation">
 		<div class="nav-wrapper container">
 			<a id="logo-container" href="{{url_for('get_ready')}}" class="brand-logo">
@@ -109,33 +109,31 @@
 	</div>
 
 	<footer class="page-footer #eceff1 light-blue" id="footer-custom">
-		<div class="container">
+		<div class="footer-left">
 			<div class="row no-margin">
-				<div class="col l7 m3 s12 mobile-hide">
+				<div class="col-6 17 m3 s12">  <!--mobile-hide?-->
 					<p class="black-text footer-heading">Connect your training with our nutrition typs...</p>
 					<h5 class="grey-text text-lighten-4 footer-text">If you have any suggestions, please <a
 							href="{{url_for('contact_us')}}">Contact Us</a> or add some your recipes!</h5>
 
-
 				</div>
-				<div class="col l5 m3 s12 mobile-hide">
-					<h5 class="white-text">©Copyright &middot; MiroFrankovic &middot; 2020</h5>
-					<ul>
-						<a href="mailto:miro.frankovic@gmail.com">
-							<i class="fas fa-at fa-2x" aria-hidden="true"></i>
-						</a>
-						<a href="https://github.com/mirofrankovic">
-							<i class="fab fa-github fa-2x" aria-hidden="true"></i>
-						</a>
-					</ul>
+			</div>
+		</div>
+				<div class="footer-right">
+                    <div class="row no-margin">
+                        <div class="col-6 15 m3 s12"> <!--mobile-hide?-->
+                            <h5 class="white-text">©Copyright &middot; MiroFrankovic &middot; 2020</h5>
+                            <ul class="footer-icons center">
+                                <a href="mailto:miro.frankovic@gmail.com">
+                                    <i class="fas fa-at fa-2x" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://github.com/mirofrankovic">
+                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
 				</div>
-				<!--<div class="col l2 s12">
-          <h5 class="black-text">Connect Us</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-          </ul>
-        </div>-->
 			</div>
 		</div>
 

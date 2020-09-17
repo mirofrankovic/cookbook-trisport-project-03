@@ -79,6 +79,17 @@ p {
 
 */
 
+html, body {
+   margin:0;
+   padding:0;
+   height:100vh;
+}
+#cookbook-body{
+    padding:10px;
+    padding-bottom:120px;   /* Height of the footer */
+}
+
+
 
 .icon-block {
   padding: 0 15px;
@@ -406,9 +417,17 @@ a {
 
 #footer-custom {
     width: 100%;
-    position: relative;
-    bottom: 0px;
+    /*position: relative;
+    /*bottom: 0px;
     padding: 0px;
+   /* position:absolute; 
+    bottom:0;
+    height:120px;   /* Height of the footer */
+    box-sizing: border-box;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 50px 50px 60px 50px;
+	margin-top: 80px;
     
 }
 
@@ -419,6 +438,61 @@ a {
 .footer-text {
     font-size: 0.8em;
 }
+
+
+#footer-custom .footer-left,
+#footer-custom .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+#footer-custom .footer-left{
+	width: 60%;
+}
+
+
+#footer-custom .footer-right{
+	width: 30%;
+}
+
+
+#footer-custom .footer-icons{
+	margin-top: 25px;
+}
+
+#footer-custom .footer-icons a{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 3px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 20px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+
+@media (max-width: 880px) {
+
+	
+	#footer-custom .footer-right,
+	#footer-custom .footer-left{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+}
+
+
 
 
 
@@ -491,6 +565,14 @@ p {
     top: 0;
   }
 }
+
+
+
+
+/* MQ Footer */
+
+
+
 
 .icon-block {
   padding: 0 15px;

@@ -19,6 +19,7 @@
         
     <header class="header text-left">
     <h5><strong>Make this recipe favourite</strong></h5>
+    <!--<a href="#" id="thumb-up-btn"><i class="material-icons teal-text stat-icon">thumb_up</i></a>-->
     
     {% if session['author'] %}
      
@@ -26,7 +27,11 @@
      <a href="#" id="thumb-up-btn"><i class="material-icons teal-text stat-icon">thumb_up</i></a>
      {{recipe.likes}}
      </form>
-     {% endif %}
+     {% else %}
+     <a class="tooltipped like-dis" data-position="bottom" title="You have to login to like this recipe!" data-tooltip="You have to login to like!">{{ recipe.likes }}
+                            <i class="material-icons teal-text stat-icon">thumb_up</i></a>
+
+     {% endif %}               <!--go to make flsh message for useer that need to be logged in with else statement-->
     </header> 
 
     </div>
