@@ -437,6 +437,10 @@ a {
 
 .footer-text {
     font-size: 0.8em;
+    color: black;
+}
+.author-text{
+    color:black;
 }
 
 
@@ -468,15 +472,17 @@ a {
 	cursor: pointer;
 	background-color:  #33383b;
 	border-radius: 3px;
-
-	font-size: 20px;
+    font-size: 15px;
 	color: #ffffff;
 	text-align: center;
 	line-height: 20px;
-
-	margin-right: 3px;
+    margin-right: 3px;
 	margin-bottom: 5px;
 }
+#footer-custom .footer-icons a i {
+    margin-top: 6px;
+}
+
 
 
 @media (max-width: 880px) {

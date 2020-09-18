@@ -78,9 +78,18 @@
 							<input type="text" name="search" placeholder="Type and press enter to search"></form>
 					</a></li>
 				<li><a href="{{url_for('get_recipes')}}">All Recipes</a></li>
-
-				<li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
-				<li><a href="{{url_for('login')}}">Login</a></li>
+                <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
+				{% if session['author'] is defined %}
+				    <li><a href="{{url_for('my_recipes', author_name=session['author'])}}">Profile</a></li>
+				{% endif %}
+				<li>
+                {% if session['author'] is defined %}
+                    <a href="{{url_for('log_out')}}">Logout</a>
+                {% else %}
+                    <a href="{{url_for('login')}}">Login</a>
+                {% endif %}
+				</li>
+				
 				<!--<li><a href="{{url_for('register')}}">Register</a></li>-->
 
 			</ul>
@@ -108,12 +117,12 @@
 		{% block content %} {% endblock %}
 	</div>
 
-	<footer class="page-footer #eceff1 light-blue" id="footer-custom">
+	<footer class="page-footer white" id="footer-custom">  <!--#eceff1 light-blue-->
 		<div class="footer-left">
 			<div class="row no-margin">
 				<div class="col-6 17 m3 s12">  <!--mobile-hide?-->
 					<p class="black-text footer-heading">Connect your training with our nutrition typs...</p>
-					<h5 class="grey-text text-lighten-4 footer-text">If you have any suggestions, please <a
+					<h5 class="footer-text">If you have any suggestions, please <a
 							href="{{url_for('contact_us')}}">Contact Us</a> or add some your recipes!</h5>
 
 				</div>
@@ -122,7 +131,7 @@
 				<div class="footer-right">
                     <div class="row no-margin">
                         <div class="col-6 15 m3 s12"> <!--mobile-hide?-->
-                            <h5 class="white-text">©Copyright &middot; MiroFrankovic &middot; 2020</h5>
+                            <h5 class="author-text">©Copyright &middot; MiroFrankovic &middot; 2020</h5>
                             <ul class="footer-icons center">
                                 <a href="mailto:miro.frankovic@gmail.com">
                                     <i class="fas fa-at fa-2x" aria-hidden="true"></i>
