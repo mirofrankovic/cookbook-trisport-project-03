@@ -2,34 +2,40 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row center">
-        <h3>Dashboard</h3>
-    </div>
-    
-    <div class="row dashboard-graph">
-        <div id="meal_type-graph" class="col s12 m6 x14">
-            <h5 class="art-deco-font center">Favourite Meal Type</h5>
+<div class="container-dashboard">
+        <div class="row center">
+            <h3>Dashboard</h3>
         </div>
-    </div>
-    <div class="row dashboard-graph">
-        <div id="sport_type-graph" class="col s12 m6 x14">
-            <h5 class="art-deco-font center">Favourite Sport Type</h5>
+       <!-- <div class="container">-->
+            <div class="row">
+                <div id="meal_type-graph" class="dashboard-graph">
+                    <h5 class="art-deco-font center">Favourite Meal Type</h5>
+                </div>
+            </div>
+       <!--</div>-->
+        <!--<div class="container">-->
+        <div class="row dashboard-graph">
+            <div id="sport_type-graph" class="col s12 m6 x14">
+                <h5 class="art-deco-font center">Favourite Sport Type</h5>
+            </div>
         </div>
-    </div>
-    
-    <div class="row dashboard-graph">
-        <div id="race_day-graph" class="col s12 m6 x14">
-            <h5 class="art-deco-font center">Favourite Race Day</h5>
+        <!--</div>-->
+        <!--<div class="container">-->
+        <div class="row dashboard-graph">
+            <div id="race_day-graph" class="col s12 m6 x14">
+                <h5 class="art-deco-font center">Favourite Race Day</h5>
+            </div>
         </div>
-    </div>
-    <div class="row dashboard-graph">
-        <div id="vegan_meal-graph" class="col s12 m6 x14">
-            <h5 class="art-deco-font center">Favourite Meal for Vegan</h5>
+        <!--</div>-->
+        <!--<div class="container">-->
+        <div class="row dashboard-graph">
+            <div id="vegan_meal-graph" class="col s12 m6 x14">
+                <h5 class="art-deco-font center">Favourite Meal for Vegan</h5>
+            </div>
         </div>
-    </div>
-<p id="hidden-recipes" hidden>{{recipes|safe}}</p>    
-    
+        <!--</div>-->
+    <p id="hidden-recipes" hidden>{{recipes|safe}}</p>    
+        
 </div>
 {% endblock %}
 

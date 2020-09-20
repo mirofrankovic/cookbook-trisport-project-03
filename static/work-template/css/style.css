@@ -144,7 +144,7 @@ a {
 
 
 
-/* FORMS */
+/* FORMS  ICLUDING LOGIN AND REGITER*/
 .float-right {
     float: right;
 }
@@ -155,6 +155,12 @@ a {
 
 #card-horizontal-title {
     margin-left: 1em;
+}
+
+.form-login-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ALL Recipes */
@@ -372,6 +378,13 @@ a {
     margin-bottom: 2em;
 }
 
+
+
+
+
+
+
+
 /* navbar-container */
 
 .section-container {
@@ -571,6 +584,50 @@ p {
     top: 0;
   }
 }
+/* Dashboard File */
+.dashboard-graph {
+  width: 100%; 
+  min-height: 450px;
+}
+.row {
+  margin:0 !important;
+}
+.dc-chart{
+    color:red;
+}
+
+
+
+
+
+
+
+/* MQ Dashboard File */
+
+@media (max-width: 880px) {
+
+    .container-dashboard{
+        display:block;
+		width: 100%;
+		text-align: center;
+	}
+
+}
+
+
+@media (max-width: 650px) {
+
+    .container-dashboard .dashboard-graph,
+    .row{
+
+        display:block;
+		width: 100%;
+		text-align: center;
+	}
+
+}
+
+
 
 
 

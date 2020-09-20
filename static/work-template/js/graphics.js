@@ -49,6 +49,7 @@ function show_meal_type_graph(ndx){
         .dimension(mealtypeDim)
         .barPadding(0.1)
         .outerPadding(0.05)
+        .useViewBoxResizing(true)
         .group(mealtypeMix);
 }
 
@@ -67,6 +68,7 @@ function show_sport_type_graph(ndx){
         .dimension(sporttypeDim)
         .barPadding(0.1)
         .outerPadding(0.05)
+        .useViewBoxResizing(true)
         .group(sporttypeMix);
 }
 
@@ -85,6 +87,7 @@ function show_race_day_graph(ndx){
         .dimension(racedayDim)
         .barPadding(0.1)
         .outerPadding(0.05)
+        .useViewBoxResizing(true)
         .group(racedayMix);
 }
 
@@ -103,6 +106,7 @@ function show_vegan_meal_graph(ndx){
         .dimension(veganmealDim)
         .barPadding(0.1)
         .outerPadding(0.05)
+        .useViewBoxResizing(true)
         .group(veganmealMix);
 }
 
