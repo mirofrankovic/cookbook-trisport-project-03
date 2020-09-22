@@ -277,7 +277,7 @@ a {
 }
 
 
-/* Rating Star Widgets Style */
+/* Rating Star Widgets Style.................................................................. */
 .rating-stars div {
   list-style-type:none;
   padding:0;
@@ -750,7 +750,7 @@ border-radius: 4px;
 
 
 
-/* Rating Star Widgets Style */
+/* Rating Star Widgets Style................................................. */
 .rating-stars ul {
   list-style-type:none;
   padding:0;
@@ -780,7 +780,7 @@ border-radius: 4px;
 }
 
 /* Social Icons */
-
+/*
 
 .btn.social > :first-child,
 .btn-large.social > :first-child,
@@ -849,6 +849,7 @@ border-radius: 4px;
 .dropbox:hover {
   background-color: #309ff0 !important;
 }
+*/
 .facebook {
   background-color: #3b5998;
   color: #fff !important;
@@ -859,6 +860,7 @@ border-radius: 4px;
 .facebook:hover {
   background-color: #4c70ba !important;
 }
+/*
 .flickr {
   background-color: #ff0084;
   color: #fff !important;
@@ -879,6 +881,8 @@ border-radius: 4px;
 .foursquare:hover {
   background-color: #fb799c !important;
 }
+
+*/
 .github {
   background-color: #444444;
   color: #fff !important;
@@ -889,6 +893,7 @@ border-radius: 4px;
 .github:hover {
   background-color: #5e5e5e !important;
 }
+/*
 .google {
   background-color: #dd4b39;
   color: #fff !important;
@@ -919,6 +924,7 @@ border-radius: 4px;
 .linkedin:hover {
   background-color: #009de9 !important;
 }
+*/
 .strava {
   background-color: #fc4c02;
   color: #fff !important;
@@ -929,6 +935,7 @@ border-radius: 4px;
 .strava:hover {
   background-color: #FD7035 !important ;
 }
+/*
 .microsoft {
   background-color: #2672ec;
   color: #fff !important;
@@ -969,6 +976,7 @@ border-radius: 4px;
 .openid:hover {
   background-color: #f9ab4f !important;
 }
+*/
 .pinterest {
   background-color: #cb2027;
   color: #fff !important;
@@ -979,6 +987,7 @@ border-radius: 4px;
 .pinterest:hover {
   background-color: #e03e44 !important;
 }
+/*
 .reddit {
   background-color: #eff7ff;
   color: #000 !important;
@@ -1009,6 +1018,7 @@ border-radius: 4px;
 .tumblr:hover {
   background-color: #3c6085 !important;
 }
+*/
 .twitter {
   background-color: #55acee;
   color: #fff !important;
@@ -1019,6 +1029,7 @@ border-radius: 4px;
 .twitter:hover {
   background-color: #83c3f3 !important;
 }
+/*
 .vimeo {
   background-color: #1ab7ea;
   color: #fff !important;
@@ -1055,9 +1066,34 @@ border-radius: 4px;
 .icon-block .material-icons {
 	font-size: inherit;
 }
+*/
+/*.......Media Icons....................*/
+
+#media {
+    position:relative;
+    top:100px;
+    top:25vh;
+    font-size:1rem;
+    text-align:center;
+    height:250px;
+    overflow:hidden;
+}
+
+
+
+#media a {
+    display: inline-block;
+	text-decoration: none;
+	padding: 1px;
+}
+
+
+/*.......Icons Responsive..............*/
+
+
 
 pre{
-      padding: 16px 20px 0px;
+    padding: 16px 20px 0px;
     background: #eee;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -1068,9 +1104,22 @@ pre{
   text-align: center;
 }
 
-
-
 .flashes h4 {
     line-height: 2;
 }
 
+
+/*   Media Query Contact US */
+/*
+.container-contactUs {
+    width:300px!important;
+    height:300px!important;
+    } 
+  
+
+@media only screen and (max-width : 600px) {
+  .container-contactUs {
+    width:300px!important;
+  }
+}
+*/
