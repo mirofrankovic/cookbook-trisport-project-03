@@ -416,15 +416,9 @@ a {
   font-size: 1.1rem;
   font-family: 'Muli', 'sans-serif';
 }
+/*-------------------sub-nav-----------*/
 
- .subnav-img {
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
+
 
 /* FOOTER */
 
@@ -1123,3 +1117,37 @@ pre{
   }
 }
 */
+
+img {
+    display:block;
+}
+
+
+ .subnav-img-left {
+  /*border-radius: 50%;*/
+  width: 70px;
+  height: 70px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 11px;
+}
+
+ .subnav-img-center {
+  /*border-radius: 50%;*/
+  width: 70px;
+  height: 70px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+ .subnav-img-right {
+  /*border-radius: 50%;*/
+  width: 70px;
+  height: 70px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 11px;
+}

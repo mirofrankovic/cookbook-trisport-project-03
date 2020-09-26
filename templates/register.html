@@ -2,7 +2,11 @@
 
 {% block content %}
 
-<p>Please create your account</p>
+
+<div class="container-register">
+            <div class="col m10 offset-m1 s12">
+                <h2 class="header center teal-text text-lighten-2">Please create your account</h2>
+            </div>
     <div class="row white">
         <form class="col s12" method="POST" action="{{ url_for('register')}}">
             <div class="row">
@@ -20,7 +24,7 @@
     </div>
     <p>If you have already your account with us, please click on the button below</p>
      <button type="button" class="btn waves-effect waves-light" onclick="window.location.href='{{ url_for('login')}}'">Login Here</button>
-    
+</div>    
 
 
 

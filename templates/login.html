@@ -2,26 +2,29 @@
 
 {% block content %}
 
-
-<p>Please Log In to your account</p>
-    <div class="row white form-login-container">
-        <form class="col s12" method="POST" action="{{url_for('login')}}">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="author_name" name="author_name" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required> 
-                    <label for="author_name"><i class="fas fa-user"></i>Author Name</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required> 
-                    <label for="password"><i class="fa fa-university"></i>Password</label>
-                </div>
+<div class="container-login">
+            <div class="col m10 offset-m1 s12">
+                <h2 class="header center teal-text text-lighten-2">Please Log In to your account</h2>
             </div>
-            <button class="btn waves-effect waves-light" type="submit">Log In</button>
-        </form>
-    </div>
-    <p>If you do not have an account, please click on the button below</p>
-    <button type="button" class="btn waves-effect waves-light" onclick="window.location.href='{{ url_for('register')}}'">Register Here</button>
-
+    
+        <div class="row white form-login-container">
+            <form class="col s12" method="POST" action="{{url_for('login')}}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="author_name" name="author_name" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required> 
+                        <label for="author_name"><i class="fas fa-user"></i>Author Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required> 
+                        <label for="password"><i class="fa fa-university"></i>Password</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Log In</button>
+            </form>
+        </div>
+        <p>If you do not have an account, please click on the button below</p>
+        <button type="button" class="btn waves-effect waves-light" onclick="window.location.href='{{ url_for('register')}}'">Register Here</button>
+</div>
 
 
 {% endblock %}    
