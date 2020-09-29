@@ -37,22 +37,28 @@
      
     <section class="section-container section-navbar no-pad-bot">
     <nav>
-    <div class="grey lighten-4">  <!--nav-wrapper-->
+    <div class="grey lighten-4 grey-menu">  <!--nav-wrapper-->
     <ul class="menu-list center">
                  <li>
                     <a href="{{ url_for('get_pre_race_meal') }}">
-                    <img class="subnav-img-left" src="{{ url_for('static', filename='images/preRaceM.jpg') }}" alt="Pre Race Meal">Pre Race Meal</a>
+                    <div class="space-menu">
+                    <img class="subnav-img-left"src="{{ url_for('static', filename='images/preRaceM.jpg') }}" alt="Pre Race Meal">Pre Race Meal</div></a>
+                    
                 </li>
                 <li>
                     
                     <a href="{{ url_for('get_race_meal') }}">
-                    <img class="subnav-img-center" src="{{ url_for('static', filename='images/rice-race.jpg') }}" alt="Race Meal">Race Meal</a>
+                    <div class="space-menu">
+                    <img class="subnav-img-center" src="{{ url_for('static', filename='images/rice-race.jpg') }}" alt="Race Meal">Race Meal</div></a>
+                    
                     <!--<p class="txt">Race Meal</p>-->
                     <!--<a href="{{ url_for('get_race_meal') }}">Race Meal</a>-->
                 </li>
                 <li>
                     <a href="{{ url_for('get_post_race_meal') }}">
-                    <img class="subnav-img-right" src="{{ url_for('static', filename='images/salmon.jpg') }}" alt="Post Race Meal">Post Race Meal</a>
+                    <div class="space-menu">
+                    <img class="subnav-img-right" src="{{ url_for('static', filename='images/salmon.jpg') }}" alt="Post Race Meal">Post Race Meal</div></a>
+            
                    <!--<a href="{{ url_for('get_post_race_meal') }}">Post Race Meal</a>-->
                 </li>
 
