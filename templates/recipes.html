@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% import 'components.html' as components %}
 
 {% block content %}
 
+{% if paginated_recipes.total > 0 %}
+<section class="container-fluid">
 
 <!--<div class="vh100 container pb-5">-->
     
     <div id="navigation-cards" class="row">
-        {% for recipe in recipes %}
+        {% for recipe in paginated_recipes['items'] %}
         <div class="col s12 m4 l3 navigation-cards" data-date="{{recipe.due_date}}">
         <div class="card">
             <div class="card-image">
@@ -32,13 +35,13 @@
 </div>
 
 </div>
-<!--</section>-->
 
+</section>
 
-
-
-
-
-
-
+<section class="container pagination-container">
+    {{ components.pagination(url_for('get_recipes'), paginated_recipes) }}
+</section>
+{% else %}
+<h3 class="red-blue-text text-darken-4 center-align">No Results Found!</h3>
+{% endif %}
 {% endblock %}

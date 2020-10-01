@@ -1236,3 +1236,45 @@ img {
 .space-menu {
     text-align: center;
 }
+
+.center-text {
+    color:rgb(9, 185, 9);
+}
+
+/*-------------getready main image  -----------------*/
+ .img-responsive{
+     height:auto;
+     width: 100%;
+     object-fit: cover;
+     
+     
+ }
+
+
+ @media (max-width:380px) {   /* iPhone mode */
+     .parallax-container{
+         height:100%;
+         width:100%;
+         object-fit: cover;
+         
+     }
+     .center-text {
+         color:black;
+     }
+ }   
+
+
+
+ /*
+ @media (max-width:650px) {
+     .parallax-container{
+         height:auto;
+         width:100%;
+         object-fit: cover;
+         
+     }
+     .center-text {
+         color:black;
+     }
+ }     
+ */
