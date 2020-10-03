@@ -1265,16 +1265,16 @@ img {
 
 
 
- /*
- @media (max-width:650px) {
-     .parallax-container{
-         height:auto;
+ 
+ @media (max-width:380px) {
+     .index-banner {
+         height: 100%;
          width:100%;
-         object-fit: cover;
+     }
+     .blue-text {
+          font-size: 25px;
          
      }
-     .center-text {
-         color:black;
-     }
+     
  }     
- */
+ 

@@ -6,8 +6,6 @@
        // Selector on the forms
        $('.form-select').formSelect();
        var servingCount = 1;
-       
-       
-       
+           
        
    });
