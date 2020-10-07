@@ -201,6 +201,17 @@ a {
     text-overflow: ellipsis; 
 }
 
+
+.card-title-spice > #race_day_name {
+    font-size: 0.9em!important;
+    padding-bottom: 0px;
+    white-space: nowrap; 
+    width: 8em; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin-bottom: 20px;
+}
+
 #load-more-spice {
     padding-top: 1em;
     padding-bottom: 1.5em;
@@ -1250,6 +1261,18 @@ img {
      
  }
 
+ /*-------------getready collapsible image with text --------------------*/
+
+ .content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.text-race-image {
+    color:brown;
+}
 
  @media (max-width:380px) {   /* iPhone mode */
      .parallax-container{
@@ -1276,5 +1299,14 @@ img {
          
      }
      
- }     
+ }   
+
+ /*-------------recipes----------------------*/
+ .search-by {
+     font-family: 'Yanone Kaffeesatz', sans-serif;
+     font-size: 40px;
+     margin-top: 20px;
+
+ }  
+ 
  

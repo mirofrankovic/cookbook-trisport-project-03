@@ -108,17 +108,23 @@ def get_ready():
     return render_template('getready.html', recipes=mongo.db.recipes.find(), forms=mongo.db.forms.find())
 
 
-@app.route('/preparation')
-def get_prepared():
-    # will be the second page with pre-race-post race meal to choose with static images
-    return render_template('preparation.html', recipes=mongo.db.recipes.find())
-
-
 # images for my recepies and see all my recipes after adding them
-@app.route('/get_recipes', methods=['GET'])
+@app.route('/get_recipes', methods=['GET', 'POST'])
 def get_recipes():
-    result = get_paginated_list(mongo.db.recipes, **request.args.to_dict())
-    return render_template('recipes.html', paginated_recipes=result)
+    if request.method == 'GET':             
+        params = request.args.to_dict()       #dictionary
+    else:
+        params = request.form.to_dict()
+    paginated_recipes = get_paginated_list(mongo.db.recipe, **params)
+    result = get_paginated_list(mongo.db.recipes, **request.args.to_dict())  #
+    return render_template('recipes.html', paginated_recipes=result, recipes=paginated_recipes)          #
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    query = request.form.get("query")
+    print(query)
+    return render_template("recipes.html", recipe=list(mongo.db.recipes.find({"$text": {"$search": query}}))) 
+    
 
 
 @app.route('/find_recipes')
