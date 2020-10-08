@@ -416,8 +416,9 @@ a {
   width:100%;
 }
 .section-navbar .menu-list {
-  display: flex;
+  /*display: flex;*/
   justify-content: space-between;
+  
 }
 .scroll-tab{
   overflow: auto;
@@ -1156,12 +1157,13 @@ img {
 
  .subnav-img-right {
   /*border-radius: 50%;*/
-  width: 60px;
-  height: 65px;
+  width: 80px;
+  height: 85px;
   padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
   margin-left: 20px; 
+  
 }
 /*----------MQ second navbar--------------*/
 /*
@@ -1272,7 +1274,14 @@ img {
 
 .text-race-image {
     color:brown;
+    
 }
+.menu-list {
+    text-align: center;
+     vertical-align: middle;
+}
+
+
 
  @media (max-width:380px) {   /* iPhone mode */
      .parallax-container{
@@ -1308,5 +1317,4 @@ img {
      margin-top: 20px;
 
  }  
- 
  

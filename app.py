@@ -43,7 +43,7 @@ mongo = PyMongo(app)  # constructor method
 forms_collection = mongo.db.forms
 
 
-def get_paginated_list(entity, query={}, **params):
+def get_paginated_list(entity, query={}, **params):            # function
     page_size = int(params.get(KEY_PAGE_SIZE, PAGE_SIZE))
     page_number = int(params.get(KEY_PAGE_NUMBER, 1))
     order_by = params.get(KEY_ORDER_BY, '_id')
@@ -123,7 +123,8 @@ def get_recipes():
 def search():
     query = request.form.get("query")
     print(query)
-    return render_template("recipes.html", recipe=list(mongo.db.recipes.find({"$text": {"$search": query}}))) 
+    paginated_recipes=get_paginated_list(mongo.db.recipes,{"$text": {"$search": query}})
+    return render_template("recipes.html", paginated_recipes=paginated_recipes) 
     
 
 
