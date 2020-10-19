@@ -1157,13 +1157,14 @@ img {
 
  .subnav-img-right {
   /*border-radius: 50%;*/
-  width: 80px;
-  height: 85px;
+  /*width: 80px; */
+ /* height: 65px; */
   padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
   margin-left: 20px; 
-  
+  margin-right: 20px;
+  cursor: pointer;
 }
 /*----------MQ second navbar--------------*/
 /*
@@ -1191,6 +1192,7 @@ img {
          padding-top: 5px;
          padding-left: 5px;
          margin-left:6px;
+         margin-right:6px;
 }
     .subnav-img-center{
          width: 70px;
@@ -1205,11 +1207,12 @@ img {
 @media (max-width:1200px) {
     .subnav-img-left,
     .subnav-img-right{
-         width: 70px;
-         height: 70px;
+         /*width: 70px;*/
+         /*height: 70px; */
          padding-top: 5px;
          padding-left: 5px;
          margin-left:10px;
+         margin-right:10px;
 }
     .subnav-img-center{
          width: 70px;
@@ -1224,11 +1227,12 @@ img {
 @media (max-width:600px) {
     .subnav-img-left,
     .subnav-img-right{
-         width: 70px;
+        /* width: 70px;*/
          height: 70px;
          padding-top: 5px;
          padding-left: 5px;
          margin-left:6px;
+         margin-right: 6px;
 }
     .subnav-img-center{
          width: 70px;

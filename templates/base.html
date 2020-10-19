@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,33 +17,24 @@
 	{% block css %}{% endblock css %}
 	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<!-- Font Awesome -->
+    <!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
 		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 	<!--Custom fonts for this template -->
 	<link href="https://fonts.googleapis.com/css?family=Teko|Yanone+Kaffeesatz" rel="stylesheet">
-
-	<!--jQuery before all JavaScript -->
+    <!--jQuery before all JavaScript -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-
-	<!-- D3, Crossfilter and DC and dashboard (assets) -->
+    <!-- D3, Crossfilter and DC and dashboard (assets) -->
 	<script type="text/javascript" src="{{url_for('static', filename='assets/d3.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/crossfilter.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/dc.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/queue.min.js')}}"></script>
-
-	<!--Materialize-->
+    <!--Materialize-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 </head>
-
 <body id="cookbook-body" class="#fafafa grey lighten-5">
 	<nav class="white" role="navigation">
 		<div class="nav-wrapper container">
@@ -54,9 +43,6 @@
 			</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="{{url_for('get_recipes')}}">All Recipes</a></li>
-				<!--<li><a href="{{url_for('add_recipe')}}">Your Suggestion</a></li>-->
-
-				<!--<li><a href="{{url_for('contact_us')}}">Contact Us</a></li>-->
 				<li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
 				{% if session['author'] is defined %}
 				    <li><a href="{{url_for('my_recipes', author_name=session['author'])}}">Profile</a></li>
@@ -70,13 +56,11 @@
 				</li>
 				<!--<li><a href="{{url_for('register')}}">Register</a></li>-->
 			</ul>
-
-			<ul id="nav-mobile" class="sidenav">
-
-				<li><a href="">
-						<form action="">
-							<input type="text" name="search" placeholder="Type and press enter to search"></form>
-					</a></li>
+            <ul id="nav-mobile" class="sidenav">
+                <!--<li><a href="">
+					<form action="">
+						<input type="text" name="search" placeholder="Type and press enter to search"></form>
+					</a></li>-->
 				<li><a href="{{url_for('get_recipes')}}">All Recipes</a></li>
                 <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
 				{% if session['author'] is defined %}
@@ -89,16 +73,11 @@
                     <a href="{{url_for('login')}}">Login</a>
                 {% endif %}
 				</li>
-				
-				<!--<li><a href="{{url_for('register')}}">Register</a></li>-->
-
-			</ul>
+		</ul>
 			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
 		</div>
-
-		</div>
-
-	</nav>
+    </div>
+    </nav>
 	<section>
 		<!--Flash messages-->
 		{% with messages = get_flashed_messages() %}
@@ -147,10 +126,7 @@
 		</div>
 
 	</footer>
-
-
-
-	<!--jQuery and Ajax -->
+    <!--jQuery and Ajax -->
 
 	<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
@@ -165,5 +141,4 @@
 	</script>
 	{% block script %} {% endblock %}
 </body>
-
 </html>
