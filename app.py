@@ -25,7 +25,7 @@ COLLECTION_NAME = "recipes"
 
 
 # -----Pagination and sorting params variables ----- #
-PAGE_SIZE = 6
+PAGE_SIZE = 2
 KEY_PAGE_SIZE = 'page_size'
 KEY_PAGE_NUMBER = 'page_number'
 KEY_TOTAL = 'total'
@@ -123,11 +123,11 @@ def get_recipes():
         # import pdb;pdb.set_trace
         params = request.form.to_dict()
     # print(params)
-    search_term = params.get('search_term', '')
+    #search_term = params.get('search_term', '')
     paginated_recipes = get_paginated_items(mongo.db.recipes, **params)
     # result = get_paginated_items(mongo.db.recipes, **request.args.to_dict())  #
     #
-    return render_template('recipes.html', paginated_recipes=paginated_recipes, search_term=search_term)
+    return render_template('recipes.html', paginated_recipes=paginated_recipes)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -359,7 +359,7 @@ def popular_recipe(recipe_id):
         #author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
         current_user = mongo.db.users.find_one(
             {"author_name": session["author"]})
-
+        # import pdb;pdb.set_trace()
         user = mongo.db.users
 
         my_popular = user.find({"$and": [{"author_name": session['author']},
