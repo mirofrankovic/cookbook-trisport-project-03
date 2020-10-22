@@ -41,30 +41,50 @@ The layout used the [Materialize CSS Parallax template](https://materializecss.c
 
 In this section I will describe the front-end features of my project:
 
-1. [Navbar]: consists of the PREPARE FOR YOUR RACE logo which also returns the user to the "Home" page of the application.
+1. [Navbar]
+
+* Consists of the PREPARE FOR YOUR RACE logo which also returns the user to the "Home" page of the application.
              My navbar also has links to "All Recipes", "Your Suggestion", "Contact Us", "Dashboard", "Login". The navbar will appear in all pages
              with the same functions for all links.
          
-2. [Home]: consists of one background image along with some information on contacting the webmaster and a link to the contact us page of the site. 
+2. [Home]
+
+* Consists of one background image along with some information on contacting the webmaster and a link to the contact us page of the site. 
     
-3. [All_Recipes]: directs the user to the "All Recipes" page which displays ALL recipes from ALL users which have been entered on the site. 
+3. [All_Recipes]
+
+* Directs the user to the "All Recipes" page which displays ALL recipes from ALL users which have been entered on the site. 
                 The user can then filter or browse through the recipes.
                 The can view more information on each recipe by selectign the "See Recipe Description" link which delivers the user to the "Recipe Detail" page. 
 
-4. [Recipe_Detail]: provides users with the recipe details containg a recipe name, description, image (if available), flavour, meal type, race day, sport type, nutrition wise type of meal, author and date posted.
+4. [Recipe_Detail]
 
-5. [My_Recipes]: provides the user with the recipes that they have added themselves. The user's recipes can be edited and deleted by using the buttons displayed under the recipes.
+* Provides users with the recipe details containg a recipe name, description, image (if available), flavour, meal type, race day, sport type, nutrition wise type of meal, author and date posted.
 
-6. [Login]: when first selected the user will be prompted to create a username to login to the application so that they can add recipes to the database.
+5. [My_Recipes]
 
-7. [Register]:
+* Provides the user with the recipes that they have added themselves. The user's recipes can be edited and deleted by using the buttons displayed under the recipes.
 
-8. [Dashboard]: once logged in the user will be presented with their dashboard which provides a count of their recipes, along with 4 data charts depicting the number of favourite meal type, favourite sport type, favourite race day and meal associated for the vegan.
+6. [Login]
 
-9. [Contact_Us]: delivers the user to the contact page. This page displays a blank form, which allows users to contact the website developers to offer feedback and suggestions (not currently wired up to an email address as this is not a real business). 
+* When first selected the user will be prompted to create a username to login to the application so that they can add recipes to the database.
+
+7. [Register]
+
+
+
+8. [Dashboard]
+
+* Once logged in the user will be presented with their dashboard which provides a count of their recipes, along with 4 data charts depicting the number of favourite meal type, favourite sport type, favourite race day and meal associated for the vegan.
+
+9. [Contact_Us]
+
+* Delivers the user to the contact page. This page displays a blank form, which allows users to contact the website developers to offer feedback and suggestions (not currently wired up to an email address as this is not a real business). 
               Their are also 4 social media buttons so that the user may interact on social networks.
 
-10. [Social_Links]: provides users with links to the website social media pages.
+10. [Social_Links]
+
+* Provides users with links to the website social media pages.
 
 
 # GETTING STARTED / DEPLOYMENT

@@ -23,8 +23,9 @@ MONGODB_URI = os.getenv('MONGO_URI')
 DBS_NAME = "cookbook_trisport"
 COLLECTION_NAME = "recipes"
 
-# Pagination and sorting
-PAGE_SIZE = 4
+
+# -----Pagination and sorting params variables ----- #
+PAGE_SIZE = 6
 KEY_PAGE_SIZE = 'page_size'
 KEY_PAGE_NUMBER = 'page_number'
 KEY_TOTAL = 'total'
@@ -36,27 +37,33 @@ KEY_SEARCH_TERM = 'search_term'
 KEY_ORDER_BY = 'order_by'
 KEY_ORDER = 'order'
 
-
 mongo = PyMongo(app)  # constructor method
-
 
 forms_collection = mongo.db.forms
 
+# -----Pagination macro from my mentor ----- #
 
-def get_paginated_list(entity, query={}, **params):            # function
+
+def get_paginated_items(entity, query={}, **params):  # function
     page_size = int(params.get(KEY_PAGE_SIZE, PAGE_SIZE))
     page_number = int(params.get(KEY_PAGE_NUMBER, 1))
     order_by = params.get(KEY_ORDER_BY, '_id')
     order = params.get(KEY_ORDER, 'asc')
     order = pymongo.ASCENDING if order == 'asc' else pymongo.DESCENDING
+
+    # If statement to avoid any pagination issues
     if page_number < 1:
         page_number = 1
     offset = (page_number - 1) * page_size
     items = []
-    search_term = ''
-    if KEY_SEARCH_TERM in params:
-        search_term = params.get(KEY_SEARCH_TERM)
-        if len(search_term.split()) > 0:
+
+    # Updated section allow user to paginate a filtered/sorted "query"
+    search_term = params.get(KEY_SEARCH_TERM, '')
+    if bool(query):
+        items = entity.find(query).sort(order_by, order).skip(
+            offset).limit(page_size)
+    else:
+        if search_term != '':
             entity.create_index([("$**", 'text')])
             result = entity.find({'$text': {'$search': search_term}})
             items = result.sort(order_by, order).skip(offset).limit(page_size)
@@ -64,10 +71,9 @@ def get_paginated_list(entity, query={}, **params):            # function
             items = entity.find().sort(
                 order_by, order
             ).skip(offset).limit(page_size)
-    else:
-        items = entity.find(query).sort(order_by, order).skip(
-            offset).limit(page_size)
+
     total_items = items.count()
+
     if page_size > total_items:
         page_size = total_items
     if page_number < 1:
@@ -111,21 +117,25 @@ def get_ready():
 # images for my recepies and see all my recipes after adding them
 @app.route('/get_recipes', methods=['GET', 'POST'])
 def get_recipes():
-    if request.method == 'GET':             
-        params = request.args.to_dict()       #dictionary
+    if request.method == 'GET':
+        params = request.args.to_dict()  # dictionary
     else:
+        # import pdb;pdb.set_trace
         params = request.form.to_dict()
-    paginated_recipes = get_paginated_list(mongo.db.recipe, **params)
-    result = get_paginated_list(mongo.db.recipes, **request.args.to_dict())  #
-    return render_template('recipes.html', paginated_recipes=result, recipes=paginated_recipes)          #
+    # print(params)
+    search_term = params.get('search_term', '')
+    paginated_recipes = get_paginated_items(mongo.db.recipes, **params)
+    # result = get_paginated_items(mongo.db.recipes, **request.args.to_dict())  #
+    #
+    return render_template('recipes.html', paginated_recipes=paginated_recipes, search_term=search_term)
+
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     query = request.form.get("query")
-    print(query)
-    paginated_recipes=get_paginated_list(mongo.db.recipes,{"$text": {"$search": query}})
-    return render_template("recipes.html", paginated_recipes=paginated_recipes) 
-    
+    paginated_recipes = get_paginated_items(
+        mongo.db.recipes, {"$text": {"$search": query}})
+    return render_template("recipes.html", paginated_recipes=paginated_recipes)
 
 
 @app.route('/find_recipes')
@@ -332,13 +342,13 @@ def my_recipes(author_name):
     if user:
         author_name = user['author_name']
         # TODO: Add the code to filter the recipes by author_name
-        recipes = list(mongo.db.recipes.find({"author_name": author_name}))
-
+        #recipes = list(mongo.db.recipes.find({"author_name": author_name}))
+        paginated_recipes = get_paginated_items(mongo.db.recipes,
+                                      query={'author_name': author_name},
+                                      **request.args.to_dict())
         return render_template('my_recipes.html',
                                author_name=session['author'],
-
-
-                               recipes=recipes)
+                               paginated_recipes=paginated_recipes)
     else:
         return redirect(url_for('login'))
 
