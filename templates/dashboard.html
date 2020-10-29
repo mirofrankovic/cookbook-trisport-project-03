@@ -41,6 +41,7 @@
 
 {% block script %}
 <script>
+
 $(document).ready(function(){
     console.log('Loading data...');
     $.getJSON("/find_recipes", function(data) {
@@ -48,5 +49,6 @@ $(document).ready(function(){
         makeGraphs(data);
     });
 });
+
 </script>
 {% endblock %}

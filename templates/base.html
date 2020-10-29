@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Ask Miro Athletes</title>
 	<!--Import materialize.css-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
 	<link rel="stylesheet" href="{{ url_for('static', filename='work-template/css/materialize.css') }}"
 		type="text/css" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='work-template/css/materialize.min.css') }}"
@@ -26,14 +26,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Teko|Yanone+Kaffeesatz" rel="stylesheet">
     <!--jQuery before all JavaScript -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <!-- D3, Crossfilter and DC and dashboard (assets) -->
 	<script type="text/javascript" src="{{url_for('static', filename='assets/d3.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/crossfilter.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/dc.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='assets/queue.min.js')}}"></script>
     <!--Materialize-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
 </head>
 <body id="cookbook-body" class="#fafafa grey lighten-5">
 	<nav class="white" role="navigation">
@@ -125,11 +125,11 @@
 	</footer>
     <!--jQuery and Ajax -->
 
-	<script type="text/javascript" src="{{url_for('static', filename='work-template/js/init.js')}}"></script>
+	<!--<script type="text/javascript" src="{{url_for('static', filename='work-template/js/init.js')}}"></script>-->
 	<script type="text/javascript" src="{{url_for('static', filename='work-template/js/materialize.min.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='work-template/js/graphics.js')}}"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
+		/*$(document).ready(function(){
               $('.collapsible').collapsible();
               $('select').formSelect();
            });
@@ -138,7 +138,7 @@
              $(function(){
             $('.sidenav').sidenav();
             }); // end of document ready
-            })(jQuery); // end of jQuery name space
+            })(jQuery); // end of jQuery name space */
 
 	</script>
 	{% block script %} {% endblock %}

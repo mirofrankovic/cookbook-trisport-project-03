@@ -111,49 +111,126 @@ function show_vegan_meal_graph(ndx){
 }
 
 
+/*_____________sidenav____________-*/
 
+$(document).ready(function(){
+              $('.collapsible').collapsible();
+              $('select').formSelect();
+           });
 
+           (function($){        
+             $(function(){
+            $('.sidenav').sidenav();
+            }); // end of document ready
+            })(jQuery); // end of jQuery name space
 
+ /*_________________recipe count________________*/
+ 
+$(document).ready(function() {
+    
+    var username = '{{author_name}}';
+    
+    var recipesText = $('#hidden-recipes').text();
+    var recipesJson = JSON.parse(recipesText);         // Did changes in JSON.parse method for var recipesJson = recipesText; down instead
+    //var recipesJson = recipesText;
+    var recipesList = [];
+    
+    for (i in recipesJson) {
+                    recipesList.push(recipesJson[i]);
+    }
+    
+    makeDashboard(recipesList);
+    
+    function makeDashboard(recipesList) {
+        
+        
+        myRecipesList = [];
+        
+        for ( var i = 0; i < recipesList.length; i++ ) {
+            let authorName = recipesList[i]['author_name'];
+                        
+            if ( username == authorName ) {
+                            myRecipesList.push(recipesList[i]);
+            }
+        }
+        
+        var ndx = crossfilter(myRecipesList);
+        //console.log(myRecipesList);
+        
+        counteMyRecipes(ndx, '#count-recipes-text');
+        counteMyRecipes(ndx, '#count-recipes-box');
+        resetButton(ndx);
+        
+        dc.renderAll();
+    }
+    
+        function resetButton(ndx) {
+            $("#reset-button").on("click", function() {
+                dc.filterAll();
+                dc.redrawAll();
+            });
+        }
+        
+        
+        function counteMyRecipes(ndx, element) {
+                    
+            var myRecipesTotal = ndx.groupAll();
+                    
+            dc.numberDisplay(element)
+                .formatNumber(d3.format("d"))
+                .valueAccessor(function (d) {
+                    d = myRecipesList.length
+                    return (+d);
+                })
+                .group(myRecipesTotal);
+        }
+        
+        
+        MyRecipeCount = myRecipesList.length
+                
+                if ( MyRecipeCount != 0 ) {
+                    $('#username-with-zero-recipes').css('display', 'none');
+               } else {
+                   $('#username-with-recipes').css('display', 'none');
+                   // $('.dashboard-graphs').css('display', 'none');
+                }
+                    
+});
 
+/*__________________my_recipes_____________________*/
 
+$(document).ready(function(){
+        $('.modal').modal();
+    });  
 
+/*_________________my_profile_thumbsUp_______________*/
 
+document.getElementById("thumb-up-btn").onclick = function() {
+    document.getElementById("form").submit();
+}
 
+/*________________dashboard___________________________*/
+/*$(document).ready(function(){
+    console.log('Loading data...');
+    $.getJSON("/find_recipes", function(data) {
+        console.log(data);
+        makeGraphs(data);
+    });
+});
+*/
+/*_______________________________getready_________________*/
 
+var coll = document.getElementsByClassName("collapsible");
+var i;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
