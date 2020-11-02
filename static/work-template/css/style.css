@@ -14,17 +14,26 @@ html, body {
     padding:10px;
     padding-bottom:120px;   /* Height of the footer */
 }
-
 .art-deco-font {
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
-
 /* NAV BAR */
-
 a {
   color: #c2185b;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
+}
+.active{
+    color: rgb(245, 9, 9);
+}
+.active:hover {
+  color: rgb(245, 9, 9);
+}
+.right a {
+  color: rgb(12, 11, 11);
+}
+.right a:hover {
+ color: rgb(154, 212, 16);
 }
 /* SECTIONS */
 /* FORMS  ICLUDING LOGIN AND REGITER*/
@@ -84,26 +93,6 @@ a {
     text-overflow: ellipsis; 
     margin-bottom: 20px;
 }
-/*
-#load-more-spice {
-    padding-top: 1em;
-    padding-bottom: 1.5em;
-}
-#load-more-spice > a {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-}
-#sorting-bar {
-    margin: 0.8em;
-    height: 5em;
-}
-
-#sorting-bar > h4 {
-    color: white;
-}
-*/
 
 #sorting-bar > a {
     color: #00695c;
@@ -118,34 +107,27 @@ a {
     margin-top: 2em;
     padding-bottom: 2em!important;
 }
-
 .add-recipe-box > a {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 40%;
 }
-
 #top-collection-item {
     padding-top: 2em!important;
 }
-
 #bottom-collection-item {
     padding-bottom: 1px!important;
 }
-
 #my-recipe-name {
     font-size: 2em;
 }
-
 #my-recpe-description {
     margin-top: 1em;
 }
-
 #sorting-bar-my-recipes {
     width: 100%;
 }
-
 #sorting-bar-my-recipes > h4 {
     color: white;
 }
@@ -156,89 +138,20 @@ a {
     margin-right: 0.5em;
 }
 
+
 /* Rating Star Widgets Style.................................................................. */
 .rating-stars div {
   list-style-type:none;
-  padding:0;
-  
+  padding:0; 
   -moz-user-select:none;
   -webkit-user-select:none;
 }
 .rating-stars div > button.star {
   display:inline-block;
   background-color: transparent;
-  border: none;
-  
+  border: none;  
 }
 
-/* Idle State of the stars */
-.rating-stars div > button.star > i.fa {
-  font-size:1em; /* Change the size of the stars */
-  color:#999999; /* Color on idle state */
-}
-
-/* Hover state of the stars */
-.rating-stars div > button.star.hover > i.fa {
-  color:#ff4da6;
-}
-
-/* Selected state of the stars */
-.rating-stars div > button.star.selected > i.fa {
-  color:#800040;
-}
-
-/* My Dashboard */
-#counter-box-my-recipes {
-    width: 8em;
-    height: 8em;
-    color: white;
-}
-#counter-box-my-recipes > .number-display {
-    font-size: 3em;
-}
-
-#counter-box-my-recipes > p {
-    font-size: 1.4em;
-    margin-bottom: 0;
-}
-#reset-button {
-    margin-top: 1.3em;
-}
-.margin-left {
-    margin-left: 1em;
-}
-.dc-chart th {
-    text-align: left
-}
-.dc-chart th,.dc-chart td {
-  padding-left: 10px;
-}
-.dc-chart tr.dc-table-group td {
-  padding-top: 4px;
-  border-bottom: 1px solid black;
-}
-.dc-chart select {
-  width: 150px;
-}
-#selector-container > div > select {
-    display: block;
-}
-.search-selector {
-    display: inline-block;
-}
-.search-selector > p {
-    font-size: 2em;
-}
-#teal-box {
-    height: 100px;
-}
-#meal-found {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-#datatable {
-    margin-bottom: 2em;
-}
 /* navbar-container */
 
 .section-container {
@@ -275,18 +188,11 @@ a {
 
 #footer-custom {
     width: 100%;
-    /*position: relative;
-    /*bottom: 0px;
-    padding: 0px;
-   /* position:absolute; 
-    bottom:0;
-    height:120px;   /* Height of the footer */
     box-sizing: border-box;
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 50px 50px 60px 50px;
-	margin-top: 80px;
-    
+	margin-top: 80px;   
 }
 .footer-heading {
     font-size: 1.2em;
@@ -338,7 +244,6 @@ a {
 		margin-bottom: 40px;
 		text-align: center;
 	}
-
 }
 /* Background Images*/
 /* MEDIA QUERIES */
@@ -346,24 +251,20 @@ a {
 @media (max-width:415px) {
     .mobile-hide {
         display: none!important;
-    }
-    
+    }   
     #counter-box-my-recipes {
     width: 6em;
     height: 6em;
     color: white;
     }
-
     #counter-box-my-recipes > .number-display {
         font-size: 2.5em;
-    }
-    
+    }  
     #counter-box-my-recipes > p {
         font-size: 1em;
         margin-bottom: 0;
     }
 }
-
 .fa-heart {
   color: red;
 }
@@ -371,15 +272,12 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
-
 p {
   line-height: 2rem;
 }
-
 .sidenav-trigger {
   color: #26a69a;
 }
-
 .parallax-container {
   min-height: 380px;
   width: 100%;
@@ -415,6 +313,56 @@ p {
 }
 .dc-chart{
     color:red;
+}
+#counter-box-my-recipes {
+    width: 8em;
+    height: 8em;
+    color: white;
+}
+#counter-box-my-recipes > .number-display {
+    font-size: 3em;
+}
+#counter-box-my-recipes > p {
+    font-size: 1.4em;
+    margin-bottom: 0;
+}
+#reset-button {
+    margin-top: 1.3em;
+}
+.margin-left {
+    margin-left: 1em;
+}
+.dc-chart th {
+    text-align: left
+}
+.dc-chart th,.dc-chart td {
+  padding-left: 10px;
+}
+.dc-chart tr.dc-table-group td {
+  padding-top: 4px;
+  border-bottom: 1px solid black;
+}
+.dc-chart select {
+  width: 150px;
+}
+#selector-container > div > select {
+    display: block;
+}
+.search-selector {
+    display: inline-block;
+}
+.search-selector > p {
+    font-size: 2em;
+}
+#teal-box {
+    height: 100px;
+}
+#meal-found {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+#datatable {
+    margin-bottom: 2em;
 }
 
 /* MQ Dashboard File */
@@ -542,6 +490,7 @@ border-radius: 4px;
 }
 
 /* Rating Star Widgets Style................................................. */
+/*
 .rating-stars ul {
   list-style-type:none;
   padding:0;
@@ -554,24 +503,25 @@ border-radius: 4px;
   
 }
 
-/* Idle State of the stars */
+
 .rating-stars ul > li.star > i.fa {
-  font-size:1.5em; /* Change the size of the stars */
-  color:#ccc; /* Color on idle state */
+  font-size:1.5em; 
+  color:#ccc; 
 }
 
-/* Hover state of the stars */
+
 .rating-stars ul > li.star.hover > i.fa {
   color:#FFCC36;
 }
 
-/* Selected state of the stars */
+
 .rating-stars ul > li.star.selected > i.fa {
   color:#FF912C;
 }
 
-/* Social Icons */
+*/
 
+/* Social Icons */
 .facebook {
   background-color: #3b5998;
   color: #fff !important;
@@ -760,9 +710,7 @@ img {
 .space-menu {
     text-align: center;
 }
-.center-text {
-    color:rgb(9, 185, 9);
-}
+
 
 /*-------------getready main image  -----------------*/
  .img-responsive{

@@ -196,14 +196,6 @@ def add_recipe():
 def insert_my_recipe(recipe_id):
     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('edit_recipe.html', recipe=this_recipe)
-#     recipes=recipes_collection.find()
-#     if request.method == "POST":
-#         recipe_data = request.form.to_dict()
-#         data = Recipe(recipe_data)           #helper.classes
-#         data = data._dict_
-#         data['visibility'] = False
-#         recipes_collection.update({'_id': ObjectId(recipe_id)}, data["recipe"])
-#         recipe = data["recipe"]
 
 
 @app.route('/updated_edit_recipe/<recipe_id>', methods=['POST'])
@@ -309,13 +301,6 @@ def register():
 
     return render_template('register.html', title="Register")
 
-
-# @app.route('/authorprofile', methods=['GET', 'POST'])
-# def authorprofile(author_name):
-#    author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
-#    return render_template("authorprofile.html", author_name=author_name)
-
-
 @app.route('/log_out')
 def log_out():
     print('logged out')
@@ -378,10 +363,6 @@ def popular_recipe(recipe_id):
             flash("You have already liked this recipe!")
 
     return redirect(url_for('recipedescription', recipe_id=recipe_id))
-
-    # return render_template('recipedescription.html',
-    #                         recipe=mongo.db.recipes.find
-    #                         ({"_id": ObjectId(recipe_id)}))
 
 
 @app.route('/unpopular_recipe/<recipe_id>')

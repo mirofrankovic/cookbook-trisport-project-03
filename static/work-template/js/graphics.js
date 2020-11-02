@@ -17,26 +17,7 @@ function makeGraphs(recipeData){
 function show_meal_type_graph(ndx){
     var mealtypeDim = ndx.dimension(dc.pluck("meal_type_name"));
     var mealtypeMix = mealtypeDim.group();
-    // var commitmentSumGroup = programmeDimension.group().reduceSum();
     
-    // dc.barChart("meal_type-graph")
-    //     .width(350)
-    //     .height(250)
-    //     .margins({top: 20, right: 20, bottom: 30, left: 10})
-    //     .dimension(mealtypeDim)
-    //     .group(mealtypeMix)
-    //     .transitionDuration(500)
-    //     .x(d3.scale.ordinal())
-    //     // .x(d3.scaleBand())
-    //     .xUnits(dc.units.ordinal)
-    //     .elasticY(true)
-    //     .xAxisLabel("Meal-Type")
-    //     .yAxis().tickFormat(d3.format("d"));
-        
-        
-    // var ndx = crossfilter(data);
-    // var programmeDimension = ndx.dimension((d) => d[PROGRAMME_NAME_KEY]);
-    // var commitmentSumGroup = programmeDimension.group().reduceSum((d) => d[TOTAL_COMMITMENT_KEY]);
     
     dc.barChart("#meal_type-graph")
         .width(768)
@@ -131,7 +112,7 @@ $(document).ready(function() {
     var username = '{{author_name}}';
     
     var recipesText = $('#hidden-recipes').text();
-    var recipesJson = JSON.parse(recipesText);         // Did changes in JSON.parse method for var recipesJson = recipesText; down instead
+    var recipesJson = JSON.parse(recipesText);         
     //var recipesJson = recipesText;
     var recipesList = [];
     
@@ -209,16 +190,9 @@ document.getElementById("thumb-up-btn").onclick = function() {
     document.getElementById("form").submit();
 }
 
-/*________________dashboard___________________________*/
-/*$(document).ready(function(){
-    console.log('Loading data...');
-    $.getJSON("/find_recipes", function(data) {
-        console.log(data);
-        makeGraphs(data);
-    });
-});
-*/
+
 /*_______________________________getready_________________*/
+/*
 
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -233,4 +207,4 @@ for (i = 0; i < coll.length; i++) {
       content.style.display = "block";
     }
   });
-}
+} */

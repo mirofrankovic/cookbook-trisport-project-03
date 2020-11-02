@@ -42,8 +42,8 @@
 				<span class="art-deco-font">CookBook</span> <i class="fas fa-utensils mobile-hide"></i>
 			</a>
 			<ul class="right hide-on-med-and-down">
-				<li><a href="{{url_for('get_recipes')}}">All Recipes</a></li>
-				<li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
+				<li><a class="active" href="{{url_for('get_recipes')}}">All Recipes</a></li>
+				<li><a class="" href="{{url_for('dashboard')}}">Dashboard</a></li>
 				{% if session['author'] is defined %}
 				    <li><a href="{{url_for('my_recipes', author_name=session['author'])}}">Profile</a></li>
 				{% endif %}
@@ -58,7 +58,7 @@
 			</ul>
             <ul id="nav-mobile" class="sidenav">
                
-				<li><a href="{{url_for('get_recipes')}}">All Recipes</a></li>
+				<li><a class="active" href="{{url_for('get_recipes')}}">All Recipes</a></li>
                 <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
 				{% if session['author'] is defined %}
 				    <li><a href="{{url_for('my_recipes', author_name=session['author'])}}">Profile</a></li>

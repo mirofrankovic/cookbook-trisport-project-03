@@ -4,7 +4,7 @@
 
 <div class="col s12">
     <div class="icon-block">
-        <h3 class="teal-text text-lighten-2">{{recipe.recipe_name}}</h3>
+        <h3 class="deep-orange-text text-lighten-2">{{recipe.recipe_name}}</h3>
     </div>
 </div>
 <div class="row">
@@ -18,13 +18,13 @@
         <p><strong>Sport Type: </strong>{{recipe.sport_type_name}}</p>
         
     <header class="header text-left">
-    <h5><strong>Make this recipe favourite</strong></h5>
+    <h5 class="deep-orange-text text-lighten-2"><strong>Make this recipe favourite</strong></h5>
     <!--<a href="#" id="thumb-up-btn"><i class="material-icons teal-text stat-icon">thumb_up</i></a>-->
     
     {% if session['author'] %}
      
      <form id="form" method="POST" action="{{ url_for('popular_recipe', recipe_id=recipe._id) }}">
-     <a href="#" id="thumb-up-btn"><i class="material-icons teal-text stat-icon">thumb_up</i></a>
+     <a href="#" id="thumb-up-btn"><i class="material-icons yellow-text stat-icon">thumb_up</i></a>
      {{recipe.likes}}
      </form>
      {% else %}
@@ -38,7 +38,7 @@
 </div>
 
 <div class="row">
-    <h5 class="art-deco-font">Amount of Nutritions per Serving:</h5>
+    <h5 class="art-deco-font deep-orange-text text-lighten-2">Amount of Nutritions per Serving:</h5>
       <ul>
             
                 <li>
