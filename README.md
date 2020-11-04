@@ -1,24 +1,23 @@
 # Miro does Snack - Cookbook for triathlon athleetes today | Code Institute - Milestone project 03
 
-
 The brief was to create a web application that allows users to store and easily access cooking recipes.
 The recipes are to be stored in a database which can be filtered by a user on the website using the categories.
 It is a **(data-driven)** application, and the target audience is any user targeted towards athletes working out for their competition.
 
 This application will access into designing a database schema based on recipes, and any other related properties and entities 
-(e.g. views, upvotes, ingredients, recipe authors, allergens, cuisine etc…).
+(e.g. views, upvotes, recipe authors…).
 
-In addition we create the backend code to retrieve a list of recipes, filtered based on various criteria (e.g. allergens, cuisine, etc…)
-and order them based on some reasonable aspect (e.g. number of views). Create a frontend page to display these,
-and to show some summary statistics around the list (e.g. number of new recipes). Optionally, add support for pagination, when the number of results is large.
-Create a detailed view for each recipes, that would just show all attributes for that recipe, and the full preparation instructions.
+In addition we create the backend code to retrieve a list of recipes, filtered based on various criteria (e.g. pre race meal, race meal, post race meal etc…)
+and order them based on some reasonable aspect (e.g. number of sport type, race day type meal). Create a frontend page to display these,
+and to show some summary statistics around the list (e.g. number of runners, cyclist, swimmers..). Optionally, add support for pagination, when the number of results is large.
+Create a detailed view for each recipes, that would just show all attributes for that recipe, and the full picture of athletes favouraite meals.
 Allow for editing and deleting of the recipe records, either on separate pages, or built into the list/detail pages.
 
 ## UX
 
 This application is for use by all users especially for athleetes who are busy with study, work, school,
-extra curricular activities, coming up with quick meals before and after workout.
-I designed the site so that users can share recipes and rate them accordingly.
+extra curricular activities, coming up with quick meals before, during or after workout. The idea is to show the new meal and provide a recomendation with amout of proteins for an athlete. 
+We designed the site so that users can share recipes and rate them accordingly.
 
 **In order for the target audience to achieve these things when visiting my website, I incorporated the following:**
 
@@ -67,11 +66,11 @@ In this section I will describe the front-end features of my project:
 
 **6. Login**
 
-* When first selected the user will be prompted to create a username to login to the application so that they can add recipes to the database.
+* When is the account created the user will be prompted to create a new profile to the application so that they can add recipes to the database.
 
 **7. Register**
 
-
+* When first selected the user will be prompted to create a username and password to create a new account to the application.
 
 **8. Dashboard**
 
@@ -86,17 +85,15 @@ In this section I will describe the front-end features of my project:
 
 * Provides users with links to the website social media pages.
 
-
 # GETTING STARTED / DEPLOYMENT
 
 * If you wish to run this site locally, please clone or download this repo. You can then run index.html or open index.html in your browser.
 * If you wish to deploy a live version of this site, then you will need to create your own GitHub repo. Navigate to settings and enable GitHub Pages by setting the Source to master branch.
 
-
 ## Technologies Used
 
-* [Cloud 9 IDE](https://aws.amazon.com/cloud9/)
-   This project used Cloud 9, an online integrated development environment, to construct the code end to end.
+* [Gitpod](https://gitpod.io/workspaces/)
+   This project used Gitpod, an online integrated development environment, to construct the code end to end.
 
 * [Bootstrap](https://getbootstrap.com/)
    This project used Bootstrap, a library of website themes. The [Materialize CSS Parallax template](https://materializecss.com/templates/parallax-template/preview.html), was used for this project.
@@ -109,7 +106,7 @@ In this section I will describe the front-end features of my project:
    Json value pairs were added into the mLab document to align with the recipe wireframe.
 
 * [MongoDB](https://www.mongodb.com/)
-   This project uses mongoDB, a free and open-source cross-platform document-oriented database program.
+   This project uses MongoDB Atlas, a free and open-source cross-platform document-oriented database program.
    Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata.
 
 * [Jinga](https://jinja.palletsprojects.com/en/2.11.x/)
@@ -187,48 +184,6 @@ The following section describes the process to deploy this project to Heroku.
 
 * I received inspiration for this project from [BBC FOOD](https://www.bbc.co.uk/food/diets/healthy) website with the combination of [Nutritionist Resource](https://www.nutritionist-resource.org.uk/) website.
 
+# In Conclusion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* I would like to thank my mentor Guido Cecilio Garcia Bernal and the Code Institute for their support. 

@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <h3 class="art-deco-font text-center">Welcome {{author_name}} to this well organized Cookbook for athletes!</h3>
     <h5 class="art-deco-font text-center">You have created <span id="count-recipes-text"></span> recipes!</h5>
     <br>
@@ -21,100 +20,14 @@
                     <a href="/add_recipe" class="waves-effect waves-light btn #00695c teal darken-3 btn col s12">Add a Recipe</a>
                 </div>
     </div>
-
-
 <div class="row">
-
 <div id="login-buttons" class="center-align col m6 offset-m3">
                 <a href="{{url_for('my_recipes')}}" class="margin-right-xs waves-effect waves-light btn-small #ad1457 pink darken-3"><i class="fas fa-cookie-bite"></i> See your Recipes</a>
-                <a href="{{url_for('log_out')}}" class="margin-right-xs waves-effect waves-light btn-small #ad1457 pink darken-3"><i class="fas fa-cookie-bite"></i> Log out</a>
-                
+                <a href="{{url_for('log_out')}}" class="margin-right-xs waves-effect waves-light btn-small #ad1457 pink darken-3"><i class="fas fa-cookie-bite"></i> Log out</a>               
 </div>
 </div>
-
 <p id="hidden-recipes" hidden>{{recipes|safe}}</p>
-
-
 <script type="text/javascript">
-
-/*
-
-$(document).ready(function() {
-    
-    var username = '{{author_name}}';
-    
-    var recipesText = $('#hidden-recipes').text();
-    var recipesJson = JSON.parse(recipesText);         // Did changes in JSON.parse method for var recipesJson = recipesText; down instead
-    //var recipesJson = recipesText;
-    var recipesList = [];
-    
-    for (i in recipesJson) {
-                    recipesList.push(recipesJson[i]);
-    }
-    
-    makeDashboard(recipesList);
-    
-    function makeDashboard(recipesList) {
-        
-        
-        myRecipesList = [];
-        
-        for ( var i = 0; i < recipesList.length; i++ ) {
-            let authorName = recipesList[i]['author_name'];
-                        
-            if ( username == authorName ) {
-                            myRecipesList.push(recipesList[i]);
-            }
-        }
-        
-        var ndx = crossfilter(myRecipesList);
-        //console.log(myRecipesList);
-        
-        counteMyRecipes(ndx, '#count-recipes-text');
-        counteMyRecipes(ndx, '#count-recipes-box');
-        resetButton(ndx);
-        
-        dc.renderAll();
-    }
-    
-        function resetButton(ndx) {
-            $("#reset-button").on("click", function() {
-                dc.filterAll();
-                dc.redrawAll();
-            });
-        }
-        
-        
-        function counteMyRecipes(ndx, element) {
-                    
-            var myRecipesTotal = ndx.groupAll();
-                    
-            dc.numberDisplay(element)
-                .formatNumber(d3.format("d"))
-                .valueAccessor(function (d) {
-                    d = myRecipesList.length
-                    return (+d);
-                })
-                .group(myRecipesTotal);
-        }
-        
-        
-        MyRecipeCount = myRecipesList.length
-                
-                if ( MyRecipeCount != 0 ) {
-                    $('#username-with-zero-recipes').css('display', 'none');
-               } else {
-                   $('#username-with-recipes').css('display', 'none');
-                   // $('.dashboard-graphs').css('display', 'none');
-                }
-                    
-});
-
-
-*/
-
 </script>
-
-
 
 {% endblock %}

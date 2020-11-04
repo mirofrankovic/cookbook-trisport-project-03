@@ -12,19 +12,16 @@
           <input value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">
           <label for="author_name">Your Name</label>
         </div>
-        </div>
-        
+        </div>       
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">cake</i>
           <input placeholder="Name" id="recipe_name" name="recipe_name" type="text" class="validate" required>
           <label for="recipe_name">Recipe Name</label>
         </div>
-      </div>
-      
+      </div>      
       <div class="row white form-padding">
-        <div class="input-field col s12">
-            
+        <div class="input-field col s12">            
         <select class="form-select" id="meal_type" name="meal_type_name" required>
                <option value="" disabled selected>Choose Your Meal Type (*)</option>
                {% for meal in meal_type %}
@@ -33,11 +30,9 @@
         </select>
         <label>Choose Your Meal Type</label>
         </div>
-        </div>
-        
+        </div>        
         <div class="row white form-padding">
-        <div class="input-field col s12">
-            
+        <div class="input-field col s12">           
         <select class="form-select" id="sport_type" name="sport_type_name" required>
                <option value="" disabled selected>Choose Your Sport Discipline (*)</option>
                {% for sport in sport_type %}
@@ -46,11 +41,9 @@
         </select>
         <label>Choose Your Sport Discipline</label>
         </div>
-        </div>
-        
+        </div>        
         <div class="row white form-padding">
-        <div class="input-field col s12">
-            
+        <div class="input-field col s12">            
         <select class="form-select" id="race_day" name="race_day_name" required>
                <option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
                {% for race in race_day %}
@@ -72,11 +65,9 @@
         <input placeholder="Please Enter Recipe Image URL eg: 'Http://www.images.com/sample.jpg" id="image_recipe" name="image_recipe" type="text"  class="validate"  required>
         <label for="image_recipe">Recipe Image</label>
         </div>
-      </div>
-      
+      </div>      
       <div class="row white form-padding">
-        <div class="input-field col s12">
-            
+        <div class="input-field col s12">           
         <select class="form-select" id="vegan_meal" name="vegan_type_meal" required>
                <option value="" disabled selected>Is this Recipe Vegan? (*)</option>
                <option value="true">Yes</option>
@@ -84,8 +75,7 @@
         </select>
         <label>Choose Your Vegan Meal</label>
         </div>
-        </div>
-        
+        </div>       
         <div class="row white form-padding">
             <h5>Serving per portion:</h5>
             <div id="serving-adder">
@@ -108,8 +98,7 @@
                 <a id="remove-numbers-btn" class="#b71c1c red darken-4 btn-small margin-right-xs">Remove Numbers <i class="fas fa-minus-circle fa-xs"></i></a>
                 <a id="add-numbers-btn" class="#1b5e20 green darken-4 btn-small">Add Numbers <i class="fas fa-plus fa-xs"></i></a>
             </div>
-        </div>
-        
+        </div>        
         <div class="row white form-padding">
         <div class="input-field col s12">
         <input placeholder="Day/Month/Year, i.e., 03/04/2019" id="due_date" name="due_date" type="text" class="validate" required>   
@@ -119,26 +108,11 @@
         </div>
         <div class="row white form-padding">
         <div class="input-field col s12">
-        <!--<a id="submit-form-button" href="/my_recipes" class="#880e4f green darken-4 btn waves-effect waves-light" name="action" data-url={{ url_for('submit_to_database') }}>-->
-        <!--Submit <i class="far fa-check-circle fa-xs"></i>-->
-        <!--</a>-->
         <input type="submit" class="#1b5e20 green darken-4 btn-small" value="Submit"></div>
         </div>
-        </div>
-        
+        </div>        
         </form>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}

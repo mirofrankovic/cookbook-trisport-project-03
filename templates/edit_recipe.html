@@ -8,24 +8,21 @@
 
 <h2 class="">Correct Your Recipe</h2>
 <div class="row">
-    <form action="{{ url_for('submit_to_database') }}" method="POST" class="col s12">
-        
+    <form action="{{ url_for('submit_to_database') }}" method="POST" class="col s12">       
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">accessibility</i>
           <input value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">
           <label for="author_name">Your Name</label>
         </div>
-        </div>
-        
+        </div>       
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">cake</i>
           <input value="{{recipe.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
           <label for="recipe_name">Recipe Name</label>
         </div>
-      </div>
-      
+      </div>     
       <div class="row white form-padding">
         <div class="input-field col s12">
             <select class="form-select" id="meal_type" name="meal_type_name" required>
@@ -36,8 +33,7 @@
             </select>
         <label>Choose Your Meal Type</label>
         </div>
-      </div>
-        
+      </div>     
         <div class="row white form-padding">
         <div class="input-field col s12">
             <select class="form-select" id="sport_type" name="sport_type_name" required>
@@ -48,8 +44,7 @@
             </select>
         <label>Choose Your Sport Discipline</label>
         </div>
-        </div>
-        
+        </div>       
         <div class="row white form-padding">
         <div class="input-field col s12">
             <select class="form-select" id="race_day" name="race_day_name" required>
@@ -60,27 +55,21 @@
             </select>
         <label>Pick Your Prefered Race Meal</label>
         </div>
-        </div>
-        
+        </div>      
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">brush</i>
           <input value="{{recipe.description}}" id="description" name="description" type="text" class="validate">
-          <label for="description">Description</label>
-          
+          <label for="description">Description</label>      
         </div>
-      </div>
-      
+      </div>    
       <div class="row white form-padding">
         <div class="input-field col s12">
           <input value="{{recipe.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
-          <label for="image_recipe">Recipe Image</label>
-        
+          <label for="image_recipe">Recipe Image</label>       
         </div>
-      </div>
-      
-      <div class="row white form-padding">
-        
+      </div>     
+      <div class="row white form-padding">       
         <label>Choose Your Vegan Meal</label>
             <select class="form-select" id="vegan_meal" name="vegan_meal">
                 <option value="" disabled selected>Is vegan? (*)</option>
@@ -93,8 +82,7 @@
                 {% endif %}
             </select>
             <label>Is this Recipe Vegan?</label>
-        </div>
-        
+        </div>   
         <div class="row white form-padding">
             <h5>Serving per portion:</h5>
             <div id="serving-adder">
@@ -117,9 +105,7 @@
                 <a id="remove-numbers-btn" class="#b71c1c red darken-4 btn-small margin-right-xs">Remove Numbers <i class="fas fa-minus-circle fa-xs"></i></a>
                 <a id="add-numbers-btn" class="#1b5e20 green darken-4 btn-small">Add Numbers <i class="fas fa-plus fa-xs"></i></a>
             </div>
-        </div>
-        
-        
+        </div>    
         <div class="row white form-padding">
         <div class="input-field col s12">
         <a class="btn waves-effect waves-light margin-right-xs" name="action" href="/my_recipes">
@@ -129,9 +115,7 @@
         Submit Changes <i class="far fa-check-circle fa-xs"></i>
         </button>
         </div>
-        </div>
-        
-        
+        </div>        
     </form>
   </div>
 {% endblock %}

@@ -15,14 +15,10 @@
         <h4>{{recipe.description}}</h4>
         <p><strong>Meal Type: </strong>{{recipe.meal_type_name}}</p>
         <p><strong>Race Day: </strong>{{recipe.race_day_name}}</p>
-        <p><strong>Sport Type: </strong>{{recipe.sport_type_name}}</p>
-        
+        <p><strong>Sport Type: </strong>{{recipe.sport_type_name}}</p>       
     <header class="header text-left">
     <h5 class="deep-orange-text text-lighten-2"><strong>Make this recipe favourite</strong></h5>
-    <!--<a href="#" id="thumb-up-btn"><i class="material-icons teal-text stat-icon">thumb_up</i></a>-->
-    
-    {% if session['author'] %}
-     
+    {% if session['author'] %}    
      <form id="form" method="POST" action="{{ url_for('popular_recipe', recipe_id=recipe._id) }}">
      <a href="#" id="thumb-up-btn"><i class="material-icons yellow-text stat-icon">thumb_up</i></a>
      {{recipe.likes}}
@@ -31,34 +27,23 @@
      <a class="tooltipped like-dis" data-position="bottom" title="You have to login to like this recipe!" data-tooltip="You have to login to like!">{{ recipe.likes }}
                             <i class="material-icons teal-text stat-icon">thumb_up</i></a>
 
-     {% endif %}               <!--go to make flsh message for useer that need to be logged in with else statement-->
+     {% endif %}               
     </header> 
-
     </div>
 </div>
-
 <div class="row">
     <h5 class="art-deco-font deep-orange-text text-lighten-2">Amount of Nutritions per Serving:</h5>
-      <ul>
-            
+      <ul>           
                 <li>
                     <p><strong>Proteins: </strong>{{recipe.proteins_unit}}</p>
                     <p><strong>Carbohydrates: </strong>{{recipe.carbohydrates_unit}}</p>
                     <p><strong>Calories: </strong>{{recipe.calories_name}}</p>
-                </li>
-        
-        </ul> 
-        
-    
+                </li>       
+        </ul>     
     <p>Recipe added on: <em>{{recipe.due_date}}</em></p>
     <p>Recipe by <em>{{recipe.author_name}}</em></p>
 </div>
 <script>
-/*
-document.getElementById("thumb-up-btn").onclick = function() {
-    document.getElementById("form").submit();
-}
-*/
 </script>
 
 {% endblock %}

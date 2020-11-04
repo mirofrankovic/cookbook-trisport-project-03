@@ -18,11 +18,9 @@ app.config["MONGO_DBNAME"] = os.getenv("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-
 MONGODB_URI = os.getenv('MONGO_URI')
 DBS_NAME = "cookbook_trisport"
 COLLECTION_NAME = "recipes"
-
 
 # -----Pagination and sorting params variables ----- #
 PAGE_SIZE = 2
@@ -40,9 +38,6 @@ KEY_ORDER = 'order'
 mongo = PyMongo(app)  # constructor method
 
 forms_collection = mongo.db.forms
-
-# -----Pagination macro from my mentor ----- #
-
 
 def get_paginated_items(entity, query={}, **params):  # function
     page_size = int(params.get(KEY_PAGE_SIZE, PAGE_SIZE))
@@ -106,29 +101,22 @@ def get_paginated_items(entity, query={}, **params):  # function
         KEY_ENTITIES: items
     }
 
-
 @app.route('/')
 @app.route('/get_ready')
 def get_ready():
     # supply recipes collection
     return render_template('getready.html', recipes=mongo.db.recipes.find(), forms=mongo.db.forms.find())
 
-
 # images for my recepies and see all my recipes after adding them
 @app.route('/get_recipes', methods=['GET', 'POST'])
 def get_recipes():
     if request.method == 'GET':
-        params = request.args.to_dict()  # dictionary
+        params = request.args.to_dict()  
     else:
-        # import pdb;pdb.set_trace
         params = request.form.to_dict()
     # print(params)
-    #search_term = params.get('search_term', '')
     paginated_recipes = get_paginated_items(mongo.db.recipes, **params)
-    # result = get_paginated_items(mongo.db.recipes, **request.args.to_dict())  #
-    #
     return render_template('recipes.html', paginated_recipes=paginated_recipes)
-
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -136,7 +124,6 @@ def search():
     paginated_recipes = get_paginated_items(
         mongo.db.recipes, {"$text": {"$search": query}})
     return render_template("recipes.html", paginated_recipes=paginated_recipes)
-
 
 @app.route('/find_recipes')
 def find_recipes_json():
@@ -147,30 +134,13 @@ def find_recipes_json():
     json_recipes = json.dumps(json_recipes, default=json_util.default)
     return json_recipes
 
-
 @app.route('/recipedescription/<recipe_id>')
 def recipedescription(recipe_id):
     this_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     return render_template('recipedescription.html', recipe=this_recipe)
 
-
-@app.route('/add_recipe')  # only for display my recipes in my form
+@app.route('/add_recipe')  
 def add_recipe():
-
-    # {
-    #    "_id": {
-    #       "$oid": "5c9bbf7ee7179a0e408e3177"
-    #    },
-    #    "author_name": "",
-    #    "recipe_name": "",
-    #    "meal_type_name": "",
-    #    "sport_type_name": "",
-    #    "race_day_name": "",
-    #    "description": "",
-    #    "image_recipe": "",
-    #    "vegan_type_meal": "",
-    #    "due_date": ""
-    # }
     if request.url.startswith('http://'):
         request.url = request.url.replace('http://', 'https://', 1)
     print('url when add_recipe: ', request.url)
@@ -190,13 +160,11 @@ def add_recipe():
                            calories_name=mongo.db.calories_name.find()
                            )
 
-
 # edit_recipe to my database
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def insert_my_recipe(recipe_id):
     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('edit_recipe.html', recipe=this_recipe)
-
 
 @app.route('/updated_edit_recipe/<recipe_id>', methods=['POST'])
 def updated_edit_recipe(recipe_id):
@@ -218,7 +186,6 @@ def updated_edit_recipe(recipe_id):
     }
     return redirect(url_for('my_recipes'))
 
-
 @app.route('/get_my_form')
 def get_my_form():
     if request.url.startswith('http://'):
@@ -234,15 +201,13 @@ def get_my_form():
                            vegan_meal=mongo.db.vegan_meal.find(),
                            servings=mongo.db.servings.find())
 
-
 @app.route('/submit_to_database', methods=['POST'])
 def submit_to_database():
     print(request.form.to_dict())
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())  # or (request.json)
+    recipes.insert_one(request.form.to_dict())  
     return redirect(url_for('get_recipes'))
     # return('', 204) # what is 204
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -272,13 +237,9 @@ def login():
 
     return render_template("login.html")
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    #logging.info('Registering User')
     if request.method == 'POST':
-        #session['author_name'] = request.form['author_name'].lower()
-        #users = mongo.db.users
         user_exists = mongo.db.users.find_one(
             {'author_name': request.form.get('author_name').lower()})
 
@@ -292,9 +253,6 @@ def register():
             "likes": []
         }
         mongo.db.users.insert_one(register)
-        # return redirect(url_for('login'))
-
-        #logging.info('User already exist. Skipping new user')
         session["author"] = request.form.get("author_name").lower()
         flash("Athlete Has Registrated Succesfuly!")
         return redirect(url_for("my_recipes", author_name=session["author"]))
@@ -320,14 +278,11 @@ def search_form():
 
     return render_template('search_form.html', forms=mongo.db.forms.find())
 
-
 @app.route('/my_recipes/<author_name>', methods=['GET', 'POST'])
 def my_recipes(author_name):
     user = mongo.db.users.find_one({"author_name": author_name})
     if user:
         author_name = user['author_name']
-        # TODO: Add the code to filter the recipes by author_name
-        #recipes = list(mongo.db.recipes.find({"author_name": author_name}))
         paginated_recipes = get_paginated_items(mongo.db.recipes,
                                       query={'author_name': author_name},
                                       **request.args.to_dict())
@@ -337,20 +292,17 @@ def my_recipes(author_name):
     else:
         return redirect(url_for('login'))
 
-
 @app.route('/popular_recipe/<recipe_id>', methods=['GET', 'POST'])
 def popular_recipe(recipe_id):
     if request.method == "POST":
-        #author_name = mongo.db.users.find_one({"author_name":session["author"]})["author_name"]
         current_user = mongo.db.users.find_one(
             {"author_name": session["author"]})
-        # import pdb;pdb.set_trace()
         user = mongo.db.users
 
         my_popular = user.find({"$and": [{"author_name": session['author']},
                                          {'likes': recipe_id}]})
 
-        # if my_popular is None:
+    
         if recipe_id not in current_user["likes"]:
             mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)},
                                         {'$inc': {'likes': 1}})
@@ -364,39 +316,15 @@ def popular_recipe(recipe_id):
 
     return redirect(url_for('recipedescription', recipe_id=recipe_id))
 
-
-@app.route('/unpopular_recipe/<recipe_id>')
-def unpopular_recipe(recipe_id):
-
-    return render_template('recipedescription.html')
-
-
 @app.route('/dashboard')
 def dashboard():
     forms = forms_collection.find()
 
     return render_template('dashboard.html')
 
-
-@app.route('/get_pre_race_meal', methods=['GET'])  # need pagination
-def get_pre_race_meal():
-    return render_template('my_recipes.html')
-
-
-@app.route('/get_race_meal', methods=['GET'])  # need pagination
-def get_race_meal():
-    return render_template('my_recipes.html')
-
-
-@app.route('/get_post_race_meal', methods=['GET'])  # need pagination
-def get_post_race_meal():
-    return render_template('my_recipes.html')
-
-
 @app.route('/contact_us')
 def contact_us():
     return render_template("contactus.html")
-
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

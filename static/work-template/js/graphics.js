@@ -91,7 +91,6 @@ function show_vegan_meal_graph(ndx){
         .group(veganmealMix);
 }
 
-
 /*_____________sidenav____________-*/
 
 $(document).ready(function(){
@@ -151,8 +150,7 @@ $(document).ready(function() {
                 dc.redrawAll();
             });
         }
-        
-        
+              
         function counteMyRecipes(ndx, element) {
                     
             var myRecipesTotal = ndx.groupAll();
@@ -165,8 +163,7 @@ $(document).ready(function() {
                 })
                 .group(myRecipesTotal);
         }
-        
-        
+               
         MyRecipeCount = myRecipesList.length
                 
                 if ( MyRecipeCount != 0 ) {
@@ -189,7 +186,6 @@ $(document).ready(function(){
 document.getElementById("thumb-up-btn").onclick = function() {
     document.getElementById("form").submit();
 }
-
 
 /*_______________________________getready_________________*/
 /*
