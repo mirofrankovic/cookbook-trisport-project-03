@@ -91,6 +91,8 @@ function show_vegan_meal_graph(ndx){
         .group(veganmealMix);
 }
 
+
+
 /*_____________sidenav____________-*/
 
 $(document).ready(function(){
@@ -183,9 +185,9 @@ $(document).ready(function(){
 
 /*_________________my_profile_thumbsUp_______________*/
 
-document.getElementById("thumb-up-btn").onclick = function() {
+document.getElementById("thumb-up-btn").addEventListener('click', function() {
     document.getElementById("form").submit();
-}
+});
 
 /*_______________________________getready_________________*/
 /*

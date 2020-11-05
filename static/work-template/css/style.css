@@ -279,8 +279,15 @@ p {
   margin:0 !important;
 }
 .dc-chart{
-    color:red;
+    color:black;
 }
+.x.axis text {
+    font-size: 20px;
+}
+.y.axis text {
+    font-size: 15px;
+}
+/*-----------------------------end Dashboard--------------*/
 #counter-box-my-recipes {
     width: 8em;
     height: 8em;

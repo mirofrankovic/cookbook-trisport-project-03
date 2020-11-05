@@ -28,7 +28,7 @@ We designed the site so that users can share recipes and rate them accordingly.
 
 ## DEMO
 
-A demo of this site is available [here](https://dashboard.heroku.com/apps/cookbook-trisport-project-03)
+A demo of this site is available [here](https://cookbook-trisport-project-03.herokuapp.com/)
 
 This app is hosted by GitHub Pages, a static site hosting service which supports client-side code.
 
@@ -168,7 +168,7 @@ The following section describes the process to deploy this project to Heroku.
 7. Select settings. Select ‘Reveal Config'. Add IP 0.0.0.0 and PORT 5000.
 8. From 'More' menu on the top right, select 'Restart all dynos'.
 9. View app: In settings, select Domain URL, NOT Git URL to view your hosted application.
-10. Deployed via [Heroku](https://dashboard.heroku.com/apps/cookbook-trisport-project-03)
+10. Deployed via [Heroku](https://cookbook-trisport-project-03.herokuapp.com/)
 
 ## Credits
 

@@ -1,7 +1,7 @@
 import math
 import pymongo
 import os
-from flask import Flask, render_template, url_for, redirect, session, request, flash, jsonify
+from flask import Flask, render_template, url_for, redirect, session, request, flash, jsonify, abort
 import json
 from pymongo import MongoClient
 from flask_pymongo import PyMongo
@@ -23,7 +23,7 @@ DBS_NAME = "cookbook_trisport"
 COLLECTION_NAME = "recipes"
 
 # -----Pagination and sorting params variables ----- #
-PAGE_SIZE = 2
+PAGE_SIZE = 3
 KEY_PAGE_SIZE = 'page_size'
 KEY_PAGE_NUMBER = 'page_number'
 KEY_TOTAL = 'total'
@@ -137,6 +137,8 @@ def find_recipes_json():
 @app.route('/recipedescription/<recipe_id>')
 def recipedescription(recipe_id):
     this_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    if this_recipe is None:
+        abort(404, 'Recipe not found!')
     return render_template('recipedescription.html', recipe=this_recipe)
 
 @app.route('/add_recipe')  
@@ -268,6 +270,8 @@ def log_out():
 
 @app.route('/delete_my_recipe/<recipe_id>')
 def delete_my_recipe(recipe_id):
+    if session.get("author") is None:
+        return redirect(url_for('login'))
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('my_recipes'))
 
@@ -280,6 +284,14 @@ def search_form():
 
 @app.route('/my_recipes/<author_name>', methods=['GET', 'POST'])
 def my_recipes(author_name):
+    if session.get("author") is None:
+        return redirect(url_for('login'))
+
+    if not author_name:
+        author_name = session["author"]
+    elif author_name != session["author"]:
+        return redirect(url_for('login'))
+
     user = mongo.db.users.find_one({"author_name": author_name})
     if user:
         author_name = user['author_name']
@@ -325,6 +337,10 @@ def dashboard():
 @app.route('/contact_us')
 def contact_us():
     return render_template("contactus.html")
+
+@app.errorhandler(404)
+def page_not_found(error):
+   return render_template('404.html', title = '404'), 404
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
