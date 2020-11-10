@@ -64,7 +64,9 @@
     {{ components.pagination(url_for('my_recipes', author_name=author_name), paginated_recipes) }}
     </section>
     {% else %}
+    <div class="container-result">
     <h3 class="red-blue-text text-darken-4 center-align">No Results Found!</h3>
+    </div>
     {% endif %}
 </div>
 <script>

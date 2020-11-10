@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
 
-{% block css %}
-<link rel="stylesheet" href="{{url_for('static', filename='work-template/css/edit.css')}}" type="text/css" />
-{% endblock css %}
 
 {% block content %}
 
-<h2 class="">Correct Your Recipe</h2>
+<h2 class="">Edit Your Recipe</h2>
 <div class="row">
     <form action="{{ url_for('submit_to_database') }}" method="POST" class="col s12">       
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">accessibility</i>
-          <input value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">
+          <!--<input value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">-->
+          <input value="{{recipe.author_name}}" id="author_name" name="author_name" type="text" class="validate">
           <label for="author_name">Your Name</label>
         </div>
         </div>       
@@ -26,7 +24,7 @@
       <div class="row white form-padding">
         <div class="input-field col s12">
             <select class="form-select" id="meal_type" name="meal_type_name" required>
-               <option value="" disabled selected>Choose Your Meal Type (*)</option>
+               <option value="" selected>Choose Your Meal Type (*)</option>
                {% for meal in meal_type %}
                <option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
                {% endfor %}
@@ -37,7 +35,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
             <select class="form-select" id="sport_type" name="sport_type_name" required>
-               <option value="" disabled selected>Choose Your Sport Discipline (*)</option>
+               <option value="" selected>Choose Your Sport Discipline (*)</option>
                {% for sport in sport_type %}
                <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
                {% endfor %}
@@ -48,7 +46,7 @@
         <div class="row white form-padding">
         <div class="input-field col s12">
             <select class="form-select" id="race_day" name="race_day_name" required>
-               <option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
+               <option value="" selected>Choose Your Prefered Race Meal (*)</option>
                {% for race in race_day %}
                <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
                {% endfor %}
@@ -88,38 +86,34 @@
             <div id="serving-adder">
                 <div class="serving-field">
                     <div class="input-field col s12 m3">
-                        <input value="" id="proteins_unit" name="proteins_unit" type="text" class="validate" required>
+                        <input value="{{recipe.proteins_unit}}" id="proteins_unit" name="proteins_unit" type="text" class="validate" required>
                         <label for="proteins-0">Grams Of Protein (*)</label>
                     </div>
                     <div class="input-field col s12 m3">
-                        <input value="" id="carbohydrates_unit" name="carbohydrates_unit" type="text" class="validate" required>
+                        <input value="{{recipe.carbohydrates_unit}}" id="carbohydrates_unit" name="carbohydrates_unit" type="text" class="validate" required>
                         <label for="carbohydrates_unit">Grams Of Carbohydrates (*)</label>
                     </div>
                     <div class="input-field col s12 m5">
-                        <input value="" id="calories_name" name="calories_name" type="text" class="validate" required>
+                        <input value="{{recipe.calories_name}}" id="calories_name" name="calories_name" type="text" class="validate" required>
                         <label for="calories_name">Calories (*)</label>
                     </div>
                 </div>
-            </div>
-            <div class="float-right">
+            </div>           
+           <!--<div class="float-right">
                 <a id="remove-numbers-btn" class="#b71c1c red darken-4 btn-small margin-right-xs">Remove Numbers <i class="fas fa-minus-circle fa-xs"></i></a>
                 <a id="add-numbers-btn" class="#1b5e20 green darken-4 btn-small">Add Numbers <i class="fas fa-plus fa-xs"></i></a>
-            </div>
+            </div>-->
         </div>    
         <div class="row white form-padding">
         <div class="input-field col s12">
         <a class="btn waves-effect waves-light margin-right-xs" name="action" href="/my_recipes">
          Jump back with no changes <i class="fas fa-arrow-circle-left fa-xs"></i>
         </a>    
-        <button id="submit-form-button" href="" class="#880e4f green darken-4 btn waves-effect waves-light" type="submit" name="action" data-url={{ url_for('updated_edit_recipe', recipe_id=recipe._id) }}">
-        Submit Changes <i class="far fa-check-circle fa-xs"></i>
-        </button>
+        <a class="#880e4f green darken-4 btn waves-effect waves-light" id="submit-form-button" href="" type="submit" name="action" data-url="{{ url_for('updated_edit_recipe', recipe_id=recipe._id) }}">
+        Submit Changes <i class="far fa-check-circle fa-xs"></i></a>
         </div>
         </div>        
     </form>
   </div>
 {% endblock %}
 
-{% block scripts %}
-<script src="{{ url_for('static', filename='work-template/js/edit_add.js') }}"></script>
-{% endblock scripts %}

@@ -93,7 +93,7 @@ function show_vegan_meal_graph(ndx){
 
 
 
-/*_____________sidenav____________-*/
+/*_____________sidenav + form____________-*/
 
 $(document).ready(function(){
               $('.collapsible').collapsible();
@@ -206,3 +206,4 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 } */
+
