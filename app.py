@@ -164,29 +164,61 @@ def add_recipe():
 
 # edit_recipe to my database
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
-def insert_my_recipe(recipe_id):
-    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('edit_recipe.html', recipe=this_recipe)
+def edit_recipe(recipe_id):
+    if request.method == "POST":
+       # this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)}) #this line should go to line 187
+        submit = {       
+            'author_name': request.form.get('author_name'),
+            'recipe_name': request.form.get('recipe_name'),
+            'meal_type_name': request.form.get('meal_type_name'),
+            'sport_type_name': request.form.get('sport_type_name'),
+            'race_day_name': request.form.get('race_day_name'),
+            'description': request.form.get('description'),
+            'image_recipe': request.form.get('image_recipe'),
+            'vegan_type_meal': request.form.get('vegan_type_meal'),
+            'servings': request.form.get('servings'),
+            'proteins_unit': request.form.get('proteins_unit'),
+            'carbohydrates_unit': request.form.get('carbohydrates_unit'),
+            'calories_name': request.form.get('calories_name')
 
-@app.route('/updated_edit_recipe/<recipe_id>', methods=['POST'])
-def updated_edit_recipe(recipe_id):
-    recipes = mongo.db.recipes
-    recipes.insert_one(request.json),
-    {
-        'author_name': request.form.get['author_name'],
-        'recipe_name': request.form.get['recipe_name'],
-        'meal_type_name': request.form.get['meal_type_name'],
-        'sport_type_name': request.form.get['sport_type_name'],
-        'race_day_name': request.form.get['race_day_name'],
-        'description': request.form.get['description'],
-        'image_recipe': request.form.get['image_recipe'],
-        'vegan_type_meal': request.form.get['vegan_type_meal'],
-        'servings': request.form.get['servings'],
-        'proteins_unit': request.form.get['proteins_unit'],
-        'carbohydrates_unit': request.form.get['carbohydrates_unit'],
-        'calories_name': request.form.get['calories_name']
-    }
-    return redirect(url_for('my_recipes'))
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+        flash("Recipe Successfully Updated!")
+    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    # indentation should start here for the above line, so it is not part of the if request.method == POST
+    return render_template('edit_recipe.html', recipe=this_recipe,
+                           author_name=mongo.db.author_name.find(),
+                           meal_type=mongo.db.meal_type.find(),
+                           sport_type=mongo.db.sport_type.find(),
+                           image_recipe=mongo.db.image_recipe.find(),
+                           race_day=mongo.db.race_day.find(),
+                           vegan_meal=mongo.db.vegan_meal.find(),
+                           servings=mongo.db.servings.find(),
+                           recipes=mongo.db.recipes.find(),
+                           proteins_unit=mongo.db.proteins_unit.find(),
+                           carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
+                           calories_name=mongo.db.calories_name.find()
+                           )
+
+#@app.route('/updated_edit_recipe/<recipe_id>', methods=['POST'])
+#def updated_edit_recipe(recipe_id):
+#    recipes = mongo.db.recipes
+#    recipes.insert_one(request.json),
+#    {
+#        'author_name': request.form.get['author_name'],
+#        'recipe_name': request.form.get['recipe_name'],
+#        'meal_type_name': request.form.get['meal_type_name'],
+#        'sport_type_name': request.form.get['sport_type_name'],
+#        'race_day_name': request.form.get['race_day_name'],
+#        'description': request.form.get['description'],
+#        'image_recipe': request.form.get['image_recipe'],
+#        'vegan_type_meal': request.form.get['vegan_type_meal'],
+#        'servings': request.form.get['servings'],
+#        'proteins_unit': request.form.get['proteins_unit'],
+#        'carbohydrates_unit': request.form.get['carbohydrates_unit'],
+#        'calories_name': request.form.get['calories_name']
+#    }
+#    return redirect(url_for('my_recipes'))
 
 @app.route('/get_my_form')
 def get_my_form():

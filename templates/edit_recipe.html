@@ -5,7 +5,7 @@
 
 <h2 class="">Edit Your Recipe</h2>
 <div class="row">
-    <form action="{{ url_for('submit_to_database') }}" method="POST" class="col s12">       
+    <form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">       
         <div class="row white form-padding">
         <div class="input-field col s12">
           <i class="material-icons prefix">accessibility</i>
@@ -23,10 +23,14 @@
       </div>     
       <div class="row white form-padding">
         <div class="input-field col s12">
-            <select class="form-select" id="meal_type" name="meal_type_name" required>
-               <option value="" selected>Choose Your Meal Type (*)</option>
+            <select class="form-select" id="meal_type" name="meal_type_name">
+               <option value="" disabled>Choose Your Meal Type (*)</option>
                {% for meal in meal_type %}
+               {% if meal.meal_type_name == recipe.meal_type_name %}
+               <option value="{{meal.meal_type_name}}" selected>{{meal.meal_type_name}}</option>
+               {% else %}
                <option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
+               {% endif %}
                {% endfor %}
             </select>
         <label>Choose Your Meal Type</label>
@@ -34,10 +38,14 @@
       </div>     
         <div class="row white form-padding">
         <div class="input-field col s12">
-            <select class="form-select" id="sport_type" name="sport_type_name" required>
-               <option value="" selected>Choose Your Sport Discipline (*)</option>
+            <select class="form-select" id="sport_type" name="sport_type_name">
+               <option value="" disabled>Choose Your Sport Discipline (*)</option>
                {% for sport in sport_type %}
-               <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
+               {% if sport.sport_type_name == recipe.sport_type_name %}
+                  <option value="{{sport.sport_type_name}}" selected>{{sport.sport_type_name}}</option>
+               {% else %}
+                <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
+               {% endif %}
                {% endfor %}
             </select>
         <label>Choose Your Sport Discipline</label>
@@ -45,10 +53,14 @@
         </div>       
         <div class="row white form-padding">
         <div class="input-field col s12">
-            <select class="form-select" id="race_day" name="race_day_name" required>
-               <option value="" selected>Choose Your Prefered Race Meal (*)</option>
+            <select class="form-select" id="race_day" name="race_day_name">
+               <option value="" disabled>Choose Your Prefered Race Meal (*)</option>
                {% for race in race_day %}
-               <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
+               {% if race.race_day_name == recipe.race_day_name %}
+                <option value="{{race.race_day_name}}" selected>{{race.race_day_name}}</option>
+               {% else %}
+                <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
+               {% endif %}
                {% endfor %}
             </select>
         <label>Pick Your Prefered Race Meal</label>
@@ -105,13 +117,10 @@
             </div>-->
         </div>    
         <div class="row white form-padding">
-        <div class="input-field col s12">
         <a class="btn waves-effect waves-light margin-right-xs" name="action" href="/my_recipes">
-         Jump back with no changes <i class="fas fa-arrow-circle-left fa-xs"></i>
+         Cancel <i class="fas fa-arrow-circle-left fa-xs"></i>
         </a>    
-        <a class="#880e4f green darken-4 btn waves-effect waves-light" id="submit-form-button" href="" type="submit" name="action" data-url="{{ url_for('updated_edit_recipe', recipe_id=recipe._id) }}">
-        Submit Changes <i class="far fa-check-circle fa-xs"></i></a>
-        </div>
+        <input class="#880e4f green darken-4 btn waves-effect waves-light" id="submit-form-button" type="submit" value="Submit"><i class="far fa-check-circle fa-xs"></i></input>
         </div>        
     </form>
   </div>
