@@ -302,10 +302,9 @@ def log_out():
 
 @app.route('/delete_my_recipe/<recipe_id>')
 def delete_my_recipe(recipe_id):
-    if session.get("author") is None:
-        return redirect(url_for('login'))
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('my_recipes'))
+    flash("Recipe Successfully Deleted!")
+    return redirect(url_for("my_recipes", author_name=session["author"]))
 
 
 @app.route('/search_form', methods=['GET', 'POST'])  # render template

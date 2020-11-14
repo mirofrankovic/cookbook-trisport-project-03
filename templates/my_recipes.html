@@ -40,22 +40,20 @@
 							class="secondary-content"><i class="fas fa-utensils"></i> Go to Recipe</a></div>
 					<div class="col s3 art-deco-font"><a href="/edit_recipe/{{ recipe._id }}"
 							class="secondary-content"><i class="far fa-edit"></i> Edit</a></div>
-					<div class="col s3 art-deco-font"><a href="#!" class="secondary-content modal-trigger"
-							data-target="modal-confirm-delete-{{ recipe._id }}"><i class="far fa-trash-alt"></i>
+					<div class="col s3 art-deco-font"><a href="#delete_my_recipe" class="secondary-content modal-trigger"><i class="far fa-trash-alt"></i>
 							Delete</a></div>
 				</div>
 			</li>
 		</ul>
 		<!--Modals -->
-		<div id="modal-confirm-delete-{{ recipe._id }}" class="modal">
-			<div class="modal-content">
-				<h4>Please Confirm That You Wish To Delete The Recipe</h4>
-				<p>This will permanently delete the recipe from the cookbook.</p>
+		<div id="delete_my_recipe" class="modal">
+			<div class="modal-content center-align">
+				<h4>Would You Like To Delete The Recipe?</h4>
 			</div>
 			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel and Go Back</a>
-				<a href="/delete_my_recipe/{{ recipe._id }}"
-					class="modal-close waves-effect waves-green btn-flat">Confirm Delete</a>
+				<a href="{{ url_for('my_recipes', author_name=session['author']) }}" class="btn waves-effect waves-light margin-right-xs">Cancel <i class="fas fa-arrow-circle-left fa-xs"></i></a>
+				<a href="{{ url_for('delete_my_recipe', recipe_id=recipe._id) }}"
+					class="btn btn red modal-close">Delete Recipe</a>
 			</div>
 		</div>
 	</div>

@@ -94,10 +94,10 @@
                     </div>
                 </div>
             </div>
-            <div class="float-right">
+           <!-- <div class="float-right">
                 <a id="remove-numbers-btn" class="#b71c1c red darken-4 btn-small margin-right-xs">Remove Numbers <i class="fas fa-minus-circle fa-xs"></i></a>
                 <a id="add-numbers-btn" class="#1b5e20 green darken-4 btn-small">Add Numbers <i class="fas fa-plus fa-xs"></i></a>
-            </div>
+            </div>-->
         </div>        
         <div class="row white form-padding">
         <div class="input-field col s12">
@@ -108,7 +108,9 @@
         </div>
         <div class="row white form-padding">
         <div class="input-field col s12">
-        <input type="submit" class="#1b5e20 green darken-4 btn-small" value="Submit"></div>
+        <a class="btn waves-effect waves-light margin-right-xs" name="action" href="{{ url_for('my_recipes', author_name=session['author']) }}">
+         Cancel <i class="fas fa-arrow-circle-left fa-xs"></i></a>    
+        <input type="submit" class="#880e4f green darken-4 btn waves-effect waves-light" value="Submit"></div>
         </div>
         </div>        
         </form>
