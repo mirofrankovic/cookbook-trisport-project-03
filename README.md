@@ -132,27 +132,28 @@ In this section I will describe the front-end features of my project:
 Construct a query based on user input/s and return it's results.
 All methods which sending quires to MongoDB Atlas can return `None` if no documents are found.
 * `find_one_by_id()`
-    Return single document for given `_id`
+    Return single document for given `_id`.
 * `pagination()`
-    Return dictionary containing data for pagination 
+    Return dictionary containing data for pagination. 
 * `__len__()`
-    Return number of documents in given collection
+    Return number of documents in given collection.
 
 * `Recipes(Search)`
 * `search_term` 
-Stage which add the formated filters selected by user
+Stage which add the formated filters selected by user.
 * `search_form_button`
-Return dictionary of filters in form of key and list of values. Example: `{'raceDay': ['pre race', 'race', 'post race'], 'vagenaMeal': ['yes', 'no']}` 
+Return dictionary of filters in form of key and list of values. Example: `{'raceDay': ['pre race', 'race', 'post race'], 'veganMeal': ['yes', 'no']}` 
 
 * `Database`
-Used to update tags for edit_recipe.html
-* `update()` Search for existing tags and return them in form of in form of key and list of values
+Used to update tags for edit_recipe.html.
+* `update()` Search for existing tags and return them in form of in form of key and list of values.
 
 * `Charts`
-Construct data for dashboard.html and return them
-* `Charts`
-* `show_meal_type_graph()` construct graph data which shows User's vs. Database recipes in total in form of chart
-* `dc.barChart("#meal_type-graph")` construct graph data which shows User's vs. Database recipes in total for selected tag in form of chart
+Construct data for dashboard.html and return them.
+`Charts`
+
+* `show_meal_type_graph()` Construct graph data which shows User's vs. Database recipes in total in form of chart.
+* `dc.barChart("#meal_type-graph")` Construct graph data which shows User's vs. Database recipes in total for selected tag in form of chart.
 
 # Getting Started / Deployment
 
@@ -179,7 +180,7 @@ Construct data for dashboard.html and return them
    Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata.
 
 * [Jinga](https://jinja.palletsprojects.com/en/2.11.x/)
-   This project uses Jinja, a template engine for Python, jinja code is included within the curly brackets
+   This project uses Jinja, a template engine for Python, jinja code is included within the curly brackets.
 
 * [Python](https://www.python.org/)
    This project uses Python, an interpreted high-level programming language for general-purpose programming and used to write the logic of this game, which is included within `.py` files.
@@ -213,15 +214,15 @@ Construct data for dashboard.html and return them
    Created and designed by Google, Material Design is a design language that combines the classic principles of successful design along with innovation and technology. 
    Google's goal is to develop a system of design that allows for a unified user experience across all their products on any platform.
 
-## Testing
+# Testing
 
-# Manual Testing
+## Manual Testing
 
 * **Front End**
 
-[W3C Markup Validation Service](https://validator.w3.org/)
-[W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
-[JSHint](https://jshint.com/)
+* *W3C Markup Validation Service](https://validator.w3.org/)
+* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+* [JSHint](https://jshint.com/)
 
 * **Back End**
 
@@ -284,19 +285,19 @@ Activate venv source `venv/bin/activate` where `"venv"` is the name of your virt
 * `python app.py`
 8. The application should now run on your localhost:5000.
 
-## Credits
-# Content
+# Credits
+## Content
 
 * The recipes came from the [BBC FOOD](https://www.bbc.co.uk/food/diets/healthy) website.
 
-# Media
+## Media
 
 * The photos used in this site were obtained from the [BBC FOOD](https://www.bbc.co.uk/food/diets/healthy) website.
 
-# Acknowledgements
+## Acknowledgements
 
 * I received inspiration for this project from [BBC FOOD](https://www.bbc.co.uk/food/diets/healthy) website with the combination of [Nutritionist Resource](https://www.nutritionist-resource.org.uk/) website.
 
-# In Conclusion
+## In Conclusion
 
 * I would like to thank my mentor Guido Cecilio Garcia Bernal and the Code Institute for their support. 
