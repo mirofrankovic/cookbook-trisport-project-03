@@ -1,12 +1,12 @@
 # Miro does Snack - Cookbook for triathlon athleetes today | Code Institute - Milestone project 03
 
-In this project I should be able to show that I can create a web application using [Python3](https://www.python.org/download/releases/3.0/) and [Flask](https://flask.palletsprojects.com/en/1.1.x/) which works with cloud **MongoDB Atlas** database.
+In this project I should be able to show that I can create a web application using [Python 3](https://www.python.org/download/releases/3.0/) and [Flask](https://flask.palletsprojects.com/en/1.1.x/) which works with cloud **MongoDB Atlas** database.
 
 ## Code Institute Brief
 
 **CREATE AN ONLINE COOKBOOK**
 
-* Create a web application that allows users to store and easily access cooking recipes
+* Create a web application that allows users to store and easily access cooking recipes.
 
 * Put some effort into designing a database schema based on recipes.This application will access into designing a database schema based on recipes, and any other related properties and entities 
   (e.g. views, upvotes, recipe authors…).
@@ -23,14 +23,16 @@ In this project I should be able to show that I can create a web application usi
 
 ## UX
 
-I am an athlete and I like meals with good nutritions, I search around the web first to get a general idea of the design and data required for this project.
+I am an athlete and I like meals with good nutritions. I always wanted to know which meal is good to eat before race to load more energy day before my race
+or during the race and the most importantly what to eat after race for recovery. I search around the web first to get a general idea of the design and data required for this project.
 
 Therefore, I decided to create a cooking website which will be used by all users especially for athleetes who are busy with study, work, 
-extra curricular activities, coming up with quick meals before, during or after workout.
+extra curricular activities, coming up with quick meals before, during or after workout. The purpose of this project is to create a structure of all meals by athletes prepering for training or for a race.
+Therefore, specify meals by type of sport or specific requirementsn consuming a specific meal before, during or after race or training. 
 
-The idea is to show the new meal and provide a recomendation with amout of proteins and carbohydrates for an athlete. 
+The idea is to show the new meal and provide a recomendation with amout of proteins, carbohydrates etc. for an athlete. 
 
-I designed the site so that users can share recipes and rate them accordingly.
+I designed the site so that users can share recipes and rate them accordingly. User only with created account can rate the recipe and is allowed to edit/delete recipe/s only in his/her own profile.
 
 **REQUIREMENTS**
 
@@ -73,11 +75,12 @@ In this section I will describe the front-end features of my project:
 **1. Navbar**
 
 * Consists of the PREPARE FOR YOUR RACE logo which also returns the user to the "Home" page of the application.
-  My navbar also has links to "All Recipes", "Your Suggestion", "Contact Us", "Dashboard", "Login". The navbar will appear in all pages with the same functions for all links.
+  My navbar also has links to "All Recipes", "Dashboard", "Login". After LoggedIn, the user will be able to find his/her profile file and also will be able to log out from the profile page.
+  The navbar will appear in all pages with the same functions for all links.
          
-**2. Home**
+**2. Home Page**
 
-* Consists of one background image along with some information on contacting the webmaster and a link to the contact us page of the site. 
+* Consists of one background image along with some information for a new user to create a user profile to share recipes with other users. 
     
 **3. All_Recipes**
 
@@ -119,6 +122,8 @@ In this section I will describe the front-end features of my project:
 
 **12. Footer**
 
+* Consists the contact form and social links.
+
 **Helper**
 
 `Search`
@@ -133,7 +138,23 @@ All methods which sending quires to MongoDB Atlas can return `None` if no docume
 * `__len__()`
     Return number of documents in given collection
 
-# GETTING STARTED / DEPLOYMENT
+* `Recipes(Search)`
+* `search_term` 
+Stage which add the formated filters selected by user
+* `search_form_button`
+Return dictionary of filters in form of key and list of values. Example: `{'raceDay': ['pre race', 'race', 'post race'], 'vagenaMeal': ['yes', 'no']}` 
+
+* `Database`
+Used to update tags for edit_recipe.html
+* `update()` Search for existing tags and return them in form of in form of key and list of values
+
+* `Charts`
+Construct data for dashboard.html and return them
+* `Charts`
+* `show_meal_type_graph()` construct graph data which shows User's vs. Database recipes in total in form of chart
+* `dc.barChart("#meal_type-graph")` construct graph data which shows User's vs. Database recipes in total for selected tag in form of chart
+
+# Getting Started / Deployment
 
 * If you wish to run this site locally, please clone or download this repo. You can then run index.html or open index.html in your browser.
 * If you wish to deploy a live version of this site, then you will need to create your own GitHub repo. Navigate to settings and enable GitHub Pages by setting the Source to master branch.
@@ -196,8 +217,16 @@ All methods which sending quires to MongoDB Atlas can return `None` if no docume
 
 # Manual Testing
 
-* Add Recipe Page:
+* **Front End**
 
+[W3C Markup Validation Service](https://validator.w3.org/)
+[W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+[JSHint](https://jshint.com/)
+
+* **Back End**
+
+
+* Add Recipe Page:
 1. Go to the "Add Recipe" page.
 2. Try to submit the empty form and verify that the recipe will not submit without a RECIPE NAME.
 3. Try to submit the form without description and verify that the recipe will not submit without a RECIPE DESCRIPTION.
@@ -209,7 +238,11 @@ The main issue which was found was the sidevar/ navbar not resizing.
 
 # Deployment
 
-The following section describes the process to deploy this project to Heroku.
+* [Python 3](https://www.python.org/) and [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/) was used to build the application.
+1. Created [requirements.txt](https://github.com/mirofrankovic/cookbook-trisport-project-03/blob/master/requirements.txt) that Heroku knows which packages are required for the application to run and install them.
+2. Created [Procfile](https://github.com/mirofrankovic/cookbook-trisport-project-03/blob/master/Procfile) that Heroku knows what kind of application is this.
+
+The following section describes the process to deploy this project to **Heroku**.
 
 1. Ensure all required technologies are installed locally, as per the `requirements.txt` file.
 2. Login to Heroku, using 'heroku login' command. Input Heroku login details.
@@ -221,9 +254,37 @@ The following section describes the process to deploy this project to Heroku.
 8. From 'More' menu on the top right, select 'Restart all dynos'.
 9. View app: In settings, select Domain URL, NOT Git URL to view your hosted application.
 10. Deployed via [Heroku](https://cookbook-trisport-project-03.herokuapp.com/)
+Free cloud hosting platform which simplify the deployment process.
+
+* **Deploy**
+* Connected the app to GitHub project.
+* Enabled automatic deploys from master branch.
+* Deployed the branch manually.
+
+## What to do to run our project locally.
+
+Please note that the project can not be run locally without database user name and password.
+
+Due to the security reasons I do not publish any of those and therefore the project can not be really run locally.
+
+1. Download and install [Python 3](https://www.python.org/).
+2. Clone or download the project. In case, you downloaded the project manually you must unpack it after.
+3. Open your **Command line (CLI)** inside the project root or navigate to it.
+4. [Create virtual environment (venv)](https://docs.python.org/3/tutorial/venv.html) (by your choice it is optional)
+Activate venv source `venv/bin/activate` where `"venv"` is the name of your virtual environment.
+5. Install required packages via **CLI**.
+`pip install -r requirements.txt`
+6. Set **venv** variables.
+* `IP 0.0.0.0`
+* PORT `5000`
+* MONGO_URI such as `mongodb://<dbuser>:<dbpassword>@ds225442.mlab.com:25442/<dbname>`
+* SECRET_KEY `my_secret_key`
+* DEVELOPMENT (optional)
+7. Run the application
+* `python app.py`
+8. The application should now run on your localhost:5000.
 
 ## Credits
-
 # Content
 
 * The recipes came from the [BBC FOOD](https://www.bbc.co.uk/food/diets/healthy) website.

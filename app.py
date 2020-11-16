@@ -200,26 +200,6 @@ def edit_recipe(recipe_id):
                            calories_name=mongo.db.calories_name.find()
                            )
 
-#@app.route('/updated_edit_recipe/<recipe_id>', methods=['POST'])
-#def updated_edit_recipe(recipe_id):
-#    recipes = mongo.db.recipes
-#    recipes.insert_one(request.json),
-#    {
-#        'author_name': request.form.get['author_name'],
-#        'recipe_name': request.form.get['recipe_name'],
-#        'meal_type_name': request.form.get['meal_type_name'],
-#        'sport_type_name': request.form.get['sport_type_name'],
-#        'race_day_name': request.form.get['race_day_name'],
-#        'description': request.form.get['description'],
-#        'image_recipe': request.form.get['image_recipe'],
-#        'vegan_type_meal': request.form.get['vegan_type_meal'],
-#        'servings': request.form.get['servings'],
-#        'proteins_unit': request.form.get['proteins_unit'],
-#        'carbohydrates_unit': request.form.get['carbohydrates_unit'],
-#        'calories_name': request.form.get['calories_name']
-#    }
-#    return redirect(url_for('my_recipes'))
-
 @app.route('/get_my_form')
 def get_my_form():
     if request.url.startswith('http://'):
@@ -307,11 +287,11 @@ def delete_my_recipe(recipe_id):
     return redirect(url_for("my_recipes", author_name=session["author"]))
 
 
-@app.route('/search_form', methods=['GET', 'POST'])  # render template
-def search_form():
-    forms = forms_collection.find()
+#@app.route('/search_form', methods=['GET', 'POST'])  # render template
+#def search_form():
+#    forms = forms_collection.find()
 
-    return render_template('search_form.html', forms=mongo.db.forms.find())
+#    return render_template('search_form.html', forms=mongo.db.forms.find())
 
 @app.route('/my_recipes/<author_name>', methods=['GET', 'POST'])
 def my_recipes(author_name):
