@@ -540,6 +540,7 @@ img {
   padding-right: 5px;
   margin-left: 20px;
 }
+
  .subnav-img-center {
   /*border-radius: 50%;*/
   width: 60px;
@@ -561,26 +562,19 @@ img {
   cursor: pointer;
 }
 /*----------MQ second navbar--------------*/
+
 @media (max-width:480px) {
-    .subnav-img-left,
     .subnav-img-right{
-         width: 70px;
-         height: 70px;
+         width: 100%;
+         height: 100%;
          padding-top: 5px;
          padding-left: 5px;
          margin-left:6px;
          margin-right:6px;
 }
-    .subnav-img-center{
-         width: 70px;
-         height: 70px;
-         padding-top: 5px;
-         padding-left: 5px;
-         margin-left:0px; 
-    }
+    
 }
 @media (max-width:1200px) {
-    .subnav-img-left,
     .subnav-img-right{
          /*width: 70px;*/
          /*height: 70px; */
@@ -589,16 +583,9 @@ img {
          margin-left:10px;
          margin-right:10px;
 }
-    .subnav-img-center{
-         width: 70px;
-         height: 70px;
-         padding-top: 5px;
-         padding-left: 5px;
-         margin-left:0px; 
-    }
+    
 }
 @media (max-width:600px) {
-    .subnav-img-left,
     .subnav-img-right{
         /* width: 70px;*/
          height: 70px;
@@ -607,13 +594,7 @@ img {
          margin-left:6px;
          margin-right: 6px;
 }
-    .subnav-img-center{
-         width: 70px;
-         height: 70px;
-         padding-top: 5px;
-         padding-left: 5px;
-         margin-left:0px; 
-    }
+    
 }
 .menu-list {
     max-width: 1200px;
@@ -622,6 +603,7 @@ img {
     text-align: center;
 }
 /*-------------getready main image  -----------------*/
+
  .img-responsive{
      height:auto;
      width: 100%;

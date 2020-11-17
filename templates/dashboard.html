@@ -31,15 +31,5 @@
 {% endblock %}
 
 {% block script %}
-<script>
-
-$(document).ready(function(){
-    console.log('Loading data...');
-    $.getJSON("/find_recipes", function(data) {
-        console.log(data);
-        makeGraphs(data);
-    });
-});
-
-</script>
+<script type="text/javascript" src="{{url_for('static', filename='work-template/js/graphics.js')}}"></script>
 {% endblock %}

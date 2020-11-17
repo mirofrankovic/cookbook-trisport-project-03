@@ -8,6 +8,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
 from bson.json_util import dumps
+from bson.errors import InvalidId
 
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -136,9 +137,13 @@ def find_recipes_json():
 
 @app.route('/recipedescription/<recipe_id>')
 def recipedescription(recipe_id):
-    this_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    if this_recipe is None:
+    try:
+        this_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    except InvalidId as e:
         abort(404, 'Recipe not found!')
+    else:
+        if this_recipe is None:
+            abort(404, 'Recipe not found!')
     return render_template('recipedescription.html', recipe=this_recipe)
 
 @app.route('/add_recipe')  
@@ -182,9 +187,22 @@ def edit_recipe(recipe_id):
             'calories_name': request.form.get('calories_name')
 
         }
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
-        flash("Recipe Successfully Updated!")
-    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        try:
+            mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
+            flash("Recipe Successfully Updated!")
+        except InvalidId as e:
+            abort(404, 'Recipe not found!')
+        except Exception as e:
+            abort(500, 'Unknown exception found!')
+    
+    try:
+        this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    except InvalidId as e:
+        abort(404, 'Recipe not found!')
+    else:
+        if this_recipe is None:
+            abort(404, 'Recipe not found!')
+    
     # indentation should start here for the above line, so it is not part of the if request.method == POST
     return render_template('edit_recipe.html', recipe=this_recipe,
                            author_name=mongo.db.author_name.find(),
@@ -342,7 +360,6 @@ def popular_recipe(recipe_id):
 @app.route('/dashboard')
 def dashboard():
     forms = forms_collection.find()
-
     return render_template('dashboard.html')
 
 @app.route('/contact_us')
