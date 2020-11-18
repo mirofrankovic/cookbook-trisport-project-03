@@ -54,7 +54,7 @@
 				</li>
 			</ul>
             <ul id="nav-mobile" class="sidenav"> 
-            <img class="parallax img-responsive img-fluid" src="static/images/thisImageIs.jpg" alt="nutrition">  
+            <img class="parallax img-responsive img-fluid" src="{{ url_for('static', filename='images/thisImageIs.jpg') }}" alt="nutrition">  
                 <li><a href="{{url_for('get_ready')}}"><i class="material-icons">home</i>Home</a></li>           
 				<li><a href="{{url_for('get_recipes')}}"><i class="material-icons">restaurant</i>All Recipes</a></li>
                 <li><a href="{{url_for('dashboard')}}"><i class="material-icons">insert_chart</i>Dashboard</a></li>

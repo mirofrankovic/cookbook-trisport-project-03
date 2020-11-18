@@ -6,7 +6,8 @@ In this project I should be able to show that I can create a web application usi
 
 **CREATE AN ONLINE COOKBOOK**
 
-* Create a web application that allows users to store and easily access cooking recipes.
+* Create a web application that allows users to store and easily access cooking recipes.  The purpose of this project is to "Create a web application that allows users to store and easily access cooking recipes",
+  using the CRUD operations of Create, Read, Update, and Delete for their recipes.
 
 * Put some effort into designing a database schema based on recipes.This application will access into designing a database schema based on recipes, and any other related properties and entities 
   (e.g. views, upvotes, recipe authors…).
@@ -43,9 +44,18 @@ Based on my research and brief given by Code Institute, I created the below requ
 * Create schema for user
 * Create different collections for all above
 
-**Users**
+**User Stories**
 
-User should be able to edit / delete only his own recipe/s.
+* View all recipes as a Guest.
+* View the recipes from any device (mobile, tablet, desktop).
+* See recipes from other users to get new ideas.
+* Search any specific recipe by different category.
+* Easily see all of the recipes I have submitted.
+* Create profile, login and add my recipes.[Creatre]
+* Get the instruction to make a dish from this site.[Read]
+* Easily see all of the recipes I have submitted.
+* User should be able to edit[Edit] / delete[Delete] only his own recipe/s.
+* Be able to see the visual dashboard / graphs of the recipes by category. 
 
 **Pages**
 
@@ -66,7 +76,75 @@ This app is hosted by GitHub Pages, a static site hosting service which supports
 
 ## Layout
 
-The layout used the [Materialize CSS Parallax template](https://materializecss.com/templates/parallax-template/preview.html) which I modified to suit my own requirements.
+**Framework**
+
+* The layout used the [Materialize CSS Parallax template](https://materializecss.com/templates/parallax-template/preview.html) which I modified to suit my own requirements.
+* [Flask 1.0.2](https://palletsprojects.com/p/flask/) is the micro web framework that runs the application.
+* [jQuery 3.4.1](https://code.jquery.com/jquery/)Used to manipulate the DOM, for example buttons, and showing / hiding elements.
+* [Crossfilter](https://square.github.io/crossfilter/) to manage the data that lie behind charts.
+
+**Database**
+
+For the database, I choose MongoDB and this was a great oppertunity to get experience using NoSQL database MongoDB.
+
+The database is made up of the following collections.
+
+**forms**
+```
+id: <ObjectId()>
+meal_type_name:<string>
+sport_type_name:<string>
+vegan_type_name:<string>
+race_day_name:<string>
+```
+**meal_type**
+```
+id: <ObjectId()>
+meal_type_name:<string>
+```
+**race_day**
+```
+id: <ObjectId()>
+race_day_name:<string>
+```
+**sport_type**
+```
+id: <ObjectId()>
+sport_type_name:<string>
+```
+**vegan_meal**
+```
+id: <ObjectId()>
+vegan_type_name:<string>
+```
+**recipes**
+```
+id: <ObjectId()>
+author_name:<string>
+recipe_name:<string>
+meal_type_name:<string>
+sport_type_name:<string>
+race_day_name:<string>
+description:<string>
+image_recipe:<string>
+vegan_type_meal:<string>
+due_date:<string>
+likes:<int32>
+```
+**servings**
+```
+id: <ObjectId()>
+proteins_unit:<string>
+carbohydrates_unit:<string>
+calories_name:<string>
+```
+**users**
+```
+id: <ObjectId()>
+author_name:<string>
+password:<string>
+likes:<Array>
+```
 
 ## Features
 
@@ -75,7 +153,7 @@ In this section I will describe the front-end features of my project:
 **1. Navbar**
 
 * Consists of the PREPARE FOR YOUR RACE logo which also returns the user to the "Home" page of the application.
-  My navbar also has links to "All Recipes", "Dashboard", "Login". After LoggedIn, the user will be able to find his/her profile file and also will be able to log out from the profile page.
+  My navbar also has links to **All Recipes**, **Dashboard**, **Login**. After LoggedIn, the user will be able to find his/her **Profile** file and also will be able to **Logout** from the profile page.
   The navbar will appear in all pages with the same functions for all links.
          
 **2. Home Page**
@@ -105,7 +183,7 @@ In this section I will describe the front-end features of my project:
 
 **8. Dashboard**
 
-* Once logged in the user will be presented with their dashboard which provides a count of their recipes, along with 4 data charts depicting the number of favourite meal type, favourite sport type, favourite race day and meal associated for the vegan.
+* Once logged in the user will be presented with their dashboard which provides a count of their recipes, along with 4 data **charts** depicting the number of favourite meal type, favourite sport type, favourite race day and meal associated for the vegan.
 
 **9. Contact_Us**
 
@@ -122,38 +200,72 @@ In this section I will describe the front-end features of my project:
 
 **12. Footer**
 
-* Consists the contact form and social links.
+* Consists the contact form and social links with additional copyright information.
 
-**Helper**
+**Search recipe**
 
 `Search`
 
 * `Search`
 Construct a query based on user input/s and return it's results.
 All methods which sending quires to MongoDB Atlas can return `None` if no documents are found.
-* `find_one_by_id()`
+-  * `find_one_by_id()`
     Return single document for given `_id`.
-* `pagination()`
+- * `pagination()`
     Return dictionary containing data for pagination. 
-* `__len__()`
+- * `__len__()`
     Return number of documents in given collection.
 
-* `Recipes(Search)`
-* `search_term` 
+- * `Recipes(Search)` If a user would like to search for something specific with the name, they have a search button on the all recipe page.
+- * `search_term` 
 Stage which add the formated filters selected by user.
-* `search_form_button`
+- * `search_form_button`
 Return dictionary of filters in form of key and list of values. Example: `{'raceDay': ['pre race', 'race', 'post race'], 'veganMeal': ['yes', 'no']}` 
 
 * `Database`
 Used to update tags for edit_recipe.html.
-* `update()` Search for existing tags and return them in form of in form of key and list of values.
+- * `update()` Search for existing tags and return them in form of in form of key and list of values.
 
 * `Charts`
 Construct data for dashboard.html and return them.
-`Charts`
 
-* `show_meal_type_graph()` Construct graph data which shows User's vs. Database recipes in total in form of chart.
-* `dc.barChart("#meal_type-graph")` Construct graph data which shows User's vs. Database recipes in total for selected tag in form of chart.
+- * `show_meal_type_graph()` Construct graph data which shows User's vs. Database recipes in total in form of chart.
+- * `dc.barChart("#meal_type-graph")` Construct graph data which shows User's vs. Database recipes in total for selected tag in form of chart.
+
+**CRUD operations of Create, Read, Update, and Delete for their recipes.**
+
+* **Add a Recipe**
+[**C**RUD] **C**reate or 'add' a new recipe.
+
+Logged in users can add their recipes. For selective fields,user can select the options from drop down.
+All the fields of the form is well explained with the 'placeholder' to make it easy for the user.
+
+* **View Recipe**
+[C**R**UD] **R**ead or 'review' recipes, either from the home page, or the user recipes page.
+
+The logged in user can like the recipe one time. If the user viewing is the user who submitted, they will have additional options edit and delete. 
+Delete button allow the user to completely remove the recipe from the database.
+
+* **Update Recipe**
+[CR**U**D] **U**pdate or 'edit' their own user recipes on this page.
+
+The edit recipe form is identical in layout to the add recipe form, and very similar in functionality. 
+User can either save or cancel the changes by clicking the appropriate buttons.
+
+* **Delete Recipe**
+[CRU**D**] **D**elete or 'remove' a user's own recipes.
+
+If the user clicks the delete button, a popup modal will appear asking for confirmation. If the user still choose to delete,
+the recipe will be permanently deleted.
+
+* **User's Profile**
+
+Each user has their own account page, there they can view all the recipes they have added and can go for edit recipe from there aswell.
+
+* **Flashed Messages**
+
+The app uses the flask flash method to communicate important events to the user and make it user friendly.
+
 
 # Getting Started / Deployment
 
@@ -162,28 +274,7 @@ Construct data for dashboard.html and return them.
 
 ## Technologies Used
 
-* [Gitpod](https://gitpod.io/workspaces/)
-   This project used Gitpod, an online integrated development environment, to construct the code end to end.
-
-* [Bootstrap](https://getbootstrap.com/)
-   This project used Bootstrap, a library of website themes. The [Materialize CSS Parallax template](https://materializecss.com/templates/parallax-template/preview.html), was used for this project.
-
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-   This project uses Flask, a Python micro-framework. It is classified as a microframework because it does not require particular tools or libraries.
-
-* [mLab](https://mlab.com/)
-   This project uses mLab, a fully managed cloud database service that hosts MongoDB databases. mLab runs on cloud providers Amazon, Google, and Microsoft Azure, and has partnered with platform-as-a-service providers. The developer used an mLab sandbox DB, which is for learning and prototyping. 
-   Json value pairs were added into the mLab document to align with the recipe wireframe.
-
-* [MongoDB](https://www.mongodb.com/)
-   This project uses MongoDB Atlas, a free and open-source cross-platform document-oriented database program.
-   Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata.
-
-* [Jinga](https://jinja.palletsprojects.com/en/2.11.x/)
-   This project uses Jinja, a template engine for Python, jinja code is included within the curly brackets.
-
-* [Python](https://www.python.org/)
-   This project uses Python, an interpreted high-level programming language for general-purpose programming and used to write the logic of this game, which is included within `.py` files.
+**Languages**
 
 * [HTML](https://en.wikipedia.org/wiki/HTML)
    This project uses HTML, the standard mark-up language used to build website layout, which is included within the `.html` files.
@@ -194,18 +285,10 @@ Construct data for dashboard.html and return them.
 * [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
    This project uses JavaScript, an object-oriented programming language used to create interactive effects within web browsers. JavaScript within this project was included with the Bootstrap template.
 
-* [Dc](https://dc-js.github.io/dc.js/)
-    This `dc.js` is a javascript charting library with native [crossfilter](http://crossfilter.github.io/crossfilter/) support, allowing highly efficient exploration on large multi-dimensional datasets.
-    It leverages [d3](https://d3js.org/) to render charts in CSS-friendly SVG format. Charts rendered using `dc.js` are data driven and reactive and therefore provide instant feedback to user interaction.
+* [Python 3](https://www.python.org/)
+   This project uses Python, an interpreted high-level programming language for general-purpose programming and used to write the logic of this game, which is included within `.py` files.
 
-* [Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools/)
-   This project uses Chrome Dev Tools, a set of web developer tools, to continuously test and inspect that the web pages are rendering as intended within the browser.
-
-* [GitHub](https://github.com/)
-   This project uses GitHub, a web hosting service, for version control and final project backup.
-
-* [Heroku](https://www.heroku.com/home)
-   This project uses Heroku, a web hosting service that supports Python applications, for final project deployment.
+**Libraries**
 
 * [Font Awesome](https://fontawesome.com/)
    This project uses Font Awesome, vector icons and social logos on the website.
@@ -214,18 +297,66 @@ Construct data for dashboard.html and return them.
    Created and designed by Google, Material Design is a design language that combines the classic principles of successful design along with innovation and technology. 
    Google's goal is to develop a system of design that allows for a unified user experience across all their products on any platform.
 
+* [Google Fonts](https://fonts.google.com/)
+   Provided the fonts used throughout the project.
+
+* [jQuery](https://jquery.com/)   
+   Used as the primary JavaScript functionality.
+
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+   This project uses Flask, a Python micro-framework. It is classified as a microframework because it does not require particular tools or libraries.
+
+* [Jinga](https://jinja.palletsprojects.com/en/2.11.x/)
+   This project uses Jinja, a template engine for Python, jinja code is included within the curly brackets.
+
+* [PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)
+   2.3.0 was used to enable the python application to access the Mongo database.
+
+* [Bootstrap](https://getbootstrap.com/)
+   This project used Bootstrap, a library of website themes. The [Materialize CSS Parallax template](https://materializecss.com/templates/parallax-template/preview.html), was used for this project.
+
+* [Dc](https://dc-js.github.io/dc.js/)
+    This `dc.js` is a javascript charting library with native [crossfilter](http://crossfilter.github.io/crossfilter/) support, allowing highly efficient exploration on large multi-dimensional datasets.
+    It leverages [d3](https://d3js.org/) to render charts in CSS-friendly SVG format. Charts rendered using `dc.js` are data driven and reactive and therefore provide instant feedback to user interaction.
+
+* [Crossfilter](http://crossfilter.github.io/crossfilter/)
+   Is a **JavaScript** library for exploring large multivariate datasets in the browser.
+
+**Hosting**
+
+* [Heroku](https://www.heroku.com/home)
+   This project uses Heroku, a web hosting service that supports Python applications, for final project deployment.
+
+**Tools**
+
+* [Gitpod](https://www.gitpod.io/docs/)
+  Open-source tech. This project used Gitpod, an online integrated development environment, to construct the code end to end.
+
+* [MongoDB Atlas](https://www.mongodb.com/)
+   This project uses MongoDB Atlas, a free and open-source cross-platform document-oriented database program.
+   Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata.  
+
+* [GitHub](https://github.com/)
+   This project uses GitHub, a web hosting service, for version control and final project backup.   
+
+* [Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools/)
+   This project uses Chrome Dev Tools, a set of web developer tools, to continuously test and inspect that the web pages are rendering as intended within the browser.
+
 # Testing
+
+Most of the testing was manual testing during the development of the site with additional testing completed at the end, before this write up.
 
 ## Manual Testing
 
 * **Front End**
 
-* *W3C Markup Validation Service](https://validator.w3.org/)
+* [W3C Markup Validation Service](https://validator.w3.org/)
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
 * [JSHint](https://jshint.com/)
 
 * **Back End**
 
+* [PEP8 Online](http://pep8online.com/) Was used to validate Python.
 
 * Add Recipe Page:
 1. Go to the "Add Recipe" page.
@@ -234,7 +365,7 @@ Construct data for dashboard.html and return them.
 
 * Responsive Testing
 
-The app was tested on Samsung S8, Apple iPhone 6, Apple iPad Air 2 and also using the Google Chrome inspect feature to test for repsonsiveness and any errors that occurred.
+The app was tested on Apple iPhone 6, Apple iPad Air 2 and also using the Google Chrome inspect feature to test for repsonsiveness and any errors that occurred.
 The main issue which was found was the sidevar/ navbar not resizing.
 
 # Deployment
@@ -295,6 +426,12 @@ Activate venv source `venv/bin/activate` where `"venv"` is the name of your virt
 * The photos used in this site were obtained from the [BBC FOOD](https://www.bbc.co.uk/food/diets/healthy) website.
 
 ## Acknowledgements
+
+**Tutorials**
+
+[https://www.tutorialspoint.com](https://www.tutorialspoint.com/index.htm)
+
+[https://stackoverflow.com](https://stackoverflow.com/)
 
 * I received inspiration for this project from [BBC FOOD](https://www.bbc.co.uk/food/diets/healthy) website with the combination of [Nutritionist Resource](https://www.nutritionist-resource.org.uk/) website.
 
