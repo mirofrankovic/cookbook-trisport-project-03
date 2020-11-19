@@ -1,5 +1,7 @@
 # Miro does Snack - Cookbook for triathlon athleetes today | Code Institute - Milestone project 03
 
+![imageForProjec](https://user-images.githubusercontent.com/28025554/99586951-4f9c7980-29e0-11eb-9274-b4083a5e4d75.PNG)
+
 In this project I should be able to show that I can create a web application using [Python 3](https://www.python.org/download/releases/3.0/) and [Flask](https://flask.palletsprojects.com/en/1.1.x/) which works with cloud **MongoDB Atlas** database.
 
 ## Code Institute Brief
@@ -209,28 +211,28 @@ In this section I will describe the front-end features of my project:
 * `Search`
 Construct a query based on user input/s and return it's results.
 All methods which sending quires to MongoDB Atlas can return `None` if no documents are found.
--  * `find_one_by_id()`
+-   `find_one_by_id()`
     Return single document for given `_id`.
-- * `pagination()`
+-  `pagination()`
     Return dictionary containing data for pagination. 
-- * `__len__()`
+-  `__len__()`
     Return number of documents in given collection.
 
-- * `Recipes(Search)` If a user would like to search for something specific with the name, they have a search button on the all recipe page.
-- * `search_term` 
+-   `Recipes(Search)` If a user would like to search for something specific with the name, they have a search button on the all recipe page.
+-   `search_term` 
 Stage which add the formated filters selected by user.
-- * `search_form_button`
+-   `search_form_button`
 Return dictionary of filters in form of key and list of values. Example: `{'raceDay': ['pre race', 'race', 'post race'], 'veganMeal': ['yes', 'no']}` 
 
 * `Database`
 Used to update tags for edit_recipe.html.
-- * `update()` Search for existing tags and return them in form of in form of key and list of values.
+-   `update()` Search for existing tags and return them in form of in form of key and list of values.
 
 * `Charts`
 Construct data for dashboard.html and return them.
 
-- * `show_meal_type_graph()` Construct graph data which shows User's vs. Database recipes in total in form of chart.
-- * `dc.barChart("#meal_type-graph")` Construct graph data which shows User's vs. Database recipes in total for selected tag in form of chart.
+-   `show_meal_type_graph()` Construct graph data which shows User's vs. Database recipes in total in form of chart.
+-   `dc.barChart("#meal_type-graph")` Construct graph data which shows User's vs. Database recipes in total for selected tag in form of chart.
 
 **CRUD operations of Create, Read, Update, and Delete for their recipes.**
 
@@ -341,6 +343,8 @@ The app uses the flask flash method to communicate important events to the user 
 
 * [Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools/)
    This project uses Chrome Dev Tools, a set of web developer tools, to continuously test and inspect that the web pages are rendering as intended within the browser.
+
+* [Am I Responsive](http://ami.responsivedesign.is/#)
 
 # Testing
 

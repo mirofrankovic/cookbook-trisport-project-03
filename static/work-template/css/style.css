@@ -6,18 +6,20 @@ html, body {
 }
 #cookbook-body{
     padding:10px;
-    padding-bottom:120px;   /* Height of the footer */
+    padding-bottom:120px;   
 }
 .art-deco-font {
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 /* NAV BAR */
 a {
-  color: #c2185b;
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
+    color: #c2185b; 
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 }
-
+a:hover {
+    color: #220511;
+}
 /* SECTIONS */
 /* FORMS  ICLUDING LOGIN AND REGITER*/
 .float-right {
@@ -34,7 +36,6 @@ a {
     justify-content: center;
     align-items: center;
 }
-
 /* ALL Recipes */
 .class-size {
     height: 9em;
@@ -75,7 +76,6 @@ a {
     text-overflow: ellipsis; 
     margin-bottom: 20px;
 }
-
 #sorting-bar > a {
     color: #00695c;
     margin-top: 1.5em;
@@ -118,100 +118,34 @@ a {
     /*width: 25%*/
     margin-right: 0.5em;
 }
-
 /* navbar-container */
-
 .section-container {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  /*padding-left: 15px;
-  padding-right: 15px;*/
-  border-radius: 5px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    border-radius: 5px;
 }
 .section-navbar {
-  font-size: 1.2rem;
-  margin-top: 20px;
-  height: 170px;
-  overflow: hidden;
-  width:100%;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    height: 170px;
+    overflow: hidden;
+    width:100%;
 }
 .section-navbar .menu-list {
-  /*display: flex;*/
-  justify-content: space-between;
-  
+    justify-content: space-between; 
 }
 .scroll-tab{
-  overflow: auto;
+    overflow: auto;
 }
 .section-navbar nav ul a {
-  color: #2d2d2d;
-  font-size: 1.1rem;
-  font-family: 'Muli', 'sans-serif';
+    color: #2d2d2d;
+    font-size: 1.1rem;
+    font-family: 'Muli', 'sans-serif';
 }
-/*-------------------sub-nav-----------*/
 
-/* FOOTER */
-
-#footer-custom {
-    width: 100%;
-    box-sizing: border-box;
-	text-align: left;
-	font: bold 16px sans-serif;
-	padding: 50px 50px 60px 50px;
-	margin-top: 80px;   
-}
-.footer-heading {
-    font-size: 1.2em;
-}
-.footer-text {
-    font-size: 0.8em;
-    color: black;
-}
-.author-text{
-    color:black;
-}
-#footer-custom .footer-left,
-#footer-custom .footer-right{
-	display: inline-block;
-	vertical-align: top;
-}
-#footer-custom .footer-left{
-	width: 60%;
-}
-#footer-custom .footer-right{
-	width: 30%;
-}
-#footer-custom .footer-icons{
-	margin-top: 25px;
-}
-#footer-custom .footer-icons a{
-	display: inline-block;
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
-	background-color:  #33383b;
-	border-radius: 3px;
-    font-size: 15px;
-	color: #ffffff;
-	text-align: center;
-	line-height: 20px;
-    margin-right: 3px;
-	margin-bottom: 5px;
-}
-#footer-custom .footer-icons a i {
-    margin-top: 6px;
-}
-@media (max-width: 880px) {
-
-	#footer-custom .footer-right,
-	#footer-custom .footer-left{
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		text-align: center;
-	}
-}
 /* Background Images*/
 /* MEDIA QUERIES */
 
@@ -219,10 +153,11 @@ a {
     .mobile-hide {
         display: none!important;
     }   
-    #counter-box-my-recipes {
-    width: 6em;
-    height: 6em;
-    color: white;
+}
+   /* #counter-box-my-recipes {
+        width: 6em;
+        height: 6em;
+        color: white;
     }
     #counter-box-my-recipes > .number-display {
         font-size: 2.5em;
@@ -231,52 +166,49 @@ a {
         font-size: 1em;
         margin-bottom: 0;
     }
-}
-.fa-heart {
-  color: red;
-}
+}*/
+
 nav ul a,
 nav .brand-logo {
-  color: #444;
+    color: #444;
 }
 p {
-  line-height: 2rem;
+    line-height: 2rem;
 }
 .sidenav-trigger {
-  color: #26a69a;
+    color: #26a69a;
 }
 .parallax-container {
-  min-height: 380px;
-  width: 100%;
-  line-height: 0;
-  height: auto;
-  color: rgba(255,255,255,.9);
+    min-height: 380px;
+    width: 100%;
+    line-height: 0;
+    height: auto;
+    color: rgba(255,255,255,.9);
 }
  .parallax-container .section {
     width: 100%;
   }
 
 @media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    top: 40%;
+    .parallax-container .section {
+        top: 40%;
   }
-  #index-banner .section {
-    top: 10%;
+    #index-banner .section {
+        top: 10%;
   }
 }
-
 @media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
+    #index-banner .section {
+        top: 0;
   }
 }
 /* Dashboard File */
 .dashboard-graph {
-  width: 100%; 
-  min-height: 450px;
+    width: 100%; 
+    min-height: 450px;
 }
 .row {
-  margin:0 !important;
+    margin:0 !important;
 }
 .dc-chart{
     color:black;
@@ -310,14 +242,14 @@ p {
     text-align: left
 }
 .dc-chart th,.dc-chart td {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 .dc-chart tr.dc-table-group td {
-  padding-top: 4px;
-  border-bottom: 1px solid black;
+    padding-top: 4px;
+    border-bottom: 1px solid black;
 }
 .dc-chart select {
-  width: 150px;
+    width: 150px;
 }
 #selector-container > div > select {
     display: block;
@@ -358,27 +290,19 @@ p {
 }
 /* MQ Footer */
 .icon-block {
-  padding: 0 15px;
+    padding: 0 15px;
 }
 .icon-block .material-icons {
-  font-size: inherit;
+    font-size: inherit;
 }
 footer.page-footer {
-  margin: 0;
+    margin: 0;
 }
 .clearfix {
-  clear:both;
+    clear:both;
 }
 .text-center {text-align:center;}
 
-    a {
-    color: tomato;
-    text-decoration: none;
-}
-
-    a:hover {
-    color: #c2185b;
-}
 pre {
     display: block;
     padding: 9.5px;
@@ -393,109 +317,109 @@ pre {
     border-radius: 4px;
 }
 .header {
-  padding:20px 0;
-  position:relative;
-  margin-bottom:10px; 
+    padding:20px 0;
+    position:relative;
+    margin-bottom:10px; 
 }
 .header:after {
-  content:"";
-  display:block;
-  height:1px;
-  left:30%; right:30%;
+    content:"";
+    display:block;
+    height:1px;
+    left:30%; right:30%;
 }
 .header h2 {
-  font-size:3em;
-  font-weight:300;
-  margin-bottom:0.2em;
+    font-size:3em;
+    font-weight:300;
+    margin-bottom:0.2em;
 }
 .header p {
-  font-size:14px;
+    font-size:14px;
 }
-#a-footer {
-  margin: 20px 0;
-}
+/*#a-footer {
+    margin: 20px 0;
+}*/
 .new-react-version {
-  padding: 20px 20px;
-  border: 1px solid #eee;
-  border-radius: 20px;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.7;
+    padding: 20px 20px;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.7;
 }
 .new-react-version .react-svg-logo {
-  text-align: center;
-  max-width: 60px;
-  margin: 20px auto;
-  margin-top: 0;
+    text-align: center;
+    max-width: 60px;
+    margin: 20px auto;
+    margin-top: 0;
 }
 .success-box {
-  margin:20px 0;
-  padding:10px 10px;
-  border:1px solid #eee;
-  background:#f9f9f9;
+    margin:20px 0;
+    padding:10px 10px;
+    border:1px solid #eee;
+    background:#f9f9f9;
 }
 .success-box img {
-  margin-right:10px;
-  display:inline-block;
-  vertical-align:top;
+    margin-right:10px;
+    display:inline-block;
+    vertical-align:top;
 }
 .success-box > div {
-  vertical-align:top;
-  display:inline-block;
-  color:#888;
+    vertical-align:top;
+    display:inline-block;
+    color:#888;
 }
 
 /* Social Icons */
 .facebook {
-  background-color: #3b5998;
-  color: #fff !important;
+    background-color: #3b5998;
+    color: #fff !important;
 }
 .facebook i {
-  color: #fff !important;
+    color: #fff !important;
 }
 .facebook:hover {
-  background-color: #4c70ba !important;
+    background-color: #4c70ba !important;
 }
 .github {
-  background-color: #444444;
-  color: #fff !important;
+    background-color: #444444;
+    color: #fff !important;
 }
 .github i {
-  color: #fff !important;
+    color: #fff !important;
 }
 .github:hover {
-  background-color: #5e5e5e !important;
+    background-color: #5e5e5e !important;
 }
 .strava {
-  background-color: #fc4c02;
-  color: #fff !important;
+    background-color: #fc4c02;
+    color: #fff !important;
 }
 .strava i {
-  color: #fff !important;
+    color: #fff !important;
 }
 .strava:hover {
-  background-color: #FD7035 !important ;
+    background-color: #FD7035 !important ;
 }
 .pinterest {
-  background-color: #cb2027;
-  color: #fff !important;
+    background-color: #cb2027;
+    color: #fff !important;
 }
 .pinterest i {
-  color: #fff !important;
+    color: #fff !important;
 }
 .pinterest:hover {
-  background-color: #e03e44 !important;
+    background-color: #e03e44 !important;
 }
 .twitter {
-  background-color: #55acee;
-  color: #fff !important;
+    background-color: #55acee;
+    color: #fff !important;
 }
 .twitter i {
-  color: #fff !important;
+    color: #fff !important;
 }
 .twitter:hover {
-  background-color: #83c3f3 !important;
+    background-color: #83c3f3 !important;
 }
 /*.......Media Icons....................*/
 
@@ -521,8 +445,8 @@ pre{
     border-radius: 4px;
 }
 .info{
-  font-size: 1.3rem;
-  text-align: center;
+    font-size: 1.3rem;
+    text-align: center;
 }
 .flashes h4 {
     line-height: 2;
@@ -531,61 +455,58 @@ pre{
 img {
     display:block;
 }
- .subnav-img-right {
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 20px; 
-  margin-right: 20px;
-  cursor: pointer;
+.subnav-img-right {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 20px; 
+    margin-right: 20px;
+    cursor: pointer;
 }
 /*----------MQ second navbar--------------*/
 
 @media (max-width:480px) {
     .subnav-img-right{
-         width: 100%;
-         height: 100%;
-         padding-top: 5px;
-         padding-left: 5px;
-         margin-left:6px;
-         margin-right:6px;
-}
-    
+        width: 100%;
+        height: 100%;
+        padding-top: 5px;
+        padding-left: 5px;
+        margin-left:6px;
+        margin-right:6px;
+} 
 }
 @media (max-width:1200px) {
     .subnav-img-right{
-         /*width: 70px;*/
-         /*height: 70px; */
-         padding-top: 5px;
-         padding-left: 5px;
-         margin-left:10px;
-         margin-right:10px;
+        padding-top: 5px;
+        padding-left: 5px;
+        margin-left:10px;
+        margin-right:10px;
 }
     
 }
 @media (max-width:600px) {
     .subnav-img-right{
-         padding-top: 5px;
-         padding-left: 5px;
-         margin-left:1px;
-         margin-right: 6px;
+        padding-top: 5px;
+        padding-left: 5px;
+        margin-left:1px;
+        margin-right: 6px;
 }
     .header {
         font-size: 25px;
         line-height: 110%;
     }
-    .add-recipe-box > a {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+    /*.add-recipe-box > a {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
 }
     #sorting-bar-my-recipes > a{
         color: #00695c;
         margin-top: 1.5em;
         width: 100%; 
         margin-right: 0.5em
-    }
+    }*/
 }
 .menu-list {
     max-width: 1200px;
@@ -595,34 +516,33 @@ img {
 }
 /*-------------getready main image  -----------------*/
 
- .img-responsive{
-     height:auto;
-     width: 100%;
-     object-fit: cover;     
- }
+.img-responsive{
+    height:auto;
+    width: 100%;
+    object-fit: cover;     
+}
  /*-------------getready collapsible image with text --------------------*/
- .content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
 }
 .text-race-image {
     color:brown;   
 }
 .menu-list {
     text-align: center;
-     vertical-align: middle;
+    vertical-align: middle;
 }
  @media (max-width:380px) {   /* iPhone mode */
-     .parallax-container{
+    .parallax-container{
          height:100%;
          width:100%;
          object-fit: cover;         
      }
-     .center-text {
-         color: black;
-         
+    .center-text {
+         color: black;         
      }
  }   
  @media (max-width:380px) {
@@ -635,22 +555,81 @@ img {
      }    
  }   
  /*-------------recipes----------------------*/
- .search-by {
-     font-family: 'Yanone Kaffeesatz', sans-serif;
-     font-size: 40px;
-     margin-top: 20px;
+.search-by {
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-size: 40px;
+        margin-top: 20px;
  }  
  /*-----------input field----------------*/
  .input-field-icon  {
-      position: relative;      
+        position: relative;      
  }
  i.search {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    /*transform: translateY(-50%);*/    
+        position: absolute;
+        top: 50%;
+        left: 15px;
 }
 /*-----------result from search recipes----------------*/
 .container-result{   
-    min-height: calc(100vh - 95px);     
+        min-height: calc(100vh - 95px);     
+}
+/*------------------Footer---------------------------------*/
+
+#footer-custom {
+    width: 100%;
+    box-sizing: border-box;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 50px 50px 60px 50px;
+	margin-top: 80px;   
+}
+.footer-heading {
+    font-size: 1.2em;
+}
+.footer-text {
+    font-size: 1.3em;
+    color: black;
+}
+.author-text{
+    color:black;
+}
+#footer-custom .footer-left,
+#footer-custom .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+#footer-custom .footer-left{
+	width: 60%;
+}
+#footer-custom .footer-right{
+	width: 30%;
+}
+#footer-custom .footer-icons{
+	margin-top: 25px;
+}
+#footer-custom .footer-icons a{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 3px;
+    font-size: 15px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 20px;
+    margin-right: 3px;
+	margin-bottom: 5px;
+}
+#footer-custom .footer-icons a i {
+    margin-top: 6px;
+}
+@media (max-width: 880px) {
+	#footer-custom .footer-right,
+	#footer-custom .footer-left{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
 }
