@@ -148,6 +148,19 @@ password:<string>
 likes:<Array>
 ```
 
+**Color Scheme**
+
+For the color scheme, I've used light gray, black and white in the navbar and most pages. I chose red, green and blue for some buttons and headings to highlight.
+Overall, I tried to keep a simple classic look. [Materialize colors](https://materializecss.com/color.html) was a good choice for this project.
+
+**Wireframes**
+
+Mock-ups were created early on in this project and added to my project recently.
+
+I've used [Balsamiq Wireframes](https://balsamiq.com/) during the Scope Plane part of the design and planning process for this project.
+
+All of my wireframes for this project can be found [here]()
+
 ## Features
 
 In this section I will describe the front-end features of my project:
