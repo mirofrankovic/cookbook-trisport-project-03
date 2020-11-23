@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="col s12">
 	<div class="icon-block">
 		<h3 class="deep-orange-text text-lighten-2">{{recipe.recipe_name}}</h3>
@@ -27,7 +26,6 @@
 				<a class="tooltipped like-dis" data-position="bottom" title="You have to login to like this recipe!"
 					data-tooltip="You have to login to like!">{{ recipe.likes }}
 					<i class="material-icons teal-text stat-icon">thumb_up</i></a>
-
 				{% endif %}
 			</header>
 		</div>

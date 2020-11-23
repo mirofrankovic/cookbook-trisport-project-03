@@ -304,13 +304,6 @@ def delete_my_recipe(recipe_id):
     flash("Recipe Successfully Deleted!")
     return redirect(url_for("my_recipes", author_name=session["author"]))
 
-
-#@app.route('/search_form', methods=['GET', 'POST'])  # render template
-#def search_form():
-#    forms = forms_collection.find()
-
-#    return render_template('search_form.html', forms=mongo.db.forms.find())
-
 @app.route('/my_recipes/<author_name>', methods=['GET', 'POST'])
 def my_recipes(author_name):
     if session.get("author") is None:

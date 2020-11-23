@@ -3,63 +3,70 @@
 {% block content %}
 
 <div class="container-contactUs">
-            <div class="col m10 offset-m1 s12">
-                <h2 class="header center teal-text text-lighten-2">Contact US</h2>
-            </div>
-    <div class="row">
-        <form id="form" class="col s12" method="GET" name="form" action="#" input type="text">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix grey-text text-darken-2">directions_run</i>
-                        <input id="name" type="text" name="name" class="validate" required="required">
-                        <label for="icon_directions_run">Your Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                            <i class="material-icons prefix grey-text text-darken-2">email</i>
-                            <input id="email" type="email" name="email" class="validate" required="required">
-                            <label for="icon_email">Your Email</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix grey-text text-darken-2">chat</i>  
-                        <textarea id="message" type="text" name="message" class="materialize-textarea" required="required"></textarea>
-                        <label for="icon_chat">Enter Your Message</label>
-                    </div>
-                </div>               
-                <div class="row">
-                        <div class="col m12">
-                        <p class="center-align"><button type="submit" class="light-blue btn btn-large waves-effect waves-light center-align" value="Click me" onclick="alert('Thank you for your email!')" name="action">Send Message</button></p>
-                        </div>
-                </div>      
-        </form>
-        <div class="header-center-us">
-        <p class="center-align purple-text">Our priority is to prepare you for a race with our experience and give you an advice for your race with a healthy diet.</p>
-        </div>
-    </div>
-            <div id="media">
-                <div class="center-align media-icons">
-                <div class="row">
-                  <div class="mini-icons">
-                    <a class="col s12 m3 waves-effect waves-light btn-large social facebook" href="https://www.facebook.com/">
-                    <i class="fa fa-facebook"></i> Like Us on facebook</a>
-                  </div>
-                  <div class="mini-icons">    
-                    <a class="col s12 m3 waves-effect waves-light btn-large social twitter" href="https://www.twitter.com/">
-                    <i class="fa fa-twitter"></i> Follow Us on twitter</a>
-                  </div>
-                  <div class="mini-icons">
-                    <a class="col s12 m3 waves-effect waves-light btn-large social strava" href="https://www.strava.com/">
-                    <i class="fab fa-strava"></i> Follow Us on strava</a>
-                  </div>
-                  <div class="mini-icons">
-                    <a class="col s12 m3 waves-effect waves-light btn-large social pinterest" href="https://www.pinterest.com/">
-                    <i class="fa fa-pinterest"></i> Follow Us on pinterest</a>
-                  </div>
-                </div>
-                </div>
-            </div>   
+	<div class="col m10 offset-m1 s12">
+		<h2 class="header center teal-text text-lighten-2">Contact US</h2>
+	</div>
+	<div class="row">
+		<form id="form" class="col s12" method="GET" name="form" action="#" input type="text">
+			<div class="row">
+				<div class="input-field col s6">
+					<i class="material-icons prefix grey-text text-darken-2">directions_run</i>
+					<input id="name" type="text" name="name" class="validate" required="required">
+					<label for="icon_directions_run">Your Name</label>
+				</div>
+				<div class="input-field col s6">
+					<i class="material-icons prefix grey-text text-darken-2">email</i>
+					<input id="email" type="email" name="email" class="validate" required="required">
+					<label for="icon_email">Your Email</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix grey-text text-darken-2">chat</i>
+					<textarea id="message" type="text" name="message" class="materialize-textarea" required="required"></textarea>
+					<label for="icon_chat">Enter Your Message</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					<p class="center-align">
+						<button type="submit" class="light-blue btn btn-large waves-effect waves-light center-align" value="Click me" onclick="alert('Thank you for your email!')" name="action">Send Message</button>
+					</p>
+				</div>
+			</div>
+		</form>
+		<div class="header-center-us">
+			<p class="center-align purple-text">Our priority is to prepare you for a race with our experience and give
+				you an advice for your race with a healthy diet.</p>
+		</div>
+	</div>
+	<div id="media">
+		<div class="center-align media-icons">
+			<div class="row">
+				<div class="mini-icons">
+					<a class="col s12 m3 waves-effect waves-light btn-large social facebook"
+						href="https://www.facebook.com/">
+						<i class="fa fa-facebook"></i> Like Us on facebook</a>
+				</div>
+				<div class="mini-icons">
+					<a class="col s12 m3 waves-effect waves-light btn-large social twitter"
+						href="https://www.twitter.com/">
+						<i class="fa fa-twitter"></i> Follow Us on twitter</a>
+				</div>
+				<div class="mini-icons">
+					<a class="col s12 m3 waves-effect waves-light btn-large social strava"
+						href="https://www.strava.com/">
+						<i class="fab fa-strava"></i> Follow Us on strava</a>
+				</div>
+				<div class="mini-icons">
+					<a class="col s12 m3 waves-effect waves-light btn-large social pinterest"
+						href="https://www.pinterest.com/">
+						<i class="fa fa-pinterest"></i> Follow Us on pinterest</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-</div>   
+</div>
 
 {% endblock %}

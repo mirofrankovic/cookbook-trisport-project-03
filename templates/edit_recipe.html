@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 
 <h2 class="">Edit Your Recipe</h2>
 <div class="row">
-    <form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">       
-        <div class="row white form-padding">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">accessibility</i>
-          <!--<input value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">-->
-          <input value="{{recipe.author_name}}" id="author_name" name="author_name" type="text" class="validate">
-          <label for="author_name">Your Name</label>
-        </div>
-        </div>       
-        <div class="row white form-padding">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">cake</i>
-          <input value="{{recipe.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
-          <label for="recipe_name">Recipe Name</label>
-        </div>
-      </div>     
-      <div class="row white form-padding">
-        <div class="input-field col s12">
-            <select class="form-select" id="meal_type" name="meal_type_name">
+	<form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">accessibility</i>
+				<input value="{{recipe.author_name}}" id="author_name" name="author_name" type="text" class="validate">
+				<label for="author_name">Your Name</label>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">cake</i>
+				<input value="{{recipe.recipe_name}}" id="recipe_name" name="recipe_name" type="text" class="validate">
+				<label for="recipe_name">Recipe Name</label>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<select class="form-select" id="meal_type" name="meal_type_name">
                <option value="" disabled>Choose Your Meal Type (*)</option>
                {% for meal in meal_type %}
                {% if meal.meal_type_name == recipe.meal_type_name %}
@@ -33,12 +31,12 @@
                {% endif %}
                {% endfor %}
             </select>
-        <label>Choose Your Meal Type</label>
-        </div>
-      </div>     
-        <div class="row white form-padding">
-        <div class="input-field col s12">
-            <select class="form-select" id="sport_type" name="sport_type_name">
+				<label>Choose Your Meal Type</label>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<select class="form-select" id="sport_type" name="sport_type_name">
                <option value="" disabled>Choose Your Sport Discipline (*)</option>
                {% for sport in sport_type %}
                {% if sport.sport_type_name == recipe.sport_type_name %}
@@ -48,12 +46,12 @@
                {% endif %}
                {% endfor %}
             </select>
-        <label>Choose Your Sport Discipline</label>
-        </div>
-        </div>       
-        <div class="row white form-padding">
-        <div class="input-field col s12">
-            <select class="form-select" id="race_day" name="race_day_name">
+				<label>Choose Your Sport Discipline</label>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<select class="form-select" id="race_day" name="race_day_name">
                <option value="" disabled>Choose Your Prefered Race Meal (*)</option>
                {% for race in race_day %}
                {% if race.race_day_name == recipe.race_day_name %}
@@ -63,25 +61,25 @@
                {% endif %}
                {% endfor %}
             </select>
-        <label>Pick Your Prefered Race Meal</label>
-        </div>
-        </div>      
-        <div class="row white form-padding">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">brush</i>
-          <input value="{{recipe.description}}" id="description" name="description" type="text" class="validate">
-          <label for="description">Description</label>      
-        </div>
-      </div>    
-      <div class="row white form-padding">
-        <div class="input-field col s12">
-          <input value="{{recipe.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
-          <label for="image_recipe">Recipe Image</label>       
-        </div>
-      </div>     
-      <div class="row white form-padding">       
-        <label>Choose Your Vegan Meal</label>
-            <select class="form-select" id="vegan_meal" name="vegan_meal">
+				<label>Pick Your Prefered Race Meal</label>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">brush</i>
+				<input value="{{recipe.description}}" id="description" name="description" type="text" class="validate">
+				<label for="description">Description</label>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<input value="{{recipe.image_recipe}}" id="image_recipe" name="image_recipe" type="text" class="validate">
+				<label for="image_recipe">Recipe Image</label>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<label>Choose Your Vegan Meal</label>
+			<select class="form-select" id="vegan_meal" name="vegan_meal">
                 <option value="" disabled selected>Is vegan? (*)</option>
                 {% if recipe['vegan_meal'] == 'true' %}
                 <option value="true" selected >Yes</option>
@@ -91,38 +89,33 @@
                 <option value="false" selected >No</option>
                 {% endif %}
             </select>
-            <label>Is this Recipe Vegan?</label>
-        </div>   
-        <div class="row white form-padding">
-            <h5>Serving per portion:</h5>
-            <div id="serving-adder">
-                <div class="serving-field">
-                    <div class="input-field col s12 m3">
-                        <input value="{{recipe.proteins_unit}}" id="proteins_unit" name="proteins_unit" type="text" class="validate" required>
-                        <label for="proteins-0">Grams Of Protein (*)</label>
-                    </div>
-                    <div class="input-field col s12 m3">
-                        <input value="{{recipe.carbohydrates_unit}}" id="carbohydrates_unit" name="carbohydrates_unit" type="text" class="validate" required>
-                        <label for="carbohydrates_unit">Grams Of Carbohydrates (*)</label>
-                    </div>
-                    <div class="input-field col s12 m5">
-                        <input value="{{recipe.calories_name}}" id="calories_name" name="calories_name" type="text" class="validate" required>
-                        <label for="calories_name">Calories (*)</label>
-                    </div>
-                </div>
-            </div>           
-           <!--<div class="float-right">
-                <a id="remove-numbers-btn" class="#b71c1c red darken-4 btn-small margin-right-xs">Remove Numbers <i class="fas fa-minus-circle fa-xs"></i></a>
-                <a id="add-numbers-btn" class="#1b5e20 green darken-4 btn-small">Add Numbers <i class="fas fa-plus fa-xs"></i></a>
-            </div>-->
-        </div>  
-        
-        <div class="row white form-padding">
-        <a class="btn waves-effect waves-light margin-right-xs" name="action" href="{{ url_for('my_recipes', author_name=session['author']) }}">
-         Cancel <i class="fas fa-arrow-circle-left fa-xs"></i></a>    
-        <input class="#880e4f green darken-4 btn waves-effect waves-light" id="submit-form-button" type="submit" value="Submit"></input>
-        </div>        
-    </form>
-  </div>
+			<label>Is this Recipe Vegan?</label>
+		</div>
+		<div class="row white form-padding">
+			<h5>Serving per portion:</h5>
+			<div id="serving-adder">
+				<div class="serving-field">
+					<div class="input-field col s12 m3">
+						<input value="{{recipe.proteins_unit}}" id="proteins_unit" name="proteins_unit" type="text" class="validate" required>
+						<label for="proteins-0">Grams Of Protein (*)</label>
+					</div>
+					<div class="input-field col s12 m3">
+						<input value="{{recipe.carbohydrates_unit}}" id="carbohydrates_unit" name="carbohydrates_unit" type="text" class="validate" required>
+						<label for="carbohydrates_unit">Grams Of Carbohydrates (*)</label>
+					</div>
+					<div class="input-field col s12 m5">
+						<input value="{{recipe.calories_name}}" id="calories_name" name="calories_name" type="text" class="validate" required>
+						<label for="calories_name">Calories (*)</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row white form-padding">
+			<a class="btn waves-effect waves-light margin-right-xs" name="action"
+				href="{{ url_for('my_recipes', author_name=session['author']) }}">
+				Cancel <i class="fas fa-arrow-circle-left fa-xs"></i></a>
+			<input class="#880e4f green darken-4 btn waves-effect waves-light" id="submit-form-button" type="submit" value="Submit"></input>
+		</div>
+	</form>
+</div>
 {% endblock %}
-

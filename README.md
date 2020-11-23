@@ -350,6 +350,9 @@ The app uses the flask flash method to communicate important events to the user 
 
 Most of the testing was manual testing during the development of the site with additional testing completed at the end, before this write up.
 
+Also, created my own profile and was adding recipes with various categories to test
+my charts in terms of counting recipes and puting in right meal_type, sport_type, race_day or vegan meal.
+
 ## Manual Testing
 
 * **Front End**
