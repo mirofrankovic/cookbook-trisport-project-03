@@ -166,12 +166,9 @@ def add_recipe():
                            carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
                            calories_name=mongo.db.calories_name.find()
                            )
-
-# edit_recipe to my database
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
     if request.method == "POST":
-       # this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)}) #this line should go to line 187
         submit = {       
             'author_name': request.form.get('author_name'),
             'recipe_name': request.form.get('recipe_name'),
@@ -203,7 +200,6 @@ def edit_recipe(recipe_id):
         if this_recipe is None:
             abort(404, 'Recipe not found!')
     
-    # indentation should start here for the above line, so it is not part of the if request.method == POST
     return render_template('edit_recipe.html', recipe=this_recipe,
                            author_name=mongo.db.author_name.find(),
                            meal_type=mongo.db.meal_type.find(),
@@ -239,17 +235,14 @@ def submit_to_database():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())  
     return redirect(url_for('get_recipes'))
-    # return('', 204) # what is 204
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
-        # check id author_name exists
         user_exists = mongo.db.users.find_one(
             {"author_name": request.form.get("author_name").lower()})
 
         if user_exists:
-            # ensure hashed password matches user input
             if check_password_hash(
                     user_exists["password"], request.form.get("password")):
                 session["author"] = request.form.get("author_name").lower()
@@ -263,7 +256,6 @@ def login():
                 return redirect(url_for("login"))
 
         else:
-            # author_name doesn't exist
             flash("Incorect Author Name or/and Pasword")
             return redirect(url_for("login"))
 

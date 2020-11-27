@@ -159,7 +159,7 @@ Mock-ups were created early on in this project and added to my project recently.
 
 I've used [Balsamiq Wireframes](https://balsamiq.com/) during the Scope Plane part of the design and planning process for this project.
 
-All of my wireframes for this project can be found [here]()
+All of my wireframes for this project can be found [here](https://github.com/mirofrankovic/cookbook-trisport-project-03/tree/master/static/wireframes)
 
 ## Features
 

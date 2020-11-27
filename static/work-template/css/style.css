@@ -46,7 +46,7 @@ a:hover {
     text-overflow: ellipsis;
 }
 .card-title-spice {
-    background-color: #65baee;
+    background-color: #ee7565;
     opacity: 0.75;
     width: 100%;
     height: 2em;
@@ -513,6 +513,7 @@ img {
 }
 .text-race-image {
     color:brown;   
+    font-size: 20px;
 }
 .menu-list {
     text-align: center;
@@ -527,7 +528,29 @@ img {
     .center-text {
          color: black;         
      }
- }   
+
+    .subnav-img-right {
+        display: none;
+        /*visibility: hidden;*/
+    } 
+    .ready-text {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+}
+    
+    .ready-para1 {
+        font-size: 20px;
+    }
+ } 
+
+
+
+
  @media (max-width:380px) {
      .index-banner {
          height: 100%;
@@ -535,8 +558,15 @@ img {
      }
      .blue-text {
           font-size: 25px;        
-     }    
- }   
+     }   
+
+
+
+
+ }  
+
+
+
  /*-------------recipes----------------------*/
 .search-by {
         font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -616,3 +646,43 @@ img {
 		text-align: center;
 	}
 }
+
+/*.........ready page..................*/
+.subnav-img-right {
+    background-image: url(../img/thisImageIs.png) !important;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    width:100%;
+}
+
+.ready-text{
+    
+     /*margin: auto;
+     width: 50%;
+     padding: 10px;*/
+
+     display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+}
+.ready-para1 {
+    margin-bottom: 10px;
+    color: red;
+}
+.ready-para2 {
+    margin-bottom: 10px;
+    color:red;
+}
+.ready-para4 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    
+}
+.ready-para3 {
+    color:black;
+}
+
