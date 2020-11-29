@@ -110,6 +110,13 @@
 				</div>
 			</div>
 		</div>
+        <div class="row white form-padding">
+				<div class="input-field col s12">
+					<input value="{{recipe.due_date}}" id="due_date" name="due_date" type="text" class="validate" required>
+
+					<label for="due_date">Date Your Recipe</label>
+				</div>
+		</div>
 		<div class="row white form-padding">
 			<a class="btn waves-effect waves-light margin-right-xs" name="action"
 				href="{{ url_for('my_recipes', author_name=session['author']) }}">

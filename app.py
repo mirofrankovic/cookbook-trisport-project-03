@@ -164,7 +164,8 @@ def add_recipe():
                            recipes=mongo.db.recipes.find(),
                            proteins_unit=mongo.db.proteins_unit.find(),
                            carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
-                           calories_name=mongo.db.calories_name.find()
+                           calories_name=mongo.db.calories_name.find(),
+                           due_date=mongo.db.due_date.find()
                            )
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
@@ -181,7 +182,8 @@ def edit_recipe(recipe_id):
             'servings': request.form.get('servings'),
             'proteins_unit': request.form.get('proteins_unit'),
             'carbohydrates_unit': request.form.get('carbohydrates_unit'),
-            'calories_name': request.form.get('calories_name')
+            'calories_name': request.form.get('calories_name'),
+            'due_date' : request.form.get('due_date')
 
         }
         try:
@@ -211,7 +213,8 @@ def edit_recipe(recipe_id):
                            recipes=mongo.db.recipes.find(),
                            proteins_unit=mongo.db.proteins_unit.find(),
                            carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
-                           calories_name=mongo.db.calories_name.find()
+                           calories_name=mongo.db.calories_name.find(),
+                           due_date=mongo.db.due_date.find()
                            )
 
 @app.route('/get_my_form')

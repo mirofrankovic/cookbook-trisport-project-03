@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container-login">
 	<div class="col m10 offset-m1 s12">
-		<h3 class="header center teal-text text-lighten-2">Please Log In to your account</h3>
+		<div class="header center teal-text text-lighten-2">Please Log In to your account</div>
 	</div>
 	<div class="row white form-login-container">
 		<form class="col s12" method="POST" action="{{url_for('login')}}">
@@ -20,7 +20,7 @@
 			<button class="light-blue btn waves-effect waves-light" type="submit">Log In</button>
 		</form>
 	</div>
-	<p>If you do not have an account, please click on the button below</p>
+	<div class="log-text">If you do not have an account, please click on the button below.</div>
 	<button type="button" class="btn waves-effect waves-light" onclick="window.location.href='{{ url_for('register')}}'">Register Here</button>
 </div>
 

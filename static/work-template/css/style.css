@@ -4,10 +4,12 @@ html, body {
    padding:0;
    height:100vh;
 }
+/*
 #cookbook-body{
     padding:10px;
     padding-bottom:120px;   
 }
+*/
 .art-deco-font {
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
@@ -149,7 +151,7 @@ a:hover {
 /* Background Images*/
 /* MEDIA QUERIES */
 
-@media (max-width:415px) {
+@media (max-width:600px) {          /*############### iPhone ################*/
     .mobile-hide {
         display: none!important;
     }   
@@ -164,6 +166,7 @@ p {
 .sidenav-trigger {
     color: #26a69a;
 }
+/*
 .parallax-container {
     min-height: 380px;
     width: 100%;
@@ -171,27 +174,30 @@ p {
     height: auto;
     color: rgba(255,255,255,.9);
 }
+*/
+/*
  .parallax-container .section {
     width: 100%;
   }
+*/
 
-@media only screen and (max-width : 992px) {
-    .parallax-container .section {
-        top: 40%;
-  }
+
+@media only screen and (max-width : 992px) {            /*IPad?*/
+ 
     #index-banner .section {
         top: 10%;
   }
 }
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width : 600px) {         /*IPad?*/
     #index-banner .section {
         top: 0;
   }
 }
 /* Dashboard File */
+
 .dashboard-graph {
     width: 100%; 
-    min-height: 450px;
+    /*min-height: 450px;*/
 }
 .row {
     margin:0 !important;
@@ -258,15 +264,16 @@ p {
 }
 
 /* MQ Dashboard File */
-
-@media (max-width: 880px) {
+/*
+@media (max-width: 880px) {            
     .container-dashboard{
         display:block;
 		width: 100%;
 		text-align: center;
 	}
 }
-@media (max-width: 650px) {
+             
+@media (max-width: 650px) {                  
     .container-dashboard .dashboard-graph,
     .row{
         display:block;
@@ -274,6 +281,10 @@ p {
 		text-align: center;
 	}
 }
+
+*/
+
+
 /* MQ Footer */
 .icon-block {
     padding: 0 15px;
@@ -289,6 +300,8 @@ footer.page-footer {
 }
 .text-center {text-align:center;}
 
+/*
+
 pre {
     display: block;
     padding: 9.5px;
@@ -302,10 +315,19 @@ pre {
     border: 1px solid #CCC;
     border-radius: 4px;
 }
-.header {
+pre{
+    padding: 16px 20px 0px;
+    background: #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+*/
+
+.header {                    /*############### header  */
     padding:20px 0;
     position:relative;
     margin-bottom:10px; 
+    font-size:3em;
 }
 .header:after {
     content:"";
@@ -426,12 +448,7 @@ pre {
 	padding: 1px;
 }
 /*.......Icons Responsive..............*/
-pre{
-    padding: 16px 20px 0px;
-    background: #eee;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
+
 .info{
     font-size: 1.3rem;
     text-align: center;
@@ -443,17 +460,10 @@ pre{
 img {
     display:block;
 }
-.subnav-img-right {
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: 20px; 
-    margin-right: 20px;
-    cursor: pointer;
-}
-/*----------MQ second navbar--------------*/
 
-@media (max-width:480px) {
+/*----------MQ second navbar--------------*/
+/*
+@media (max-width:480px) {                    
     .subnav-img-right{
         width: 100%;
         height: 100%;
@@ -462,38 +472,40 @@ img {
         margin-left:6px;
         margin-right:6px;
 } 
+
 }
-@media (max-width:1200px) {
+
+@media (min-width:992px) {                 
     .subnav-img-right{
         padding-top: 5px;
         padding-left: 5px;
         margin-left:10px;
         margin-right:10px;
 }
+    .ready-para4 {
+        font-size: 30px;
+    }
+
     
 }
-@media (max-width:600px) {
-    .subnav-img-right{
-        padding-top: 5px;
-        padding-left: 5px;
-        margin-left:1px;
-        margin-right: 6px;
-}
+
+*/
+@media (max-width:600px) {          /* max 600 iPhone*/
+    
     .header {
-        font-size: 25px;
+        font-size: 20px;
         line-height: 110%;
+        
     }
     .add-recipe-box > a {
         width: 100%;
     }
-    #sorting-bar-my-recipes > a {
+   /* #sorting-bar-my-recipes > a {
         width: 100%;
-    }
-    
+    }*/
+        
 }
-.menu-list {
-    max-width: 1200px;
-}
+
 .space-menu {
     text-align: center;
 }
@@ -505,12 +517,14 @@ img {
     object-fit: cover;     
 }
  /*-------------getready collapsible image with text --------------------*/
+ /*
 .content {
     padding: 0 18px;
     display: none;
     overflow: hidden;
     background-color: #f1f1f1;
 }
+
 .text-race-image {
     color:brown;   
     font-size: 20px;
@@ -519,12 +533,14 @@ img {
     text-align: center;
     vertical-align: middle;
 }
- @media (max-width:380px) {   /* iPhone mode */
-    .parallax-container{
-         height:100%;
-         width:100%;
-         object-fit: cover;         
-     }
+.menu-list {
+    max-width: 1200px;
+}
+
+*/
+
+ @media (max-width:600px) {   /* iPhone 380 mode  plus max-width 600px*/
+    
     .center-text {
          color: black;         
      }
@@ -541,17 +557,18 @@ img {
         align-items: center;
         text-align: center;
         min-height: 100vh;
+        font-size: 30px;
 }
     
-    .ready-para1 {
-        font-size: 20px;
-    }
+   /* .ready-para4 {
+        font-size: 35px;
+    }*/
  } 
 
 
 
 
- @media (max-width:380px) {
+ @media (max-width:600px) {            /*380px index-banner in all-recipes to max 600 for iPhone*/
      .index-banner {
          height: 100%;
          width:100%;
@@ -637,25 +654,38 @@ img {
 #footer-custom .footer-icons a i {
     margin-top: 6px;
 }
-@media (max-width: 880px) {
+
+@media (max-width: 1023px) {                  /* footer for iPad*/
 	#footer-custom .footer-right,
 	#footer-custom .footer-left{
 		display: block;
 		width: 100%;
-		margin-bottom: 40px;
+		margin-bottom: 20px;      
 		text-align: center;
 	}
+    
 }
+
 
 /*.........ready page..................*/
 .subnav-img-right {
-    background-image: url(../img/thisImageIs.png) !important;
-    background-size: cover;
+    background-image: url('../img/thisImageIs.png') !important;
+    background-size: 100% 100%;         /*cover*/
     background-position: center;
+    background-attachment: fixed;
     min-height: 100vh;
     width:100%;
+    padding-top: 5px;
 }
-
+/*
+.subnav-img-right {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+*/
 .ready-text{
     
      /*margin: auto;
@@ -668,6 +698,7 @@ img {
         align-items: center;
         text-align: center;
         min-height: 100vh;
+        font-size: 25px;
 }
 .ready-para1 {
     margin-bottom: 10px;
@@ -679,10 +710,73 @@ img {
 }
 .ready-para4 {
     margin-bottom: 15px;
-    font-size: 20px;
+   /* font-size: 20px;*/
     
 }
 .ready-para3 {
     color:black;
 }
 
+/*............ register.html..............*/
+
+.log-text{
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*    MQ for iPAD */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .subnav-img-right {
+        width: 100%;
+    }
+    .ready-text{
+        font-size: 30px;
+    }
+    .header {
+        font-size: 20px;
+        line-height: 110%;
+        margin-bottom: 0;   
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .container-login {  
+         min-height: 100%;
+    }    
+}
+    .container-login{
+        min-height: 50vh;  
+     
+    }
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .container-register {
+       min-height: 100%;
+    }   
+}
+    .container-register{
+        min-height: 50vh;
+        
+    }
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .container-contactUs {
+       min-height: 100%;
+    }   
+    .header-center-us p {
+        font-size: 25px;
+    }
+    .header  {
+        font-size:3em;
+        font-weight:300;
+        margin-bottom:0.2em;
+}
+}
+.container-contactUs{
+    min-height: 50vh;
+    
+}
