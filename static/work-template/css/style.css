@@ -4,12 +4,7 @@ html, body {
    padding:0;
    height:100vh;
 }
-/*
-#cookbook-body{
-    padding:10px;
-    padding-bottom:120px;   
-}
-*/
+
 .art-deco-font {
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
@@ -81,7 +76,6 @@ a:hover {
 #sorting-bar > a {
     color: #00695c;
     margin-top: 1.5em;
-    /*width: 25%*/
     margin-right: 0.5em;
 }
 /* USER RECIPES */
@@ -117,16 +111,12 @@ a:hover {
 #sorting-bar-my-recipes > a {
     color: #00695c;
     margin-top: 1.5em;
-    /*width: 25%*/
     margin-right: 0.5em;
 }
-/* navbar-container */
 .section-container {
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    /*padding-left: 15px;
-    padding-right: 15px;*/
     border-radius: 5px;
 }
 .section-navbar {
@@ -151,7 +141,7 @@ a:hover {
 /* Background Images*/
 /* MEDIA QUERIES */
 
-@media (max-width:600px) {          /*############### iPhone ################*/
+@media (max-width:600px) {          
     .mobile-hide {
         display: none!important;
     }   
@@ -159,6 +149,7 @@ a:hover {
 nav ul a,
 nav .brand-logo {
     color: #444;
+    font-weight: bold;
 }
 p {
     line-height: 2rem;
@@ -166,29 +157,14 @@ p {
 .sidenav-trigger {
     color: #26a69a;
 }
-/*
-.parallax-container {
-    min-height: 380px;
-    width: 100%;
-    line-height: 0;
-    height: auto;
-    color: rgba(255,255,255,.9);
-}
-*/
-/*
- .parallax-container .section {
-    width: 100%;
-  }
-*/
 
-
-@media only screen and (max-width : 992px) {            /*IPad?*/
+@media only screen and (max-width : 992px) {            
  
     #index-banner .section {
         top: 10%;
   }
 }
-@media only screen and (max-width : 600px) {         /*IPad?*/
+@media only screen and (max-width : 600px) {         
     #index-banner .section {
         top: 0;
   }
@@ -197,7 +173,6 @@ p {
 
 .dashboard-graph {
     width: 100%; 
-    /*min-height: 450px;*/
 }
 .row {
     margin:0 !important;
@@ -263,28 +238,6 @@ p {
     margin-bottom: 2em;
 }
 
-/* MQ Dashboard File */
-/*
-@media (max-width: 880px) {            
-    .container-dashboard{
-        display:block;
-		width: 100%;
-		text-align: center;
-	}
-}
-             
-@media (max-width: 650px) {                  
-    .container-dashboard .dashboard-graph,
-    .row{
-        display:block;
-		width: 100%;
-		text-align: center;
-	}
-}
-
-*/
-
-
 /* MQ Footer */
 .icon-block {
     padding: 0 15px;
@@ -299,29 +252,6 @@ footer.page-footer {
     clear:both;
 }
 .text-center {text-align:center;}
-
-/*
-
-pre {
-    display: block;
-    padding: 9.5px;
-    margin: 0 0 10px;
-    font-size: 13px;
-    line-height: 1.42857143;
-    color: #333;
-    word-break: break-all;
-    word-wrap: break-word;
-    background-color: #F5F5F5;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-}
-pre{
-    padding: 16px 20px 0px;
-    background: #eee;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-*/
 
 .header {                    /*############### header  */
     padding:20px 0;
@@ -343,26 +273,7 @@ pre{
 .header p {
     font-size:14px;
 }
-/*#a-footer {
-    margin: 20px 0;
-}*/
-/*
-.new-react-version {
-    padding: 20px 20px;
-    border: 1px solid #eee;
-    border-radius: 20px;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.7;
-}
-.new-react-version .react-svg-logo {
-    text-align: center;
-    max-width: 60px;
-    margin: 20px auto;
-    margin-top: 0;
-}
-*/
+
 .success-box {
     margin:20px 0;
     padding:10px 10px;
@@ -462,34 +373,7 @@ img {
 }
 
 /*----------MQ second navbar--------------*/
-/*
-@media (max-width:480px) {                    
-    .subnav-img-right{
-        width: 100%;
-        height: 100%;
-        padding-top: 5px;
-        padding-left: 5px;
-        margin-left:6px;
-        margin-right:6px;
-} 
 
-}
-
-@media (min-width:992px) {                 
-    .subnav-img-right{
-        padding-top: 5px;
-        padding-left: 5px;
-        margin-left:10px;
-        margin-right:10px;
-}
-    .ready-para4 {
-        font-size: 30px;
-    }
-
-    
-}
-
-*/
 @media (max-width:600px) {          /* max 600 iPhone*/
     
     .header {
@@ -499,11 +383,7 @@ img {
     }
     .add-recipe-box > a {
         width: 100%;
-    }
-   /* #sorting-bar-my-recipes > a {
-        width: 100%;
-    }*/
-        
+    }        
 }
 
 .space-menu {
@@ -517,28 +397,7 @@ img {
     object-fit: cover;     
 }
  /*-------------getready collapsible image with text --------------------*/
- /*
-.content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-}
-
-.text-race-image {
-    color:brown;   
-    font-size: 20px;
-}
-.menu-list {
-    text-align: center;
-    vertical-align: middle;
-}
-.menu-list {
-    max-width: 1200px;
-}
-
-*/
-
+ 
  @media (max-width:600px) {   /* iPhone 380 mode  plus max-width 600px*/
     
     .center-text {
@@ -547,7 +406,6 @@ img {
 
     .subnav-img-right {
         display: none;
-        /*visibility: hidden;*/
     } 
     .ready-text {
         width: 100%;
@@ -558,15 +416,8 @@ img {
         text-align: center;
         min-height: 100vh;
         font-size: 30px;
-}
-    
-   /* .ready-para4 {
-        font-size: 35px;
-    }*/
+    }  
  } 
-
-
-
 
  @media (max-width:600px) {            /*380px index-banner in all-recipes to max 600 for iPhone*/
      .index-banner {
@@ -576,13 +427,7 @@ img {
      .blue-text {
           font-size: 25px;        
      }   
-
-
-
-
  }  
-
-
 
  /*-------------recipes----------------------*/
 .search-by {
@@ -662,10 +507,8 @@ img {
 		width: 100%;
 		margin-bottom: 20px;      
 		text-align: center;
-	}
-    
+	}    
 }
-
 
 /*.........ready page..................*/
 .subnav-img-right {
@@ -677,21 +520,8 @@ img {
     width:100%;
     padding-top: 5px;
 }
-/*
-.subnav-img-right {
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: 20px; 
-    margin-right: 20px;
-}
-*/
-.ready-text{
-    
-     /*margin: auto;
-     width: 50%;
-     padding: 10px;*/
 
+.ready-text{
      display: flex;
         flex-direction: column;
         justify-content: center;
@@ -747,10 +577,8 @@ img {
     }    
 }
     .container-login{
-        min-height: 50vh;  
-     
+        min-height: 50vh;      
     }
-
 
 @media only screen and (min-width: 768px) and (max-width: 1023px){
     .container-register {
@@ -759,9 +587,7 @@ img {
 }
     .container-register{
         min-height: 50vh;
-        
-    }
-
+   }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px){
     .container-contactUs {

@@ -1,6 +1,6 @@
 # Miro does Snack - Cookbook for triathlon athleetes today | Code Institute - Milestone project 03
 
-![imageForProjec](https://user-images.githubusercontent.com/28025554/99586951-4f9c7980-29e0-11eb-9274-b4083a5e4d75.PNG)
+![cookbookGraphic](https://user-images.githubusercontent.com/28025554/100743625-72f9f800-33d4-11eb-8927-ff223835eec5.PNG)
 
 In this project I should be able to show that I can create a web application using [Python 3](https://www.python.org/download/releases/3.0/) and [Flask](https://flask.palletsprojects.com/en/1.1.x/) which works with cloud **MongoDB Atlas** database.
 
