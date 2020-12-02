@@ -151,11 +151,12 @@ function initializeDashboard() {
     }
 }
 
-$(document).ready(function () {
-    console.log('Loading data...');
-    $.getJSON("/find_recipes", function (data) {
-        console.log(data);
-        // initializeDashboard();
-        makeGraphs(data);
-    });
-});
+
+ $(document).ready(function () {
+     console.log('Loading data...');
+     $.getJSON("/find_recipes", function (data) {
+         console.log(data);
+         // initializeDashboard();
+         makeGraphs(data);
+     });
+ });

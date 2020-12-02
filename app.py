@@ -106,7 +106,7 @@ def get_paginated_items(entity, query={}, **params):  # function
 @app.route('/get_ready')
 def get_ready():
     # supply recipes collection
-    return render_template('getready.html', recipes=mongo.db.recipes.find(), forms=mongo.db.forms.find())
+    return render_template('getready.html')
 
 # images for my recepies and see all my recipes after adding them
 @app.route('/get_recipes', methods=['GET', 'POST'])
@@ -119,21 +119,21 @@ def get_recipes():
     paginated_recipes = get_paginated_items(mongo.db.recipes, **params)
     return render_template('recipes.html', paginated_recipes=paginated_recipes)
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    query = request.form.get("query")
-    paginated_recipes = get_paginated_items(
-        mongo.db.recipes, {"$text": {"$search": query}})
-    return render_template("recipes.html", paginated_recipes=paginated_recipes)
+#  @app.route('/search', methods=['GET', 'POST'])
+#  def search():
+#      query = request.form.get("query")
+#      paginated_recipes = get_paginated_items(
+#          mongo.db.recipes, {"$text": {"$search": query}})
+#      return render_template("recipes.html", paginated_recipes=paginated_recipes)
 
-@app.route('/find_recipes')
-def find_recipes_json():
-    recipes = mongo.db.recipes.find()
-    json_recipes = []
-    for recipe in recipes:
-        json_recipes.append(recipe)
-    json_recipes = json.dumps(json_recipes, default=json_util.default)
-    return json_recipes
+#   @app.route('/find_recipes')
+#   def find_recipes_json():
+#        recipes = mongo.db.recipes.find()
+#        json_recipes = []
+#        for recipe in recipes:
+#            json_recipes.append(recipe)
+#        json_recipes = json.dumps(json_recipes, default=json_util.default)
+#        return json_recipes
 
 @app.route('/recipedescription/<recipe_id>')
 def recipedescription(recipe_id):
@@ -148,9 +148,9 @@ def recipedescription(recipe_id):
 
 @app.route('/add_recipe')  
 def add_recipe():
-    if request.url.startswith('http://'):
-        request.url = request.url.replace('http://', 'https://', 1)
-    print('url when add_recipe: ', request.url)
+    # if request.url.startswith('http://'):
+    #     request.url = request.url.replace('http://', 'https://', 1)
+    # print('url when add_recipe: ', request.url)
 
     return render_template('add_recipe.html',
                            recipe={},
@@ -219,9 +219,9 @@ def edit_recipe(recipe_id):
 
 @app.route('/get_my_form')
 def get_my_form():
-    if request.url.startswith('http://'):
-        request.url = request.url.replace('http://', 'https://', 1)
-    print('url when add_recipe: ', request.url)
+    #  if request.url.startswith('http://'):
+    #      request.url = request.url.replace('http://', 'https://', 1)
+    # print('url when add_recipe: ', request.url)
 
     return render_template('add_recipe.html',
                            recipe={},
