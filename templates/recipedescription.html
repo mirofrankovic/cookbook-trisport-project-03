@@ -15,7 +15,7 @@
 			<p><strong>Meal Type: </strong>{{recipe.meal_type_name}}</p>
 			<p><strong>Race Day: </strong>{{recipe.race_day_name}}</p>
 			<p><strong>Sport Type: </strong>{{recipe.sport_type_name}}</p>
-			<header class="header text-left">
+			<header class="header-description text-left">
 				<h5 class="deep-orange-text text-lighten-2"><strong>Make this recipe favourite</strong></h5>
 				{% if session['author'] %}
 				<form id="form" method="POST" action="{{ url_for('popular_recipe', recipe_id=recipe._id) }}">
@@ -25,7 +25,7 @@
 				{% else %}
 				<a class="tooltipped like-dis" data-position="bottom" title="You have to login to like this recipe!"
 					data-tooltip="You have to login to like!">{{ recipe.likes }}
-					<i class="material-icons teal-text stat-icon">thumb_up</i></a>
+					<i class="material-icons red-text stat-icon">thumb_up</i></a>
 				{% endif %}
 			</header>
 		</div>
@@ -47,13 +47,13 @@
 
 {% block script %}
 <script type="text/javascript">
-	$(document).ready(function() {
-        const thumbUpButton = document.getElementById("thumb-up-btn");
-        if (thumbUpButton) {
-            thumbUpButton.addEventListener('click', function () {
-                document.getElementById("form").submit();
-            });
-        }
-    });  
-</script>
+	 $(document).ready(function() {
+         const thumbUpButton = document.getElementById("thumb-up-btn");
+         if (thumbUpButton) {
+             thumbUpButton.addEventListener('click', function () {
+                 document.getElementById("form").submit();
+             });
+         }
+     });  
+</script> 
 {% endblock %}

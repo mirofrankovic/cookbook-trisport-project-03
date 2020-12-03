@@ -60,12 +60,32 @@
 					<label for="description">Description</label>
 				</div>
 			</div>
-			<div class="row white form-padding">
-				<div class="input-field col s12">
-					<input file="Please Enter Recipe Image URL eg: 'Http://www.images.com/sample.jpg" id="image_recipe" name="image_recipe" type="text"  class="validate"  required>
-					<label for="image_recipe">Recipe Image</label>
-				</div>
-			</div>
+
+        <!-- </div>           ######################### FOrm col-12 ?######################## -->
+			<!-- <div class="row white form-padding"> -->
+        <div class="row">
+             <div class="col s4">
+                <div class="white form-padding">
+                    <!-- <div class="input-group mb-3 col-lg-6">  -->
+                        <div class="input-field">
+                            <!-- <div class="input-group-prepend"> -->
+                            <i class="material-icons prefix">folder</i>  
+
+                            <input type="file" id="image_recipe" name="image_recipe" class="custom-file-input" for="Upload" aria-describedby="image-trisport"
+                                accept="image/png, image/jpeg" required>
+                                <label class="custom-file-label" for="image_recipe"></label>
+                        </div>
+                </div>
+             </div>
+                        <div class="col s8">
+                            <div class="white form-padding">
+                        </div>
+            
+        </div>
+
+
+
+
 			<div class="row white form-padding">
 				<div class="input-field col s12">
 					<select class="form-select" id="vegan_meal" name="vegan_type_meal" required>

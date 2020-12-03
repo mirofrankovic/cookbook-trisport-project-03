@@ -31,5 +31,10 @@
 {% endblock %}
 
 {% block script %}
+<!-- D3, Crossfilter and DC and dashboard (assets) -->
+<script type="text/javascript" src="{{url_for('static', filename='assets/d3.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/crossfilter.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/dc.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/queue.min.js')}}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='work-template/js/graphics.js')}}"></script>
 {% endblock %}

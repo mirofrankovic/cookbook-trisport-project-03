@@ -160,3 +160,5 @@ function initializeDashboard() {
          makeGraphs(data);
      });
  });
+
+ 

@@ -119,21 +119,21 @@ def get_recipes():
     paginated_recipes = get_paginated_items(mongo.db.recipes, **params)
     return render_template('recipes.html', paginated_recipes=paginated_recipes)
 
-#  @app.route('/search', methods=['GET', 'POST'])
+#   @app.route('/search', methods=['GET', 'POST'])
 #  def search():
-#      query = request.form.get("query")
-#      paginated_recipes = get_paginated_items(
-#          mongo.db.recipes, {"$text": {"$search": query}})
-#      return render_template("recipes.html", paginated_recipes=paginated_recipes)
+#       query = request.form.get("query")
+#       paginated_recipes = get_paginated_items(
+#           mongo.db.recipes, {"$text": {"$search": query}})
+#       return render_template("recipes.html", paginated_recipes=paginated_recipes)
 
-#   @app.route('/find_recipes')
-#   def find_recipes_json():
-#        recipes = mongo.db.recipes.find()
-#        json_recipes = []
-#        for recipe in recipes:
-#            json_recipes.append(recipe)
-#        json_recipes = json.dumps(json_recipes, default=json_util.default)
-#        return json_recipes
+@app.route('/find_recipes')
+def find_recipes_json():
+    recipes = mongo.db.recipes.find()
+    json_recipes = []
+    for recipe in recipes:
+        json_recipes.append(recipe)
+    json_recipes = json.dumps(json_recipes, default=json_util.default)
+    return json_recipes
 
 @app.route('/recipedescription/<recipe_id>')
 def recipedescription(recipe_id):
@@ -146,11 +146,20 @@ def recipedescription(recipe_id):
             abort(404, 'Recipe not found!')
     return render_template('recipedescription.html', recipe=this_recipe)
 
+
+# Function that uploads the images send file from mongo for a user
+@app.route("/uploads/<filename>", methods=['GET'])
+def upload(filename):
+    return mongo.send_file(filename)    
+
+
 @app.route('/add_recipe')  
 def add_recipe():
-    # if request.url.startswith('http://'):
-    #     request.url = request.url.replace('http://', 'https://', 1)
-    # print('url when add_recipe: ', request.url)
+    if 'image_recipe' in request.files: 
+        
+        image_recipe=request.files["image_recipe"]
+        mongo.save_file(image_recipe.filename, image_recipe)
+
 
     return render_template('add_recipe.html',
                            recipe={},
@@ -167,6 +176,7 @@ def add_recipe():
                            calories_name=mongo.db.calories_name.find(),
                            due_date=mongo.db.due_date.find()
                            )
+
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
     if request.method == "POST":
