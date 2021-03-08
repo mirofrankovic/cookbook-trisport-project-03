@@ -71,26 +71,41 @@
 				<label for="description">Description</label>
 			</div>
 		</div>
+		
+         <div class="row white form-padding">
+             <div class="col s4">
+                <div class="white form-padding">
+                    <!-- <div class="input-group mb-3 col-lg-6">  -->
+                        <div class="input-field">
+                            <!-- <div class="input-group-prepend"> -->
+                            <i class="material-icons prefix">folder</i>  
+                            <input value="{{recipe.image_recipe}}" type="file" id="image_recipe" name="image_recipe" class="custom-file-input" for="Upload" aria-describedby="image-trisport"
+                                accept="image/png, image/jpeg" required>
+                             <label class="custom-file-label" for="image_recipe"></label>
+                        </div>
+                 </div>
+             </div>
+                    <div class="col s8">
+                        <div class="white form-padding"></div>    
+                    </div>
+        </div>
+
+
 		<div class="row white form-padding">
-			<div class="input-field col s12">
-				<input value="{{recipe.image_recipe}}" id="image_recipe" name="image_recipe" type="file" class="file-input" 
-                accept="image/png, image/jpeg">
-				<label for="image_recipe">Recipe Image</label>
-			</div>
-		</div>
-		<div class="row white form-padding">
-			<label>Choose Your Vegan Meal</label>
-			<select class="form-select" id="vegan_meal" name="vegan_meal">
-                <option value="" disabled selected>Is vegan? (*)</option>
-                {% if recipe['vegan_meal'] == 'true' %}
-                <option value="true" selected >Yes</option>
-                <option value="false">No</option>
-                {% else %}
-                <option value="true">Yes</option>
-                <option value="false" selected >No</option>
-                {% endif %}
-            </select>
-			<label>Is this Recipe Vegan?</label>
+            
+                <label>Is this Recipe Vegan</label>
+                <select class="form-select" id="vegan_meal" name="vegan_meal">
+                    <option value="" disabled selected>Is vegan? (*)</option>
+                    {% if recipe['vegan_meal'] == 'true' %}
+                    <option value="true" selected >Yes</option>
+                    <option value="false">No</option>
+                    {% else %}
+                    <option value="true">Yes</option>
+                    <option value="false" selected >No</option>
+                    {% endif %}
+                </select>
+                <label>Is this Recipe Vegan?</label>
+            
 		</div>
 		<div class="row white form-padding">
 			<h5>Serving per portion:</h5>

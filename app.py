@@ -119,13 +119,6 @@ def get_recipes():
     paginated_recipes = get_paginated_items(mongo.db.recipes, **params)
     return render_template('recipes.html', paginated_recipes=paginated_recipes)
 
-#   @app.route('/search', methods=['GET', 'POST'])
-#  def search():
-#       query = request.form.get("query")
-#       paginated_recipes = get_paginated_items(
-#           mongo.db.recipes, {"$text": {"$search": query}})
-#       return render_template("recipes.html", paginated_recipes=paginated_recipes)
-
 @app.route('/find_recipes')
 def find_recipes_json():
     recipes = mongo.db.recipes.find()

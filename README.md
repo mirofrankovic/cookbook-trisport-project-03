@@ -1,4 +1,4 @@
-# Miro does Snack - Cookbook for triathlon athleetes today | Code Institute - Milestone project 03
+# Cookbook for athleetes today |  MS03
 
 ![cookbookGraphic](https://user-images.githubusercontent.com/28025554/100743625-72f9f800-33d4-11eb-8927-ff223835eec5.PNG)
 
@@ -37,38 +37,21 @@ The idea is to show the new meal and provide a recomendation with amout of prote
 
 I designed the site so that users can share recipes and rate them accordingly. User only with created account can rate the recipe and is allowed to edit/delete recipe/s only in his/her own profile.
 
-**REQUIREMENTS**
-
-Based on my research and brief given by Code Institute, I created the below requirements for this project.
-
-**Database**
-* Create schema based on structure of the recipe/s found
-* Create schema for user
-* Create different collections for all above
-
-**User Stories**
-
-* View all recipes as a Guest.
-* View the recipes from any device (mobile, tablet, desktop).
-* See recipes from other users to get new ideas.
-* Search any specific recipe by different category.
-* Easily see all of the recipes I have submitted.
-* Create profile, login and add my recipes.[Creatre]
-* Get the instruction to make a dish from this site.[Read]
-* Easily see all of the recipes I have submitted.
-* User should be able to edit[Edit] / delete[Delete] only his own recipe/s.
-* Be able to see the visual dashboard / graphs of the recipes by category. 
-
-**Pages**
-
-Create 6-7 pages for this project.
-
 **In order for the target audience to achieve these things when visiting my website, I incorporated the following:**
 
 * As an athlete, prepering for the next season, I would like to know what to eat to keep myself fit during the winter preparation.
 * As an athlete, preparing for the race, I would like to learn what to eat a couple days before my race day.
 * As an athlete, competing during the race day, I would like to know how to keep myself full loaded with my nutritions.
 * As an athlete, finishing my race, I would like to know what to eat afther my race for my recovery.
+* As an athlete, all what I need for my training is my nutritions especially an amount of proteins and carohydrates.
+
+**Wireframes**
+
+Mock-ups were created early on in this project and added to my project recently.
+
+I've used [Balsamiq Wireframes](https://balsamiq.com/) during the Scope Plane part of the design and planning process for this project.
+
+All of my wireframes for this project can be found [here](https://github.com/mirofrankovic/cookbook-trisport-project-03/tree/master/static/wireframes)
 
 ## Demo
 
@@ -152,14 +135,6 @@ likes:<Array>
 
 For the color scheme, I've used light gray, black and white in the navbar and most pages. I chose red, green and blue for some buttons and headings to highlight.
 Overall, I tried to keep a simple classic look. [Materialize colors](https://materializecss.com/color.html) was a good choice for this project.
-
-**Wireframes**
-
-Mock-ups were created early on in this project and added to my project recently.
-
-I've used [Balsamiq Wireframes](https://balsamiq.com/) during the Scope Plane part of the design and planning process for this project.
-
-All of my wireframes for this project can be found [here](https://github.com/mirofrankovic/cookbook-trisport-project-03/tree/master/static/wireframes)
 
 ## Features
 
@@ -402,11 +377,11 @@ The following section describes the process to deploy this project to **Heroku**
 4. Push project to Heroku, using 'push -u heroku master' command.
 5. Create scale, using 'heroku ps:scale web=1' command.
 6. Login to Heroku and select newly created app.
-7. Select settings. Select ‘Reveal Config'. Add IP 0.0.0.0 and PORT 5000.
-8. From 'More' menu on the top right, select 'Restart all dynos'.
-9. View app: In settings, select Domain URL, NOT Git URL to view your hosted application.
-10. Deployed via [Heroku](https://cookbook-trisport-project-03.herokuapp.com/)
+7. From 'More' menu on the top right, select 'Restart all dynos'.
+8. View app: In settings, select Domain URL, NOT Git URL to view your hosted application.
+9. Deployed via [Heroku](https://cookbook-trisport-project-03.herokuapp.com/)
 Free cloud hosting platform which simplify the deployment process.
+10. Create local deployment `env.py` file. With environmental variables `MONGO_URI` selected `Add IP 0.0.0.0` and `PORT 5000` also `SECRET_KEY` and `MONGO_DBNAME`.
 
 * **Deploy**
 * Connected the app to GitHub project.
