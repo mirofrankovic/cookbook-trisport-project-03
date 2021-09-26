@@ -3,7 +3,7 @@ import pymongo
 import os
 from flask import Flask, render_template, url_for, redirect, session, request, flash, jsonify, abort
 import json
-from pymongo import MongoClient
+# from pymongo import MongoClient
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
@@ -11,17 +11,22 @@ from bson.json_util import dumps
 from bson.errors import InvalidId
 
 from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = os.getenv("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-MONGODB_URI = os.getenv('MONGO_URI')
-DBS_NAME = "cookbook_trisport"
-COLLECTION_NAME = "recipes"
+mongo = PyMongo(app)  # constructor method
+
+forms_collection = mongo.db.forms
+
+# MONGODB_URI = os.getenv('MONGO_URI')
+# DBS_NAME = "cookbook_trisport"
+# COLLECTION_NAME = "recipes"
 
 # -----Pagination and sorting params variables ----- #
 PAGE_SIZE = 3
@@ -35,10 +40,6 @@ KEY_PREV = 'prev_uri'
 KEY_SEARCH_TERM = 'search_term'
 KEY_ORDER_BY = 'order_by'
 KEY_ORDER = 'order'
-
-mongo = PyMongo(app)  # constructor method
-
-forms_collection = mongo.db.forms
 
 def get_paginated_items(entity, query={}, **params):  # function
     page_size = int(params.get(KEY_PAGE_SIZE, PAGE_SIZE))
@@ -364,4 +365,4 @@ def page_not_found(error):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=os.environ.get('DEBUG') == 'True')
