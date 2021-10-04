@@ -9,7 +9,8 @@
 			<div class="row white form-padding">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">accessibility</i>
-					<input value="{{session['username']}}" id="author_name" name="author_name" type="text" class="validate">
+					<input value="{{session['username']}}" id="author_name" name="author_name" type="text"
+						class="validate">
 					<label for="author_name">Your Name</label>
 				</div>
 			</div>
@@ -23,33 +24,33 @@
 			<div class="row white form-padding">
 				<div class="input-field col s12">
 					<select class="form-select" id="meal_type" name="meal_type_name" required>
-               <option value="" disabled selected>Choose Your Meal Type (*)</option>
-               {% for meal in meal_type %}
-               <option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
-               {% endfor %}
-        </select>
+						<option value="" disabled selected>Choose Your Meal Type (*)</option>
+						{% for meal in meal_type %}
+						<option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
+						{% endfor %}
+					</select>
 					<label>Choose Your Meal Type</label>
 				</div>
 			</div>
 			<div class="row white form-padding">
 				<div class="input-field col s12">
 					<select class="form-select" id="sport_type" name="sport_type_name" required>
-               <option value="" disabled selected>Choose Your Sport Discipline (*)</option>
-               {% for sport in sport_type %}
-               <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
-               {% endfor %}
-        </select>
+						<option value="" disabled selected>Choose Your Sport Discipline (*)</option>
+						{% for sport in sport_type %}
+						<option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
+						{% endfor %}
+					</select>
 					<label>Choose Your Sport Discipline</label>
 				</div>
 			</div>
 			<div class="row white form-padding">
 				<div class="input-field col s12">
 					<select class="form-select" id="race_day" name="race_day_name" required>
-               <option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
-               {% for race in race_day %}
-               <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
-               {% endfor %}
-        </select>
+						<option value="" disabled selected>Choose Your Prefered Race Meal (*)</option>
+						{% for race in race_day %}
+						<option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
+						{% endfor %}
+					</select>
 					<label>Pick Your Prefered Race Meal</label>
 				</div>
 			</div>
@@ -60,68 +61,73 @@
 					<label for="description">Description</label>
 				</div>
 			</div>
-         <!--     ######################### FOrm col-12 ?######################## -->
-	
-        <div class="row">
-            <div class="col s4">
-                <div class="white form-padding">
-                    <!-- <div class="input-group mb-3 col-lg-6">  -->
-                        <div class="input-field">
-                            <!-- <div class="input-group-prepend"> -->
-                            <i class="material-icons prefix">folder</i>  
-                            <input type="file" id="image_recipe" name="image_recipe" class="custom-file-input" for="Upload" aria-describedby="image-trisport"
-                                accept="image/png, image/jpeg" required>
-                            <label class="custom-file-label" for="image_recipe"></label>
-                        </div>
-                 </div>
-            </div>
-            <div class="col s8">
-                <div class="white form-padding">
-            </div>
-        </div>
+			<!--     ######################### FOrm col-12 ?######################## -->
 
-			<div class="row white form-padding">
-				<div class="input-field col s12">
-					<select class="form-select" id="vegan_meal" name="vegan_type_meal" required>
-               <option value="" disabled selected>Is this Recipe Vegan? (*)</option>
-               <option value="true">Yes</option>
-               <option value="false">No</option>
-                     </select>
-					<label>Is Your Meal Vegan</label>
-				</div>
-			</div>
-			<div class="row white form-padding">
-				<h5>Serving per portion:</h5>
-				<div id="serving-adder">
-					<div class="serving-field">
-						<div class="input-field col s12 m3">
-							<input value="" id="proteins_unit" name="proteins_unit" type="text" class="validate" required>
-							<label for="proteins">Grams Of Protein (*)</label>
-						</div>
-						<div class="input-field col s12 m3">
-							<input value="" id="carbohydrates_unit" name="carbohydrates_unit" type="text" class="validate" required>
-							<label for="carbohydrates_unit">Grams Of Carbohydrates (*)</label>
-						</div>
-						<div class="input-field col s12 m5">
-							<input value="" id="calories_name" name="calories_name" type="text" class="validate" required>
-							<label for="calories_name">Calories (*)</label>
+			<div class="row">
+				<div class="col s4">
+					<div class="white form-padding">
+						<!-- <div class="input-group mb-3 col-lg-6">  -->
+						<div class="input-field">
+							<!-- <div class="input-group-prepend"> -->
+							<i class="material-icons prefix">folder</i>
+							<input type="file" id="image_recipe" name="image_recipe" class="custom-file-input"
+								for="Upload" aria-describedby="image-trisport" accept="image/png, image/jpeg" required>
+							<label class="custom-file-label" for="image_recipe"></label>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row white form-padding">
-				<div class="input-field col s12">
-					<input placeholder="Day/Month/Year, i.e., 03/04/2019" id="due_date" name="due_date" type="text" class="validate" required>
-
-					<label for="due_date">Date Your Recipe</label>
+				<div class="col s8">
+					<div class="white form-padding">
+					</div>
 				</div>
-			</div>
-			<div class="row white form-padding">
-				<div class="input-field col s12">
-					<a class="btn waves-effect waves-light margin-right-xs" name="action"
-						href="{{ url_for('my_recipes', author_name=session['author']) }}">
-						Cancel <i class="fas fa-arrow-circle-left fa-xs"></i></a>
-					<input type="submit" class="green darken-4 btn waves-effect waves-light" value="Submit"></div>
+
+				<div class="row white form-padding">
+					<div class="input-field col s12">
+						<select class="form-select" id="vegan_meal" name="vegan_type_meal" required>
+							<option value="" disabled selected>Is this Recipe Vegan? (*)</option>
+							<option value="true">Yes</option>
+							<option value="false">No</option>
+						</select>
+						<label>Is Your Meal Vegan</label>
+					</div>
+				</div>
+				<div class="row white form-padding">
+					<h5>Serving per portion:</h5>
+					<div id="serving-adder">
+						<div class="serving-field">
+							<div class="input-field col s12 m3">
+								<input value="" id="proteins_unit" name="proteins_unit" type="text" class="validate"
+									required>
+								<label for="proteins">Grams Of Protein (*)</label>
+							</div>
+							<div class="input-field col s12 m3">
+								<input value="" id="carbohydrates_unit" name="carbohydrates_unit" type="text"
+									class="validate" required>
+								<label for="carbohydrates_unit">Grams Of Carbohydrates (*)</label>
+							</div>
+							<div class="input-field col s12 m5">
+								<input value="" id="calories_name" name="calories_name" type="text" class="validate"
+									required>
+								<label for="calories_name">Calories (*)</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row white form-padding">
+					<div class="input-field col s12">
+						<input placeholder="Day/Month/Year, i.e., 03/04/2019" id="due_date" name="due_date" type="text"
+							class="validate" required>
+
+						<label for="due_date">Date Your Recipe</label>
+					</div>
+				</div>
+				<div class="row white form-padding">
+					<div class="input-field col s12">
+						<a class="btn waves-effect waves-light margin-right-xs" name="action"
+							href="{{ url_for('my_recipes', author_name=session['author']) }}">
+							Cancel <i class="fas fa-arrow-circle-left fa-xs"></i></a>
+						<input type="submit" class="green darken-4 btn waves-effect waves-light" value="Submit">
+					</div>
 				</div>
 			</div>
 		</form>

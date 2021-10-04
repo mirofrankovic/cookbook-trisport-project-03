@@ -24,10 +24,6 @@ mongo = PyMongo(app)  # constructor method
 
 forms_collection = mongo.db.forms
 
-# MONGODB_URI = os.getenv('MONGO_URI')
-# DBS_NAME = "cookbook_trisport"
-# COLLECTION_NAME = "recipes"
-
 # -----Pagination and sorting params variables ----- #
 PAGE_SIZE = 3
 KEY_PAGE_SIZE = 'page_size'
@@ -147,34 +143,49 @@ def upload(filename):
     return mongo.send_file(filename)    
 
 
-@app.route('/add_recipe')  
+@app.route('/add_recipe', methods=['GET', 'POST'])  
 def add_recipe():
-    if 'image_recipe' in request.files: 
-        
-        image_recipe=request.files["image_recipe"]
-        mongo.save_file(image_recipe.filename, image_recipe)
 
+    author = session["author"]
+
+    if request.method == "POST":
+        if 'image_recipe' in request.files: 
+            image_recipe=request.files["image_recipe"]
+            image_id = mongo.save_file(image_recipe.filename, image_recipe)
+
+        data = {       
+            'author_name': request.form.get('author_name'),
+            'recipe_name': request.form.get('recipe_name'),
+            'meal_type_name': request.form.get('meal_type_name'),
+            'sport_type_name': request.form.get('sport_type_name'),
+            'race_day_name': request.form.get('race_day_name'),
+            'description': request.form.get('description'),
+            'image_recipe': request.form.get('image_recipe'),
+            'vegan_type_meal': request.form.get('vegan_type_meal'),
+            'servings': request.form.get('servings'),
+            'proteins_unit': request.form.get('proteins_unit'),
+            'carbohydrates_unit': request.form.get('carbohydrates_unit'),
+            'calories_name': request.form.get('calories_name'),
+            'due_date' : request.form.get('due_date'),
+            'image_id': image_id
+        }
+        
+        mongo.db.recipes.insert_one({"_id": ObjectId(recipe_id)}, data)
+        flash("Recipe Added Successfully!")
+        return
 
     return render_template('add_recipe.html',
-                           recipe={},
-                           author_name=mongo.db.author_name.find(),
+                           author_name=author,
                            meal_type=mongo.db.meal_type.find(),
-                           sport_type=mongo.db.sport_type.find(),
-                           image_recipe=mongo.db.image_recipe.find(),
-                           race_day=mongo.db.race_day.find(),
-                           vegan_meal=mongo.db.vegan_meal.find(),
-                           servings=mongo.db.servings.find(),
-                           recipes=mongo.db.recipes.find(),
-                           proteins_unit=mongo.db.proteins_unit.find(),
-                           carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
-                           calories_name=mongo.db.calories_name.find(),
-                           due_date=mongo.db.due_date.find()
+                           sport_type=mongo.db.sport_type.find()
                            )
 
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
+    this_recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
+
     if request.method == "POST":
-        submit = {       
+        data = {       
             'author_name': request.form.get('author_name'),
             'recipe_name': request.form.get('recipe_name'),
             'meal_type_name': request.form.get('meal_type_name'),
@@ -190,36 +201,25 @@ def edit_recipe(recipe_id):
             'due_date' : request.form.get('due_date')
 
         }
-        try:
-            mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
-            flash("Recipe Successfully Updated!")
-        except InvalidId as e:
-            abort(404, 'Recipe not found!')
-        except Exception as e:
-            abort(500, 'Unknown exception found!')
-    
-    try:
-        this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    except InvalidId as e:
-        abort(404, 'Recipe not found!')
-    else:
-        if this_recipe is None:
-            abort(404, 'Recipe not found!')
+        
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, data)
+        flash("Recipe Successfully Updated!")
+        return
     
     return render_template('edit_recipe.html', recipe=this_recipe,
-                           author_name=mongo.db.author_name.find(),
-                           meal_type=mongo.db.meal_type.find(),
-                           sport_type=mongo.db.sport_type.find(),
-                           image_recipe=mongo.db.image_recipe.find(),
-                           race_day=mongo.db.race_day.find(),
-                           vegan_meal=mongo.db.vegan_meal.find(),
-                           servings=mongo.db.servings.find(),
-                           recipes=mongo.db.recipes.find(),
-                           proteins_unit=mongo.db.proteins_unit.find(),
-                           carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
-                           calories_name=mongo.db.calories_name.find(),
-                           due_date=mongo.db.due_date.find()
-                           )
+                        author_name=mongo.db.author_name.find(),
+                        meal_type=mongo.db.meal_type.find(),
+                        sport_type=mongo.db.sport_type.find(),
+                        image_recipe=mongo.db.image_recipe.find(),
+                        race_day=mongo.db.race_day.find(),
+                        vegan_meal=mongo.db.vegan_meal.find(),
+                        servings=mongo.db.servings.find(),
+                        recipes=mongo.db.recipes.find(),
+                        proteins_unit=mongo.db.proteins_unit.find(),
+                        carbohydrates_unit=mongo.db.carbohydrates_unit.find(),
+                        calories_name=mongo.db.calories_name.find(),
+                        due_date=mongo.db.due_date.find()
+                        )
 
 @app.route('/get_my_form')
 def get_my_form():
