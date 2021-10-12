@@ -176,8 +176,9 @@ def add_recipe():
 
     return render_template('add_recipe.html',
                            author_name=author,
-                           meal_type=mongo.db.meal_type.find(),
-                           sport_type=mongo.db.sport_type.find()
+                           meal_type=mongo.db.meal_type_name.find(),
+                           sport_type=mongo.db.sport_type_name.find(),
+                           race_day=mongo.db.race_day_name.find()
                            )
 
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
@@ -208,10 +209,10 @@ def edit_recipe(recipe_id):
     
     return render_template('edit_recipe.html', recipe=this_recipe,
                         author_name=mongo.db.author_name.find(),
-                        meal_type=mongo.db.meal_type.find(),
-                        sport_type=mongo.db.sport_type.find(),
+                        meal_type=mongo.db.meal_type_name.find(),
+                        sport_type=mongo.db.sport_type_name.find(),
                         image_recipe=mongo.db.image_recipe.find(),
-                        race_day=mongo.db.race_day.find(),
+                        race_day=mongo.db.race_day_name.find(),
                         vegan_meal=mongo.db.vegan_meal.find(),
                         servings=mongo.db.servings.find(),
                         recipes=mongo.db.recipes.find(),
@@ -230,9 +231,9 @@ def get_my_form():
     return render_template('add_recipe.html',
                            recipe={},
                            author_name=mongo.db.author_name.find(),
-                           meal_type=mongo.db.meal_type.find(),
-                           sport_type=mongo.db.sport_type.find(),
-                           race_day=mongo.db.race_day.find(),
+                           meal_type_name=mongo.db.meal_type_name.find(),
+                           sport_type=mongo.db.sport_type_name.find(),
+                           race_day=mongo.db.race_day_name.find(),
                            vegan_meal=mongo.db.vegan_meal.find(),
                            servings=mongo.db.servings.find())
 
