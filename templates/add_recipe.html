@@ -5,7 +5,7 @@
 <div class="search-by text-center">Add Recipe</div>
 <div class="row">
 	<div class="col s12">
-		<form action="{{ url_for('submit_to_database') }}" method="post">
+		<form action="{{ url_for('add_recipe') }}" method="post" enctype="multipart/form-data">
 			<div class="row white form-padding">
 				<div class="input-field col s12">
 					<i class="material-icons prefix">accessibility</i>

@@ -23,7 +23,11 @@
 	<div class="my-recipe-colelction-item">
 		<ul class="collection">
 			<li class="collection-item avatar" id="top-collection-item">
-				<img src="{{recipe.image_recipe}}" alt="" class="circle">
+				{% if recipe.image_recipe %}
+				<img src="{{url_for('uploads', filename=recipe['image_recipe'])}}" class="circle" alt="item_image" />
+				{% else %}
+				<img src="{{url_for('static', filename='images/no-image.png')}}" class="circle" alt="default_recipe_image" />
+				{% endif %}
 				<span id="my-recipe-name" class="title art-deco-font"><strong>{{recipe.recipe_name}}</strong></span>
 				<p class="date-added">{{recipe.due_date}}</p>
 				<p id="my-recipe-description">{{recipe.description}}</p>

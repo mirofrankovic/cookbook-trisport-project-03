@@ -8,7 +8,11 @@
 </div>
 <div class="row">
 	<div class="col s12 m6">
-		<img class="responsive-pic" src="{{recipe.image_recipe}}" width="300" height="300">
+		{% if recipe.image_recipe %}
+		<img class="responsive-pic" src="{{url_for('uploads', filename=recipe['image_recipe'])}}" alt="item_image" width="300" height="300" />
+		{% else %}
+		<img class="responsive-pic" src="{{url_for('static', filename='images/no-image.png')}}" alt="default_recipe_image" width="300" height="300" />
+		{% endif %}
     </div>
 		<div class="col s12 m6">
 			<h4>{{recipe.description}}</h4>

@@ -4,7 +4,7 @@
 
 <div class="search-by text-center">Edit Your Recipe</div>
 <div class="row">
-	<form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">
+	<form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="post" class="col s12" enctype="multipart/form-data">
 		<div class="row white form-padding">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">accessibility</i>
@@ -22,45 +22,45 @@
 		<div class="row white form-padding">
 			<div class="input-field col s12">
 				<select class="form-select" id="meal_type" name="meal_type_name">
-               <option value="" disabled>Choose Your Meal Type (*)</option>
-               {% for meal in meal_type %}
-               {% if meal.meal_type_name == recipe.meal_type_name %}
-               <option value="{{meal.meal_type_name}}" selected>{{meal.meal_type_name}}</option>
-               {% else %}
-               <option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
-               {% endif %}
-               {% endfor %}
-            </select>
+					<option value="" disabled>Choose Your Meal Type (*)</option>
+					{% for meal in meal_type %}
+					{% if meal.meal_type_name == recipe.meal_type_name %}
+					<option value="{{meal.meal_type_name}}" selected>{{meal.meal_type_name}}</option>
+					{% else %}
+					<option value="{{meal.meal_type_name}}">{{meal.meal_type_name}}</option>
+					{% endif %}
+					{% endfor %}
+				</select>
 				<label>Choose Your Meal Type</label>
 			</div>
 		</div>
 		<div class="row white form-padding">
 			<div class="input-field col s12">
 				<select class="form-select" id="sport_type" name="sport_type_name">
-               <option value="" disabled>Choose Your Sport Discipline (*)</option>
-               {% for sport in sport_type %}
-               {% if sport.sport_type_name == recipe.sport_type_name %}
-                  <option value="{{sport.sport_type_name}}" selected>{{sport.sport_type_name}}</option>
-               {% else %}
-                <option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
-               {% endif %}
-               {% endfor %}
-            </select>
+					<option value="" disabled>Choose Your Sport Discipline (*)</option>
+					{% for sport in sport_type %}
+					{% if sport.sport_type_name == recipe.sport_type_name %}
+					<option value="{{sport.sport_type_name}}" selected>{{sport.sport_type_name}}</option>
+					{% else %}
+					<option value="{{sport.sport_type_name}}">{{sport.sport_type_name}}</option>
+					{% endif %}
+					{% endfor %}
+				</select>
 				<label>Choose Your Sport Discipline</label>
 			</div>
 		</div>
 		<div class="row white form-padding">
 			<div class="input-field col s12">
 				<select class="form-select" id="race_day" name="race_day_name">
-               <option value="" disabled>Choose Your Prefered Race Meal (*)</option>
-               {% for race in race_day %}
-               {% if race.race_day_name == recipe.race_day_name %}
-                <option value="{{race.race_day_name}}" selected>{{race.race_day_name}}</option>
-               {% else %}
-                <option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
-               {% endif %}
-               {% endfor %}
-            </select>
+					<option value="" disabled>Choose Your Prefered Race Meal (*)</option>
+					{% for race in race_day %}
+					{% if race.race_day_name == recipe.race_day_name %}
+					<option value="{{race.race_day_name}}" selected>{{race.race_day_name}}</option>
+					{% else %}
+					<option value="{{race.race_day_name}}">{{race.race_day_name}}</option>
+					{% endif %}
+					{% endfor %}
+				</select>
 				<label>Pick Your Prefered Race Meal</label>
 			</div>
 		</div>
@@ -71,73 +71,82 @@
 				<label for="description">Description</label>
 			</div>
 		</div>
-		
-         <div class="row white form-padding">
-             <div class="col s4">
-                <div class="white form-padding">
-                    <!-- <div class="input-group mb-3 col-lg-6">  -->
-                        <div class="input-field">
-                            <!-- <div class="input-group-prepend"> -->
-                            <i class="material-icons prefix">folder</i>  
-                            <input value="{{recipe.image_recipe}}" type="file" id="image_recipe" name="image_recipe" class="custom-file-input" for="Upload" aria-describedby="image-trisport"
-                                accept="image/png, image/jpeg" required>
-                             <label class="custom-file-label" for="image_recipe"></label>
-                        </div>
-                 </div>
-             </div>
-                    <div class="col s8">
-                        <div class="white form-padding"></div>    
-                    </div>
-        </div>
+
+		<div class="row white form-padding">
+			<div class="col s4">
+				<div class="white form-padding">
+					<!-- <div class="input-group mb-3 col-lg-6">  -->
+					<div class="input-field">
+						<!-- <div class="input-group-prepend"> -->
+						<i class="material-icons prefix">File</i>
+						<input type="file" id="image_recipe" name="image_recipe"
+							class="custom-file-input" for="Upload" aria-describedby="image-trisport"
+							accept="image/png, image/jpeg" required>
+						<label class="custom-file-label" for="image_recipe"></label>
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" id="item_image_current" name="item_image_current" type="text"
+							value="{{recipe.image_recipe}}" placeholder="Upload item image" />
+					</div>
+				</div>
+			</div>
+			<div class="col s8">
+				<div class="white form-padding"></div>
+			</div>
+		</div>
 
 
 		<div class="row white form-padding">
-            
-                <label>Is this Recipe Vegan</label>
-                <select class="form-select" id="vegan_meal" name="vegan_meal">
-                    <option value="" disabled selected>Is vegan? (*)</option>
-                    {% if recipe['vegan_meal'] == 'true' %}
-                    <option value="true" selected >Yes</option>
-                    <option value="false">No</option>
-                    {% else %}
-                    <option value="true">Yes</option>
-                    <option value="false" selected >No</option>
-                    {% endif %}
-                </select>
-                <label>Is this Recipe Vegan?</label>
-            
+
+			<label>Is this Recipe Vegan</label>
+			<select class="form-select" id="vegan_meal" name="vegan_meal">
+				<option value="" disabled selected>Is vegan? (*)</option>
+				{% if recipe['vegan_meal'] == 'true' %}
+				<option value="true" selected>Yes</option>
+				<option value="false">No</option>
+				{% else %}
+				<option value="true">Yes</option>
+				<option value="false" selected>No</option>
+				{% endif %}
+			</select>
+			<label>Is this Recipe Vegan?</label>
+
 		</div>
 		<div class="row white form-padding">
 			<h5>Serving per portion:</h5>
 			<div id="serving-adder">
 				<div class="serving-field">
 					<div class="input-field col s12 m3">
-						<input value="{{recipe.proteins_unit}}" id="proteins_unit" name="proteins_unit" type="text" class="validate" required>
+						<input value="{{recipe.proteins_unit}}" id="proteins_unit" name="proteins_unit" type="text"
+							class="validate" required>
 						<label for="proteins-0">Grams Of Protein (*)</label>
 					</div>
 					<div class="input-field col s12 m3">
-						<input value="{{recipe.carbohydrates_unit}}" id="carbohydrates_unit" name="carbohydrates_unit" type="text" class="validate" required>
+						<input value="{{recipe.carbohydrates_unit}}" id="carbohydrates_unit" name="carbohydrates_unit"
+							type="text" class="validate" required>
 						<label for="carbohydrates_unit">Grams Of Carbohydrates (*)</label>
 					</div>
 					<div class="input-field col s12 m5">
-						<input value="{{recipe.calories_name}}" id="calories_name" name="calories_name" type="text" class="validate" required>
+						<input value="{{recipe.calories_name}}" id="calories_name" name="calories_name" type="text"
+							class="validate" required>
 						<label for="calories_name">Calories (*)</label>
 					</div>
 				</div>
 			</div>
 		</div>
-        <div class="row white form-padding">
-				<div class="input-field col s12">
-					<input value="{{recipe.due_date}}" id="due_date" name="due_date" type="text" class="validate" required>
+		<div class="row white form-padding">
+			<div class="input-field col s12">
+				<input value="{{recipe.due_date}}" id="due_date" name="due_date" type="text" class="validate" required>
 
-					<label for="due_date">Date Your Recipe</label>
-				</div>
+				<label for="due_date">Date Your Recipe</label>
+			</div>
 		</div>
 		<div class="row white form-padding">
 			<a class="btn waves-effect waves-light margin-right-xs" name="action"
 				href="{{ url_for('my_recipes', author_name=session['author']) }}">
 				Cancel <i class="fas fa-arrow-circle-left fa-xs"></i></a>
-			<input class="#880e4f green darken-4 btn waves-effect waves-light" id="submit-form-button" type="submit" value="Submit"></input>
+			<input class="#880e4f green darken-4 btn waves-effect waves-light" id="submit-form-button" type="submit"
+				value="Submit"></input>
 		</div>
 	</form>
 </div>

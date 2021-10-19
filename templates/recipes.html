@@ -25,7 +25,11 @@
 			<div class="col s12 m4 l3 navigation-cards" data-date="{{recipe.due_date}}">
 				<div class="card">
 					<div class="card-image">
-						<img src="{{recipe.image_recipe}}" width="250" height="200">
+						{% if recipe.image_recipe %}
+                        <img src="{{url_for('uploads', filename=recipe['image_recipe'])}}" width="250" height="200" alt="item_image" />
+                        {% else %}
+                        <img src="{{url_for('static', filename='images/no-image.png')}}" width="250" height="200" alt="default_recipe_image" />
+                        {% endif %}
 						<div class="card-title card-title-spice">
 							<span id="recipe_name" name="recipe_name" class="card-title art-deco-font">{{recipe.recipe_name}}</span>
 							<span id="race_day_name" name="race_day_name" class="card-title art-deco-font">{{recipe.race_day_name}}</span>
