@@ -322,8 +322,13 @@ def register():
 
 @app.route('/log_out')
 def log_out():
-    print('logged out')
-    session.clear()
+    
+    if not is_authenticated():
+        flash("You are currently not logged in")
+        return redirect(url_for('get_ready'))
+
+    flash("You have been logged out")
+    session.pop("author")
     return redirect(url_for('get_ready'))
 
 
@@ -391,6 +396,12 @@ def dashboard():
 @app.route('/contact_us')
 def contact_us():
     return render_template("contactus.html")
+
+
+def is_authenticated():
+    """ Ensure that user is authenticated
+    """
+    return 'author' in session
 
 
 @app.errorhandler(404)
