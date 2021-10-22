@@ -246,6 +246,9 @@ def edit_recipe(recipe_id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if is_authenticated():
+        return redirect(url_for("my_recipes"))
+        
     if request.method == "POST":
         user_exists = mongo.db.users.find_one(
             {"author_name": request.form.get("author_name").lower()})
@@ -271,6 +274,9 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if is_authenticated():
+        return redirect(url_for("my_recipes"))
+
     if request.method == 'POST':
         user_exists = mongo.db.users.find_one(
             {'author_name': request.form.get('author_name').lower()})
