@@ -53,7 +53,7 @@
 				<h4>Would You Like To Delete The Recipe?</h4>
 			</div>
 			<div class="modal-footer">
-				<a href="{{ url_for('my_recipes', author_name=session['author']) }}"
+				<a href="{{ url_for('my_recipes') }}"
 					class="btn waves-effect waves-light margin-right-xs">Cancel
 					<i class="fas fa-arrow-circle-left fa-xs"></i></a>
 				<a href="{{ url_for('delete_my_recipe', recipe_id=recipe._id) }}" class="btn btn red modal-close">Delete
@@ -63,7 +63,7 @@
 	</div>
 	{% endfor %}
 	<section class="container pagination-container">
-		{{ components.pagination(url_for('my_recipes', author_name=author_name), paginated_recipes) }}
+		{{ components.pagination(url_for('my_recipes'), paginated_recipes) }}
 	</section>
 	{% else %}
 	<div class="container-result">

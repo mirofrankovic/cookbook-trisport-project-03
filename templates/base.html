@@ -44,7 +44,7 @@
 				<li><a class="active" href="{{url_for('get_recipes')}}">All Recipes</a></li>
 				<li><a class="" href="{{url_for('dashboard')}}">Dashboard</a></li>
 				{% if session['author'] is defined %}
-				<li><a href="{{url_for('my_recipes', author_name=session['author'])}}">Profile</a></li>
+				<li><a href="{{url_for('my_recipes')}}">Profile</a></li>
 				{% endif %}
 				<li>
 					{% if session['author'] is defined %}
@@ -61,7 +61,7 @@
 				<li><a href="{{url_for('dashboard')}}"><i class="material-icons">insert_chart</i>Dashboard</a></li>
 				{% if session['author'] is defined %}
 				<li><a
-						href="{{url_for('my_recipes', author_name=session['author'])}}"><i class="material-icons">portrait</i>Profile</a>
+						href="{{url_for('my_recipes')}}"><i class="material-icons">portrait</i>Profile</a>
 				</li>
 				{% endif %}
 				<li>

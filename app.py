@@ -110,7 +110,6 @@ def get_ready():
 
 # images for my recepies and see all my recipes after adding them
 
-
 @app.route('/get_recipes', methods=['GET', 'POST'])
 def get_recipes():
     if request.method == 'GET':
@@ -283,8 +282,7 @@ def login():
                 session["author"] = request.form.get("author_name").lower()
                 flash("Ahoj! {}".format(
                     request.form.get("author_name")))
-                return redirect(url_for(
-                    "my_recipes", author_name=session["author"]))
+                return redirect(url_for("my_recipes"))
             else:
                 # invalid password match
                 flash("Incorect Author Name or/and Pasword")
@@ -315,7 +313,7 @@ def register():
         mongo.db.users.insert_one(register)
         session["author"] = request.form.get("author_name").lower()
         flash("Athlete Has Registrated Succesfuly!")
-        return redirect(url_for("my_recipes", author_name=session["author"]))
+        return redirect(url_for("my_recipes"))
 
     return render_template('register.html', title="Register")
 
@@ -334,32 +332,36 @@ def log_out():
 
 @app.route('/delete_my_recipe/<recipe_id>')
 def delete_my_recipe(recipe_id):
-    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted!")
-    return redirect(url_for("my_recipes", author_name=session["author"]))
+    if is_authenticated():
+        recipe = monngo.db.recipes.find_one_or_404({'_id': ObjectId(recipe_id)})
+
+        if recipe['author'] == recipe.author_name:
+            mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+            flash("Recipe Successfully Deleted!")
+            return redirect(url_for("my_recipes"))
+    
+    flash("You do not have the right to execute that action!")
+    return redirect(url_for("get_recipes"))
 
 
-@app.route('/my_recipes/<author_name>', methods=['GET', 'POST'])
-def my_recipes(author_name):
-    if session.get("author") is None:
+@app.route('/my_recipes', methods=['GET', 'POST'])
+def my_recipes():
+    if not is_authenticated():
+        flash("You are not authenticated!")
         return redirect(url_for('login'))
 
-    if not author_name:
-        author_name = session["author"]
-    elif author_name != session["author"]:
-        return redirect(url_for('login'))
-
+    author_name = session["author"]
     user = mongo.db.users.find_one({"author_name": author_name})
     if user:
-        author_name = user['author_name']
         paginated_recipes = get_paginated_items(mongo.db.recipes,
                                                 query={
                                                     'author_name': author_name},
                                                 **request.args.to_dict())
         return render_template('my_recipes.html',
-                               author_name=session['author'],
+                               author_name=author_name,
                                paginated_recipes=paginated_recipes)
     else:
+        flash("Something wrong happens, please try again!")
         return redirect(url_for('login'))
 
 
@@ -402,6 +404,12 @@ def is_authenticated():
     """ Ensure that user is authenticated
     """
     return 'author' in session
+
+
+def is_object_id_valid(id_value):
+    """ Validate is the id_value is a valid ObjectId
+    """
+    return id_value != "" and ObjectId.is_valid(id_value)
 
 
 @app.errorhandler(404)
