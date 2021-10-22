@@ -254,22 +254,6 @@ def edit_recipe(recipe_id):
                            )
 
 
-@app.route('/get_my_form')
-def get_my_form():
-    #  if request.url.startswith('http://'):
-    #      request.url = request.url.replace('http://', 'https://', 1)
-    # print('url when add_recipe: ', request.url)
-
-    return render_template('add_recipe.html',
-                           recipe={},
-                           author_name=mongo.db.author_name.find(),
-                           meal_type_name=mongo.db.meal_type_name.find(),
-                           sport_type=mongo.db.sport_type_name.find(),
-                           race_day=mongo.db.race_day_name.find(),
-                           vegan_meal=mongo.db.vegan_meal.find(),
-                           servings=mongo.db.servings.find())
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
