@@ -8,14 +8,6 @@
 		<form action="{{ url_for('add_recipe') }}" method="post" enctype="multipart/form-data">
 			<div class="row white form-padding">
 				<div class="input-field col s12">
-					<i class="material-icons prefix">accessibility</i>
-					<input value="{{session['username']}}" id="author_name" name="author_name" type="text"
-						class="validate">
-					<label for="author_name">Your Name</label>
-				</div>
-			</div>
-			<div class="row white form-padding">
-				<div class="input-field col s12">
 					<i class="material-icons prefix">cake</i>
 					<input placeholder="Name" id="recipe_name" name="recipe_name" type="text" class="validate" required>
 					<label for="recipe_name">Recipe Name</label>

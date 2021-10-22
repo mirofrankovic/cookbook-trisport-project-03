@@ -142,6 +142,10 @@ def uploads(filename):
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
 
+    if not is_authenticated():
+        flash("You do not have the right to execute that action!")
+        return redirect(url_for("get_recipes"))
+    
     author = session["author"]
 
     if request.method == "POST":
@@ -154,7 +158,7 @@ def add_recipe():
                 image_id = mongo.save_file(image_recipe.filename, image_recipe)
 
         data = {
-            'author_name': request.form.get('author_name'),
+            'author_name': author,
             'recipe_name': request.form.get('recipe_name'),
             'meal_type_name': request.form.get('meal_type_name'),
             'sport_type_name': request.form.get('sport_type_name'),
@@ -184,8 +188,21 @@ def add_recipe():
 
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
+
+    if not is_authenticated():
+        flash("You do not have the right to execute that action!")
+        return redirect(url_for("get_recipes"))
+
+    if not is_object_id_valid(recipe_id):
+        abort(404)
+
     this_recipe = mongo.db.recipes.find_one_or_404(
         {"_id": ObjectId(recipe_id)})
+
+    author = session["author"]
+    if this_recipe['author_name'] != author:
+        flash("You do not have the right to execute that action!")
+        return redirect(url_for("my_recipes"))
 
     if request.method == "POST":
 
@@ -208,7 +225,7 @@ def edit_recipe(recipe_id):
                 image_id = mongo.save_file(image_recipe.filename, image_recipe)
 
         data = {
-            'author_name': request.form.get('author_name'),
+            'author_name': author,
             'recipe_name': request.form.get('recipe_name'),
             'meal_type_name': request.form.get('meal_type_name'),
             'sport_type_name': request.form.get('sport_type_name'),
@@ -248,7 +265,7 @@ def edit_recipe(recipe_id):
 def login():
     if is_authenticated():
         return redirect(url_for("my_recipes"))
-        
+
     if request.method == "POST":
         user_exists = mongo.db.users.find_one(
             {"author_name": request.form.get("author_name").lower()})
@@ -313,9 +330,12 @@ def log_out():
 @app.route('/delete_my_recipe/<recipe_id>')
 def delete_my_recipe(recipe_id):
     if is_authenticated():
-        recipe = monngo.db.recipes.find_one_or_404({'_id': ObjectId(recipe_id)})
+        if not is_object_id_valid(recipe_id):
+            abort(404)
 
-        if recipe['author'] == recipe.author_name:
+        recipe = mongo.db.recipes.find_one_or_404({'_id': ObjectId(recipe_id)})
+
+        if session['author'] == recipe['author_name']:
             mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
             flash("Recipe Successfully Deleted!")
             return redirect(url_for("my_recipes"))
