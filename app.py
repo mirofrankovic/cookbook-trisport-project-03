@@ -341,23 +341,23 @@ def my_recipes():
 
 @app.route('/popular_recipe/<recipe_id>', methods=['GET', 'POST'])
 def popular_recipe(recipe_id):
+    if not is_authenticated():
+        flash("You are not authenticated!")
+        return redirect(url_for('login'))
+
     if request.method == "POST":
-        current_user = mongo.db.users.find_one(
+        current_user = mongo.db.users.find_one_or_404(
             {"author_name": session["author"]})
         user = mongo.db.users
-
         my_popular = user.find({"$and": [{"author_name": session['author']},
                                          {'likes': recipe_id}]})
-
         if recipe_id not in current_user["likes"]:
             mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)},
                                         {'$inc': {'likes': 1}})
 
             user.update_one({"author_name": session['author']},
                             {"$push": {"likes": recipe_id}})
-
         else:
-
             flash("You have already liked this recipe!")
 
     return redirect(url_for('recipedescription', recipe_id=recipe_id))
