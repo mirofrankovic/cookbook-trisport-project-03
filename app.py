@@ -121,6 +121,16 @@ def get_recipes():
     return render_template('recipes.html', paginated_recipes=paginated_recipes)
 
 
+@app.route('/get_all_recipes')
+def get_all_recipes():
+    recipes = mongo.db.recipes.find()
+    json_recipes = []
+    for recipe in recipes:
+        json_recipes.append(recipe)
+    json_recipes = json.dumps(json_recipes, default=json_util.default)
+    return json_recipes
+
+
 @app.route('/recipedescription/<recipe_id>')
 def recipedescription(recipe_id):
     try:

@@ -1,7 +1,3 @@
-//queue()
-//    .defer(d3.json, "/find_recipes")
-//    .await(makeGraphs);
-
 function makeGraphs(recipeData) {
     var ndx = crossfilter(recipeData.slice(1));
     console.log(recipeData);
@@ -17,7 +13,7 @@ function makeGraphs(recipeData) {
 function show_meal_type_graph(ndx) {
     var mealtypeDim = ndx.dimension(dc.pluck("meal_type_name"));
     var mealtypeMix = mealtypeDim.group();
-    
+
     dc.barChart("#meal_type-graph")
         .width(768)
         .height(480)
@@ -94,7 +90,6 @@ function initializeDashboard() {
     var username = '{{author_name}}';
     var recipesText = $('#hidden-recipes').text();
     var recipesJson = JSON.parse(recipesText);
-    //var recipesJson = recipesText;
     var recipesList = [];
 
     for (i in recipesJson) {
@@ -114,8 +109,6 @@ function initializeDashboard() {
         }
 
         var ndx = crossfilter(myRecipesList);
-        //console.log(myRecipesList);
-
         counteMyRecipes(ndx, '#count-recipes-text');
         counteMyRecipes(ndx, '#count-recipes-box');
         resetButton(ndx);
@@ -147,18 +140,13 @@ function initializeDashboard() {
         $('#username-with-zero-recipes').css('display', 'none');
     } else {
         $('#username-with-recipes').css('display', 'none');
-        // $('.dashboard-graphs').css('display', 'none');
     }
 }
 
-
- $(document).ready(function () {
-     console.log('Loading data...');
-     $.getJSON("/find_recipes", function (data) {
-         console.log(data);
-         // initializeDashboard();
-         makeGraphs(data);
-     });
- });
-
- 
+$(document).ready(function () {
+    console.log('Loading data...');
+    $.getJSON("/get_all_recipes", function (data) {
+        console.log(data);
+        makeGraphs(data);
+    });
+});
